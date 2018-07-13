@@ -20,8 +20,8 @@ class CreateReviewsTable extends Migration
             $table->text('text');
             $table->string('socials')->nullable();
             $table->string('photo')->nullable();
-            $table->boolean('published');
-            $table->integer('priority')->default(0);
+            $table->boolean('published')->default(false);
+            $table->integer('priority')->nullable();
             $table->timestamps();
         });
     }

@@ -12,7 +12,7 @@ class ReviewController extends Controller
 
     public function index(): JsonResponse
     {
-        $reviews = Review::all();
+        $reviews = Review::where('published', 1)->get();
         return response()->json($reviews);
     }
 
@@ -20,7 +20,6 @@ class ReviewController extends Controller
     {
         $review = new Review();
         $review->fill($request->only(['author', 'company', 'text']));
-        $review->published = 0; //@TODO сделать нормально по умолчанию
 
         $review->save();
         return $review;
