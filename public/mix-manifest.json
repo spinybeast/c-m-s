@@ -1,4 +1,16 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/js/admin.js": "/js/admin.js",
+    "/css/app.css": "/css/app.css",
+    "/css/admin.css": "/css/admin.css",
+    "/fonts/andale_mono-webfont.eot": "/fonts/andale_mono-webfont.eot",
+    "/fonts/andale_mono-webfont.svg": "/fonts/andale_mono-webfont.svg",
+    "/fonts/andale_mono-webfont.ttf": "/fonts/andale_mono-webfont.ttf",
+    "/fonts/andale_mono-webfont.woff": "/fonts/andale_mono-webfont.woff",
+    "/fonts/andale_mono-webfont.woff2": "/fonts/andale_mono-webfont.woff2",
+    "/fonts/pts55f-webfont.eot": "/fonts/pts55f-webfont.eot",
+    "/fonts/pts55f-webfont.svg": "/fonts/pts55f-webfont.svg",
+    "/fonts/pts55f-webfont.ttf": "/fonts/pts55f-webfont.ttf",
+    "/fonts/pts55f-webfont.woff": "/fonts/pts55f-webfont.woff",
+    "/fonts/pts55f-webfont.woff2": "/fonts/pts55f-webfont.woff2"
 }

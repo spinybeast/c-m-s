@@ -1,8 +1,13 @@
+//Colors
+$black: #0A0C0D;
+$blue: #80D1FF;
 
 // Body
-$body-bg: #f5f8fa;
+$body-bg: $black;
 
 // Typography
-$font-family-sans-serif: "Raleway", sans-serif;
-$font-size-base: 0.9rem;
-$line-height-base: 1.6;
+$font-size-base: 14;
+
+$font-family-andale: 'andale_monoregular', sans-serif;
+$font-family-ptsans: 'pt_sansregular', sans-serif;
+

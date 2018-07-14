@@ -1,14 +1,39 @@
-
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
-
+@import "fonts";
 // Variables
 @import "variables";
-
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+body {
+  color: $white;
+  font-family: $font-family-ptsans;
+  padding-top: 100px;
+}
+
+button, button:active, button:focus {
+  outline: none;
+}
+
+.navbar-dark {
+  border-color: $black;
+  background-color: $black;
+
+  %navbar-element {
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 30px;
+  }
+  li a {
+    @extend %navbar-element;
+  }
+  .navbar-brand {
+    @extend %navbar-element;
+    font-family: $font-family-andale;
+    padding-left: 0;
+    .blue {
+      color: $blue;
+    }
+  }
+
 }
