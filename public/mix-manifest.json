@@ -12,5 +12,10 @@
     "/fonts/pts55f-webfont.svg": "/fonts/pts55f-webfont.svg",
     "/fonts/pts55f-webfont.ttf": "/fonts/pts55f-webfont.ttf",
     "/fonts/pts55f-webfont.woff": "/fonts/pts55f-webfont.woff",
-    "/fonts/pts55f-webfont.woff2": "/fonts/pts55f-webfont.woff2"
+    "/fonts/pts55f-webfont.woff2": "/fonts/pts55f-webfont.woff2",
+    "/img/arrows.png": "/img/arrows.png",
+    "/img/contacts.png": "/img/contacts.png",
+    "/img/lang.png": "/img/lang.png",
+    "/img/noavatar.png": "/img/noavatar.png",
+    "/img/social-contact.png": "/img/social-contact.png"
 }

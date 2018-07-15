@@ -1,10 +1,5 @@
 import React from 'react';
-import {Switch, Route, NavLink as Link} from 'react-router-dom'
-
-import {Home} from './Home';
-import {Portfolio} from './Portfolio';
-import Reviews from './Reviews';
-import {Contact} from './Contact';
+import {NavLink as Link} from 'react-router-dom'
 
 export const Header = () => (
     <header>
@@ -14,7 +9,9 @@ export const Header = () => (
                     <span className="blue">Cyclone&nbsp;</span>
                     Music Space
                 </a>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button className="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
 
@@ -36,13 +33,6 @@ export const Header = () => (
                 </div>
             </div>
         </nav>
-
-        <Switch>
-            <Route exact path='/' component={Home}/>
-            <Route path='/portfolio' component={Portfolio}/>
-            <Route path='/reviews' component={Reviews}/>
-            <Route path='/contact' component={Contact}/>
-        </Switch>
     </header>
 );
 

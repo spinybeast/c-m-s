@@ -2,13 +2,10 @@ require('./bootstrap');
 
 import React from 'react';
 import {render} from 'react-dom';
-import {HashRouter as Router} from 'react-router-dom';
 
-import {Header} from './components/Header';
+import {App} from './components/App';
 
 render(
-    <Router>
-        <Header/>
-    </Router>,
+    <App/>,
     document.getElementById('app')
 );

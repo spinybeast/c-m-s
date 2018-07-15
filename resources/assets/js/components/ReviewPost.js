@@ -12,23 +12,25 @@ export default class ReviewsPost extends Component {
         }
     }
 
-    handleAuthorChange (e) {
+    handleAuthorChange(e) {
         this.setState({
             author: e.target.value
         })
     }
-    handleCompanyChange (e) {
+
+    handleCompanyChange(e) {
         this.setState({
             company: e.target.value
         })
     }
-    handleTextChange (e) {
+
+    handleTextChange(e) {
         this.setState({
             text: e.target.value
         })
     }
 
-    handleSubmit (e) {
+    handleSubmit(e) {
         e.preventDefault();
         axios.post('api/review', this.state).then(response => {
             console.log(response);
