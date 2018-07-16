@@ -13614,6 +13614,27 @@ button:focus {
   color: #80D1FF;
 }
 
+.navbar-dark .lang {
+  padding: 20px 0;
+}
+
+.navbar-dark .lang a {
+  cursor: pointer;
+  margin: 15px 10px;
+  display: inline-block;
+  height: 11px;
+  width: 16px;
+  background: url(/images/lang.png?149149df0e399b9dbe3eb5d7b580ff13) 0 0 no-repeat;
+}
+
+.navbar-dark .lang a.ru {
+  background-position: 0 0;
+}
+
+.navbar-dark .lang a.en {
+  background-position: -16px 0;
+}
+
 /** Футер **/
 
 .footer {

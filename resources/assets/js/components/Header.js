@@ -9,6 +9,10 @@ export const Header = () => (
                     <span className="blue">Cyclone&nbsp;</span>
                     Music Space
                 </a>
+                <div className="lang">
+                    <a className="ru"></a>
+                    <a className="en"></a>
+                </div>
                 <button className="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">

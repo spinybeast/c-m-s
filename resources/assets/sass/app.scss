@@ -83,6 +83,25 @@ button, button:active, button:focus {
       color: $blue;
     }
   }
+
+  .lang {
+    padding: 20px 0;
+    a {
+      cursor: pointer;
+      margin: 15px 10px;
+      display: inline-block;
+      height: 11px;
+      width: 16px;
+      background: url('../img/lang.png') 0 0 no-repeat;
+      &.ru {
+        background-position: 0 0
+      }
+      &.en {
+        background-position: -16px 0
+      }
+    }
+  }
+
 }
 
 /** Футер **/

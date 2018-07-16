@@ -49,6 +49,7 @@ export default class Reviews extends Component {
                                 <div key={review.id}>
                                     <img
                                         className="rounded-circle img-fluid"
+                                        style={{width: 150}}
                                         src={review.photo}
                                         alt={review.author}
                                     />
