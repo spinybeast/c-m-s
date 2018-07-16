@@ -4,7 +4,7 @@ import {HashRouter as Router, Route, Switch} from 'react-router-dom';
 import {Portfolio} from "../pages/Portfolio";
 import {Home} from "../pages/Home";
 import Reviews from "../pages/Reviews";
-import {Contact} from "../pages/Contact";
+import Contact from "../pages/Contact";
 
 export const App = () => (
     <Router>

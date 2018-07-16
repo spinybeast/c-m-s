@@ -8,80 +8,79 @@ use App\Http\Controllers\Controller;
 
 class ReviewController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $reviews = Review::all();
         return view('admin.review.index', compact('reviews'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        return view('create');
+        return view('admin.review.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $this->validateRequest($request);
+
+        $review = new Review();
+
+        $review->fill($request->only(['author', 'company', 'text', 'published', 'priority']));
+
+        if ($request->hasFile('photo')) {
+            $photo = $request->file('photo');
+            $name = str_slug(uniqid($request->author)) . '.' . $photo->getClientOriginalExtension();
+            $photo->move(public_path(Review::AVATAR_PATH), $name);
+            $review->photo = $name;
+        }
+
+        $review->save();
+
+        return redirect(route('reviews.index'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Review  $review
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Review $review)
-    {
-        return view('admin.review.show', compact('review'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Review  $review
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Review $review)
     {
         return view('admin.review.edit', compact('review'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Review  $review
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Review $review)
     {
-        //
+        $this->validateRequest($request);
+
+        $review->fill($request->only(['author', 'company', 'text', 'published', 'priority']));
+
+        if ($request->hasFile('photo')) {
+            $photo = $request->file('photo');
+            $name = str_slug(uniqid($request->author)) . '.' . $photo->getClientOriginalExtension();
+            $photo->move(public_path(Review::AVATAR_PATH), $name);
+            $review->photo = $name;
+        }
+
+        $review->save();
+
+        return redirect()->back()->with('success', 'Отзыв успешно отредактирован');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Review  $review
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Review $review)
     {
-        //
+        try {
+            $review->delete();
+        } catch (\Exception $exception) {
+        }
+
+        return redirect()->back();
+    }
+
+
+    private function validateRequest(Request $request): void
+    {
+        $this->validate($request, [
+            'author' => 'required',
+            'text' => 'required',
+            'priority' => 'nullable|numeric',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
     }
 }

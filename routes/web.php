@@ -11,7 +11,7 @@ Route::prefix('admin')
         Auth::routes();
         Route::get('/', function () {
             return view('admin.index');
-        });
+        })->middleware('auth');
         Route::resource('reviews', 'Admin\ReviewController')
             ->middleware('auth');
     });

@@ -13,10 +13,10 @@
                         </div>
                         <div>Отзывы</div>
                     </div>
-                    <a href="{{ route('reviews.index') }}">
+                    <a href="{{ route('reviews.index') }}" class="text-info">
                         <div class="card-footer">
                             <span class="pull-left">Перейти</span>
-                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <span class="pull-right"><i class="fa fa-arrow-right"></i></span>
                             <div class="clearfix"></div>
                         </div>
                     </a>
@@ -30,10 +30,10 @@
                         </div>
                         <div>Видео</div>
                     </div>
-                    <a href="{{ route('reviews.index') }}">
+                    <a href="{{ route('reviews.index') }}" class="text-info">
                         <div class="card-footer">
                             <span class="pull-left">Перейти</span>
-                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <span class="pull-right"><i class="fa fa-arrow-right"></i></span>
                             <div class="clearfix"></div>
                         </div>
                     </a>
