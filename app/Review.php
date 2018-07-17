@@ -8,7 +8,7 @@ class Review extends Model
 {
     public const AVATAR_PATH = '/uploads/avatars/';
 
-    protected $fillable = ['author', 'company', 'text'];
+    protected $fillable = ['author', 'company', 'text', 'published', 'priority', 'socials'];
 
     public function getPhotoAttribute($value): string
     {
@@ -23,4 +23,10 @@ class Review extends Model
     {
         return (array)($value ? unserialize($value) : []);
     }
+
+    public function setSocialsAttribute(array $value)
+    {
+        $this->attributes['socials'] = serialize($value);
+    }
+
 }

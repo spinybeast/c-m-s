@@ -1,0 +1,66 @@
+/** страница Главная **/
+.home {
+  .main- {
+    &cover {
+      background: url('../../img/backs/main.png') center no-repeat;
+      background-size: cover;
+      width: 100%;
+      padding: 30px 0;
+    }
+    &feature {
+      padding-right: 12px;
+      padding-left: 12px;
+      div {
+        background: $grey top 15px right 15px no-repeat;
+        padding: 27px 40px 60px;
+        position: relative;
+        height: 280px;
+        &.trailers {
+          background-image: url('../../img/backs/home/trailers.png')
+        }
+        &.soundtrack {
+          background-image: url('../../img/backs/home/soundtracks.png')
+        }
+        &.advertisement {
+          background-image: url('../../img/backs/home/advertisement.png')
+        }
+      }
+      h4 {
+        font-size: 16px
+      }
+      .text {
+        font-size: 12px;
+        line-height: 1.5
+      }
+    }
+  }
+  .jumbotron {
+    padding: 0;
+    text-align: center;
+    background-color: transparent;
+    h1 {
+      font-size: 45px;
+      line-height: 1.2;
+      margin-top: 0;
+      font-family: $font-family-andale;
+    }
+    .btn-opacity {
+      color: $white;
+      text-transform: uppercase;
+      font-size: 17px;
+      font-weight: 700;
+      padding: 7px 27px;
+      font-family: $font-family-andale;
+      border-radius: 0;
+      border-color: $white;
+    }
+    .main-description {
+      font-size: 19px;
+      padding: 15px 0 35px 40px;
+      line-height: 1.6;
+      ul {
+        list-style: none;
+      }
+    }
+  }
+}

@@ -89,7 +89,7 @@ return [
         'array'   => 'The :attribute must have at least :min items.',
     ],
     'not_in'               => 'The selected :attribute is invalid.',
-    'not_regex'            => 'The :attribute format is invalid.',
+    'not_regex'            => 'У поля :attribute неверный формат.',
     'numeric'              => 'Поле :attribute должно быть числом.',
     'present'              => 'The :attribute field must be present.',
     'regex'                => 'The :attribute format is invalid.',
@@ -111,7 +111,7 @@ return [
     'timezone'             => 'The :attribute must be a valid zone.',
     'unique'               => 'The :attribute has already been taken.',
     'uploaded'             => 'The :attribute failed to upload.',
-    'url'                  => 'The :attribute format is invalid.',
+    'url'                  => 'Поле :attribute должно содержать ссылку.',
 
     /*
     |--------------------------------------------------------------------------

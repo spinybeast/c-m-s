@@ -22,20 +22,10 @@ class ReviewController extends Controller
 
     public function store(Request $request)
     {
-        $this->validateRequest($request);
-
         $review = new Review();
 
-        $review->fill($request->only(['author', 'company', 'text', 'published', 'priority']));
-
-        if ($request->hasFile('photo')) {
-            $photo = $request->file('photo');
-            $name = str_slug(uniqid($request->author)) . '.' . $photo->getClientOriginalExtension();
-            $photo->move(public_path(Review::AVATAR_PATH), $name);
-            $review->photo = $name;
-        }
-
-        $review->save();
+        $this->validateRequest($request);
+        $this->fillAndSaveReview($request, $review);
 
         return redirect(route('reviews.index'));
     }
@@ -48,17 +38,7 @@ class ReviewController extends Controller
     public function update(Request $request, Review $review)
     {
         $this->validateRequest($request);
-
-        $review->fill($request->only(['author', 'company', 'text', 'published', 'priority']));
-
-        if ($request->hasFile('photo')) {
-            $photo = $request->file('photo');
-            $name = str_slug(uniqid($request->author)) . '.' . $photo->getClientOriginalExtension();
-            $photo->move(public_path(Review::AVATAR_PATH), $name);
-            $review->photo = $name;
-        }
-
-        $review->save();
+        $this->fillAndSaveReview($request, $review);
 
         return redirect()->back()->with('success', 'Отзыв успешно отредактирован');
     }
@@ -80,7 +60,24 @@ class ReviewController extends Controller
             'author' => 'required',
             'text' => 'required',
             'priority' => 'nullable|numeric',
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'socials' => 'array',
+            'socials.*' => 'nullable|url'
         ]);
+    }
+
+    private function fillAndSaveReview(Request $request, Review $review): void
+    {
+        $review->fill($request->only($review->getFillable()));
+
+        if ($request->hasFile('photo')) {
+            $photo = $request->file('photo');
+            $name = str_slug(uniqid($request->author)) . '.' . $photo->getClientOriginalExtension();
+            $photo->move(public_path(Review::AVATAR_PATH), $name);
+            $review->photo = $name;
+        }
+        $review->published = $request->has('published');
+
+        $review->save();
     }
 }

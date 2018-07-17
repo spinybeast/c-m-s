@@ -11,19 +11,21 @@ export const Home = () => (
                 <div className="jumbotron">
                     <div className="main-cover">
                         <div className="container">
-                            <div className="col-md-6 offset-md-6 text-right">
-                                <h1 className="title text-uppercase">Cyclone<br/>music space</h1>
-                                <div className="main-description">
-                                    <b>What we do:</b>
-                                    <ul>
-                                        <li>Composing OST for games</li>
-                                        <li>Make in-game sounds and sound fx’s</li>
-                                        <li>We make sound and music for trailers and advertising visual track</li>
-                                    </ul>
+                            <div className="row">
+                                <div className="col-md-6 offset-md-6 text-right">
+                                    <h1 className="title text-uppercase">Cyclone<br/>music space</h1>
+                                    <div className="main-description">
+                                        <b>What we do:</b>
+                                        <ul>
+                                            <li>Composing OST for games</li>
+                                            <li>Make in-game sounds and sound fx’s</li>
+                                            <li>We make sound and music for trailers and advertising visual track</li>
+                                        </ul>
+                                    </div>
+                                    <a className="btn btn-opacity" href="#/contact">Leave request</a>
                                 </div>
-                                <a className="btn btn-opacity" href="#/contact">Leave request</a>
+                                <div className="clear"></div>
                             </div>
-                            <div className="clear"></div>
                         </div>
                     </div>
                 </div>

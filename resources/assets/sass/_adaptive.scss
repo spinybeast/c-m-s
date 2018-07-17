@@ -1,0 +1,21 @@
+@media (min-width: 1200px) {
+  .container {
+    width: 970px
+  }
+}
+
+@media (max-width: 768px) {
+  .nav li > form {
+    padding: 3px
+  }
+  .navbar-inverse li a, .navbar-brand {
+    padding: 15px
+  }
+  .lang {
+    float: none;
+    padding: 0;
+  }
+  .lang a {
+    margin: 17px 3px;
+  }
+}

@@ -36,7 +36,7 @@ button, button:active, button:focus {
 .wrapper {
   height: auto;
   min-height: 100%;
-  padding-top: 100px;
+  padding-top: 89px;
   padding-bottom: 60px;
   margin-bottom: -60px;
   background: {
@@ -69,7 +69,7 @@ button, button:active, button:focus {
   %navbar-element {
     text-transform: uppercase;
     font-weight: 700;
-    padding: 30px;
+    padding: 23px 30px;
   }
   li a {
     @extend %navbar-element;
@@ -85,7 +85,6 @@ button, button:active, button:focus {
   }
 
   .lang {
-    padding: 20px 0;
     a {
       cursor: pointer;
       margin: 15px 10px;
@@ -122,165 +121,24 @@ button, button:active, button:focus {
     }
   }
 }
-
-/** страница Главная **/
-.home {
-  .main- {
-    &cover {
-      background: url(../img/backs/main.png) center no-repeat;
-      background-size: cover;
-      width: 100%;
-      padding: 30px 0;
-    }
-    &feature {
-      padding-right: 12px;
-      padding-left: 12px;
-      div {
-        background: $grey top 15px right 15px no-repeat;
-        padding: 27px 40px 60px;
-        position: relative;
-        height: 280px;
-        &.trailers {
-          background-image: url(../img/backs/home/trailers.png)
-        }
-        &.soundtrack {
-          background-image: url(../img/backs/home/soundtracks.png)
-        }
-        &.advertisement {
-          background-image: url(../img/backs/home/advertisement.png)
-        }
-      }
-      h4 {
-        font-size: 16px
-      }
-      .text {
-        font-size: 12px;
-        line-height: 1.5
-      }
-    }
-  }
-  .jumbotron {
-    padding: 0;
-    text-align: center;
-    background-color: transparent;
-    h1 {
-      font-size: 45px;
-      line-height: 1.2;
-      margin-top: 0;
-      font-family: $font-family-andale;
-    }
-    .btn-opacity {
-      color: $white;
-      text-transform: uppercase;
-      font-size: 17px;
-      font-weight: 700;
-      padding: 7px 27px;
-      font-family: $font-family-andale;
-      border-radius: 0;
-      border-color: $white;
-    }
-    .main-description {
-      font-size: 19px;
-      padding: 15px 0 35px 40px;
-      line-height: 1.6;
-      ul {
-        list-style: none;
-      }
-    }
-  }
+/** Сообщения **/
+.message {
+  color: $blue;
+  padding-bottom: 10px;
+  font-size: 16px
+}
+.errors {
+  color: $red;
+  padding-bottom: 10px;
+  font-size: 16px
 }
 
-/** страница Портфолио **/
-.portfolio {
+@import 'pages/home';
+@import 'pages/portfolio';
+@import 'pages/reviews';
+@import 'pages/contact';
 
-}
-
-/** страница Отзывов **/
-.reviews {
-
-}
-
-/** страница Контакт **/
-.contact {
-  .message {
-    color: $blue;
-    padding-bottom: 10px;
-    font-size: 16px
-  }
-  .errors {
-    color: $red;
-    padding-bottom: 10px;
-    font-size: 16px
-  }
-  .title {
-    margin-bottom: 35px
-  }
-  .form-control {
-    border-radius: 0;
-    &:focus {
-      border-color: $blue;
-      outline: 0;
-      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
-      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
-    }
-    input {
-      height: 40px;
-    }
-    &.transparent {
-      background: transparent;
-      color: #fff;
-      font-style: italic;
-      padding: 6px 15px;
-    }
-    &.btn-white {
-      margin-top: 4px;
-      border-radius: 0;
-      padding: 9px 17px;
-      text-transform: uppercase;
-      font-weight: 700;
-      color: #000;
-      font-family: $font-family-andale;
-    }
-
-  }
-
-  .social {
-    .icons p {
-      vertical-align: middle;
-      height: 45px;
-      line-height: 45px;
-      font-size: 19px;
-      a {
-        color: $white;
-      }
-    }
-    span {
-      display: inline-block;
-      margin-right: 13px;
-      width: 40px;
-      height: 40px;
-      line-height: 45px;
-      background: url('../img/contact-icons.png') 0 0 no-repeat;
-      vertical-align: middle;
-      &.skype {
-        background-position: 0 0;
-      }
-      &.mail {
-        background-position: 0 -40px
-      }
-      &.fb {
-        background-position: 0 -80px
-      }
-      &.vk {
-        background-position: 0 -120px
-      }
-      &.cloud {
-        background-position: 0 -160px
-      }
-    }
-  }
-
-}
+@import "adaptive";
 
 
 

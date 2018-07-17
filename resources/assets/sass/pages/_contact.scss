@@ -1,0 +1,79 @@
+/** страница Контакт **/
+.contact {
+  .title {
+    margin-bottom: 35px
+  }
+
+  .social {
+    .icons p {
+      vertical-align: middle;
+      height: 45px;
+      line-height: 45px;
+      font-size: 19px;
+      a {
+        color: $white;
+      }
+    }
+    span {
+      display: inline-block;
+      margin-right: 13px;
+      width: 40px;
+      height: 40px;
+      line-height: 45px;
+      background: url('../../img/contact-icons.png') 0 0 no-repeat;
+      vertical-align: middle;
+      &.skype {
+        background-position: 0 0;
+      }
+      &.mail {
+        background-position: 0 -40px
+      }
+      &.fb {
+        background-position: 0 -80px
+      }
+      &.vk {
+        background-position: 0 -120px
+      }
+      &.cloud {
+        background-position: 0 -160px
+      }
+    }
+  }
+}
+%button {
+  margin-top: 4px;
+  border-radius: 0;
+  padding: 9px 17px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #000;
+  font-family: $font-family-andale;
+}
+.form-control {
+
+  border-radius: 0;
+  &:focus {
+    border-color: $blue;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+  }
+  input {
+    height: 40px;
+  }
+  &.transparent {
+    background: transparent;
+    color: #fff;
+    font-style: italic;
+    padding: 6px 15px;
+  }
+  &.btn-white {
+    @extend %button;
+  }
+  &.btn-black {
+    @extend %button;
+    color: $white;
+    background: $black;
+  }
+
+}
