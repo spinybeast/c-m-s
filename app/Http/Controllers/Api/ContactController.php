@@ -15,7 +15,7 @@ class ContactController extends Controller
         $this->validate($request, [
             'name' => 'required|string',
             'email' => 'required|email',
-            'message' => 'required|string'
+            'text' => 'required|string'
         ]);
 
         Mail::send('mail', ['request' => $request], function(Message $message) use ($request) {

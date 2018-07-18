@@ -1,6 +1,18 @@
 /** страница Отзывов **/
-.reviews {
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
+.reviews {
+  .popup-content {
+    animation: fade-in .7s;
+    max-width: 700px;
+  }
   .review-popup {
     background: #f0f0f0;
     color: $black;
@@ -15,7 +27,11 @@
     }
     .avatar-preview {
       max-height: 100%;
+      max-width: 150px;
       margin: 0 auto
+    }
+    .upload-image {
+      margin: 0;
     }
     .socials {
       margin-top: 0;
@@ -61,5 +77,30 @@
         font-size: 13px;
       }
     }
+  }
+  hr {
+     margin: 30px 0;
+     border-top: 2px dotted gray;
+   }
+  .leave-feedback {
+    p {
+      line-height: 1.2;
+      font-size: 15px
+    }
+
+    > button {
+      background: transparent;
+      border-radius: 0;
+      color: $white;
+      padding: 9px 45px;
+      border: 1px solid $white;
+      text-transform: uppercase;
+      font-weight: 700;
+      &:hover {
+        background: $white;
+        color: $black;
+      }
+    }
+
   }
 }

@@ -73,15 +73,14 @@ export default class Reviews extends Component {
                     <Header/>
                     <main className="container">
                         {carousel}
-                        <hr className="dotted" />
+                        <hr/>
                         <div className="leave-feedback text-center col-md-12">
-                            <p>Leave us a feedback</p>
-                            <p>Thank you for feedback</p>
+                            <p>If you have worked or working with our studio, please, don't be too shy and leave us a feedback</p>
+                            <p>Thanx for your opinion! We very appreciate it!</p>
                             <br/><br/>
                             <Popup
-                                trigger={<button className="transparent">Leave a feedback</button>}
+                                trigger={<button>Leave a feedback</button>}
                                 modal
-                                closeOnDocumentClick
                             >
                                 <ReviewPost/>
                             </Popup>

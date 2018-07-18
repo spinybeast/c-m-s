@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import Popup from 'reactjs-popup';
-import _ from 'lodash'
+import _ from 'lodash';
+
+import Messages from "./Messages";
+import AvatarUpload from "./AvatarUpload";
+import SocialNetworks from "./SocialNetworks";
 
 const initialData = {
     author: '',
     company: '',
     text: '',
+    photo: '',
     socials: {}
 };
 export default class ReviewPost extends Component {
@@ -15,28 +19,60 @@ export default class ReviewPost extends Component {
         this.state = {
             data: _.cloneDeep(initialData),
             message: '',
-            errors: []
+            errors: [],
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChangeSocial = this.handleChangeSocial.bind(this);
-        this.connectNetwork = this.connectNetwork.bind(this);
+        this.handleChangeImage = this.handleChangeImage.bind(this);
+        this.cancelImage = this.cancelImage.bind(this);
     }
 
     handleChange(e) {
-        let data = this.state.data;
-        data[e.target.name] = e.target.value;
-
         this.setState({
-            data: data
+            data: {
+                ...this.state.data,
+                [e.target.name]: e.target.value
+            }
         });
     }
 
     handleChangeSocial(e) {
-        let data = this.state.data;
-        data.socials[e.target.name] = e.target.value;
         this.setState({
-            data: data
+            data: {
+                ...this.state.data,
+                socials: {
+                    ...this.state.data.socials,
+                    [e.target.name]: e.target.value
+                }
+            }
+        });
+    }
+
+    handleChangeImage(e) {
+        e.preventDefault();
+
+        let reader = new FileReader();
+        let file = e.target.files[0];
+
+        reader.onloadend = () => {
+            this.setState({
+                data: {
+                    ...this.state.data,
+                    photo: reader.result
+                },
+            });
+        };
+        reader.readAsDataURL(file);
+    }
+
+    cancelImage(e) {
+        e.preventDefault();
+        this.setState({
+            data: {
+                ...this.state.data,
+                photo: ''
+            },
         });
     }
 
@@ -49,7 +85,6 @@ export default class ReviewPost extends Component {
                     errors: [],
                     data: _.cloneDeep(initialData)
                 });
-                console.log('data', this.state.data, initialData)
             } else {
                 this.setState({
                     message: '',
@@ -61,39 +96,13 @@ export default class ReviewPost extends Component {
         })
     }
 
-    connectNetwork(network) {
-        return (
-            <div>
-                <input type="text"
-                       name={network}
-                       value={this.state.data.socials[network] || ''}
-                       onChange={this.handleChangeSocial}
-                       className="form-control transparent"
-                       placeholder={`Enter your ${network} link`}
-                />
-            </div>
-        )
-    }
-
     render() {
-        let message, errors;
-        if (this.state.message.length) {
-            message = <div className="message">{this.state.message}</div>
-        }
-        if (this.state.errors.length) {
-            errors = <div className="errors">
-                {this.state.errors.map((error, index) => {
-                    return <div key={index}>{error}</div>
-                })}
-            </div>
-        }
         return (
             <div className="review-popup">
                 <h4 className="title text-uppercase text-center">Leave a feedback</h4>
                 <form onSubmit={this.handleSubmit} className="row">
                     <div className="col-md-7">
-                        {message}
-                        {errors}
+                        <Messages message={this.state.message} errors={this.state.errors}/>
                         <div className="form-group">
                             <input type="text"
                                    name="author"
@@ -110,7 +119,7 @@ export default class ReviewPost extends Component {
                                    value={this.state.data.company}
                                    className="form-control transparent"
                                    placeholder="Your company"
-                                   required/>
+                            />
                         </div>
                         <div className="form-group">
                             <textarea rows="4"
@@ -128,37 +137,16 @@ export default class ReviewPost extends Component {
 
                     </div>
                     <div className="col-md-5 text-center">
-                        <div>
-                            <div className="form-group text-center" style={{height: 150}}>
-                                <img className="rounded-circle img-fluid avatar-preview" src="/img/noavatar.png"/>
-                                <img className="rounded-circle img-fluid avatar-preview"/>
-                            </div>
-                            <div>
-                                <button type="button" className="btn btn-link">Upload image</button>
-                                {/*<button type="button" className="btn btn-link">Change image</button>*/}
-                                {/*<button type="button" className="btn btn-link">Cancel image</button>*/}
-                            </div>
-                        </div>
-                        <div className="socials">
-                            <p className="here">Ваш профиль в соц сети</p>
-                            <div>
-                                <Popup trigger={<span className="facebook inactive">&nbsp;</span>}>
-                                    {this.connectNetwork('facebook')}
-                                </Popup>
-                                <Popup trigger={<span className="google inactive">&nbsp;</span>}>
-                                    {this.connectNetwork('google')}
-                                </Popup>
-                                <Popup trigger={<span className="vkontakte inactive">&nbsp;</span>}>
-                                    {this.connectNetwork('vkontakte')}
-                                </Popup>
-                                <Popup trigger={<span className="instagram inactive">&nbsp;</span>}>
-                                    {this.connectNetwork('instagram')}
-                                </Popup>
-                                <Popup trigger={<span className="twitter inactive">&nbsp;</span>}>
-                                    {this.connectNetwork('twitter')}
-                                </Popup>
-                            </div>
-                        </div>
+                        <AvatarUpload
+                            previewUrl={this.state.data.photo}
+                            handleChangeImage={this.handleChangeImage}
+                            cancelImage={this.cancelImage}
+                        />
+                        <SocialNetworks
+                            socials={this.state.data.socials}
+                            networks={['facebook', 'google', 'vkontakte', 'instagram', 'twitter']}
+                            handleChangeSocial={this.handleChangeSocial}
+                        />
                     </div>
                 </form>
             </div>

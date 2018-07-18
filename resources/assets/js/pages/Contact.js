@@ -1,18 +1,22 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import _ from 'lodash';
 
 import {Header} from '../components/Header';
 import {Footer} from '../components/Footer';
+import Messages from "../components/Messages";
+
+const initialData = {
+    name: '',
+    email: '',
+    text: ''
+};
 
 export default class Contact extends Component {
     constructor() {
         super();
         this.state = {
-            data: {
-                name: '',
-                email: '',
-                message: ''
-            },
+            data: _.clone(initialData),
             message: '',
             errors: []
         };
@@ -21,11 +25,11 @@ export default class Contact extends Component {
     }
 
     handleChange(e) {
-        let data = this.state.data;
-        data[e.target.name] = e.target.value;
-
         this.setState({
-            data: data
+            data: {
+                ...this.state.data,
+                [e.target.name]: e.target.value
+            }
         });
     }
 
@@ -35,30 +39,22 @@ export default class Contact extends Component {
         await axios.post('api/contact', this.state.data).then(result => {
             if (result.data.success) {
                 this.setState({
-                    message: result.data.message
+                    data: _.clone(initialData),
+                    message: result.data.message,
+                    errors: []
                 });
             } else {
                 this.setState({
+                    message: '',
                     errors: result.data.errors
                 });
             }
         }).catch(error => {
             console.log('error', error);
-        })
+        });
     }
 
     render() {
-        let message, errors;
-        if (this.state.message.length) {
-            message = <div className="message">{this.state.message}</div>
-        }
-        if (this.state.errors.length) {
-            errors = <div className="errors">
-                {this.state.errors.map(error => {
-                    return <div>{error}</div>
-                })}
-            </div>
-        }
         return (
             <div>
                 <div className="wrapper contact">
@@ -66,8 +62,7 @@ export default class Contact extends Component {
                     <main className="container">
                         <div className="row">
                             <div className="col-md-6">
-                                {message}
-                                {errors}
+                                <Messages message={this.state.message} errors={this.state.errors}/>
                                 <p className="title">
                                     You can leave us a message using the form below
                                 </p>
@@ -81,6 +76,7 @@ export default class Contact extends Component {
                                                autoComplete="off"
                                                required
                                                onChange={this.handleChange}
+                                               value={this.state.data.name}
                                         />
                                     </div>
                                     <div className="form-group">
@@ -91,16 +87,18 @@ export default class Contact extends Component {
                                                autoComplete="off"
                                                required
                                                onChange={this.handleChange}
+                                               value={this.state.data.email}
                                         />
                                     </div>
                                     <div className="form-group">
                                         <textarea
                                             rows="4"
-                                            name="message"
+                                            name="text"
                                             className="form-control transparent"
                                             placeholder="message"
                                             required
                                             onChange={this.handleChange}
+                                            value={this.state.data.text}
                                         />
                                     </div>
                                     <div className="form-group">

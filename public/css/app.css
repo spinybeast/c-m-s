@@ -13561,6 +13561,12 @@ button:focus {
   outline: none;
 }
 
+:invalid {
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
 .wrapper {
   height: auto;
   min-height: 100%;
@@ -13746,6 +13752,32 @@ button:focus {
 
 /** страница Отзывов **/
 
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.reviews .popup-content {
+  -webkit-animation: fade-in .7s;
+          animation: fade-in .7s;
+  max-width: 700px;
+}
+
 .reviews .review-popup {
   background: #f0f0f0;
   color: #0A0C0D;
@@ -13763,7 +13795,12 @@ button:focus {
 
 .reviews .review-popup .avatar-preview {
   max-height: 100%;
+  max-width: 150px;
   margin: 0 auto;
+}
+
+.reviews .review-popup .upload-image {
+  margin: 0;
 }
 
 .reviews .review-popup .socials {
@@ -13815,6 +13852,31 @@ button:focus {
 .reviews .review-popup .socials .popup-content {
   padding: 15px !important;
   font-size: 13px;
+}
+
+.reviews hr {
+  margin: 30px 0;
+  border-top: 2px dotted gray;
+}
+
+.reviews .leave-feedback p {
+  line-height: 1.2;
+  font-size: 15px;
+}
+
+.reviews .leave-feedback > button {
+  background: transparent;
+  border-radius: 0;
+  color: #fff;
+  padding: 9px 45px;
+  border: 1px solid #fff;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.reviews .leave-feedback > button:hover {
+  background: #fff;
+  color: #0A0C0D;
 }
 
 /** страница Контакт **/

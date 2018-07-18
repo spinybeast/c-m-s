@@ -10,7 +10,7 @@
     <p><strong>Имя: </strong>{{$request->get('name')}}</p>
     <p><strong>E-mail: </strong>{{$request->get('email')}}</p>
     <hr>
-    <p><strong>Сообщение: </strong>{{$request->get('message')}}</p>
+    <p><strong>Сообщение: </strong>{{$request->get('text')}}</p>
 </div>
 </body>
 </html>

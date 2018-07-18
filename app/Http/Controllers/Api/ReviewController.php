@@ -26,10 +26,14 @@ class ReviewController extends Controller
             'author' => 'required',
             'text' => 'required',
             'socials' => 'array',
-            'socials.*' => 'nullable|url'
+            'socials.*' => 'nullable|url',
         ], [
             'required' => 'Заполните все поля',
-            'url' => 'Некорректный формат ссылки :attribute'
+            'socials.facebook.url' => 'Некорректный формат ссылки Facebook',
+            'socials.google.url' => 'Некорректный формат ссылки Google',
+            'socials.vkontakte.url' => 'Некорректный формат ссылки VK',
+            'socials.instagram.url' => 'Некорректный формат ссылки Instagram',
+            'socials.twitter.url' => 'Некорректный формат ссылки Twitter',
         ]);
 
         if ($validator->fails()) {
@@ -42,6 +46,10 @@ class ReviewController extends Controller
         $review = new Review();
         $review->fill($request->only(['author', 'company', 'text', 'socials']));
 
+        if ($request->has('photo')) {
+            $this->uploadPhoto($request, $review);
+        }
+
         if ($review->save()) {
             return response()->json([
                 'success' => true,
@@ -52,6 +60,16 @@ class ReviewController extends Controller
             'success' => false,
             'errors' => ['Что-то пошло не так. Попробуйте позднее.']
         ]);
+    }
+
+    private function uploadPhoto(Request $request, Review $review): void
+    {
+        $image = $request->get('photo');
+        $extension = explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
+        $name = str_slug(uniqid($request->author)) . '.' . $extension;
+        \Image::make($image)->save(public_path(Review::AVATAR_PATH) . $name);
+
+        $review->photo = $name;
     }
 
 }

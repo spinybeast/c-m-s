@@ -32,7 +32,10 @@ body {
 button, button:active, button:focus {
   outline: none;
 }
-
+:invalid{
+  outline:none;
+  box-shadow:none;
+}
 .wrapper {
   height: auto;
   min-height: 100%;
