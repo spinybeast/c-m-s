@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import _ from 'lodash';
 
-import Messages from "./Messages";
+import Messages from "../Messages";
 import AvatarUpload from "./AvatarUpload";
 import SocialNetworks from "./SocialNetworks";
 

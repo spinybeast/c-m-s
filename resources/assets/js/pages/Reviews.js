@@ -6,7 +6,7 @@ import 'react-owl-carousel2/src/owl.carousel.css';
 
 import {Header} from '../components/Header';
 import {Footer} from '../components/Footer';
-import ReviewPost from "../components/ReviewPost";
+import ReviewPost from "../components/review-post/index";
 
 export default class Reviews extends Component {
     constructor() {
