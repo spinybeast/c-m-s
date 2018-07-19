@@ -46,7 +46,7 @@ class ReviewController extends Controller
         $review = new Review();
         $review->fill($request->only(['author', 'company', 'text', 'socials']));
 
-        if ($request->has('photo')) {
+        if ($request->get('photo')) {
             $this->uploadPhoto($request, $review);
         }
 
@@ -66,7 +66,7 @@ class ReviewController extends Controller
     {
         $image = $request->get('photo');
         $extension = explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
-        $name = str_slug(uniqid($request->author)) . '.' . $extension;
+        $name = str_slug(uniqid($review->author)) . '.' . $extension;
         \Image::make($image)->save(public_path(Review::AVATAR_PATH) . $name);
 
         $review->photo = $name;

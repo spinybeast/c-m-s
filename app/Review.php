@@ -26,7 +26,7 @@ class Review extends Model
 
     public function setSocialsAttribute(array $value)
     {
-        $this->attributes['socials'] = serialize($value);
+        $this->attributes['socials'] = serialize(array_filter($value));
     }
 
 }

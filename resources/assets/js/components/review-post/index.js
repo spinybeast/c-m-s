@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import _ from 'lodash';
 
-import Messages from "../Messages";
 import AvatarUpload from "./AvatarUpload";
 import SocialNetworks from "./SocialNetworks";
+import {Form} from "./Form";
 
 const initialData = {
     author: '',
@@ -102,38 +102,12 @@ export default class ReviewPost extends Component {
                 <h4 className="title text-uppercase text-center">Leave a feedback</h4>
                 <form onSubmit={this.handleSubmit} className="row">
                     <div className="col-md-7">
-                        <Messages message={this.state.message} errors={this.state.errors}/>
-                        <div className="form-group">
-                            <input type="text"
-                                   name="author"
-                                   onChange={this.handleChange}
-                                   value={this.state.data.author}
-                                   className="form-control transparent"
-                                   placeholder="Your name"
-                                   required/>
-                        </div>
-                        <div className="form-group">
-                            <input type="text"
-                                   name="company"
-                                   onChange={this.handleChange}
-                                   value={this.state.data.company}
-                                   className="form-control transparent"
-                                   placeholder="Your company"
-                            />
-                        </div>
-                        <div className="form-group">
-                            <textarea rows="4"
-                                      name="text"
-                                      onChange={this.handleChange}
-                                      value={this.state.data.text}
-                                      className="form-control transparent"
-                                      placeholder="Your comment"
-                                      required>
-                            </textarea>
-                        </div>
-                        <div className="form-group">
-                            <button type="submit" className="form-control btn btn-black">Send</button>
-                        </div>
+                        <Form
+                            data={this.state.data}
+                            handleChange={this.handleChange}
+                            message={this.state.message}
+                            errors={this.state.errors}
+                        />
 
                     </div>
                     <div className="col-md-5 text-center">
