@@ -30,7 +30,7 @@ export class Portfolio extends Component {
                 <div className="wrapper portfolio">
                     <Header/>
                     <Provider store={store}>
-                        <main className="container">
+                        <main>
                             <Player/>
                         </main>
                     </Provider>
@@ -43,8 +43,10 @@ export class Portfolio extends Component {
 
 function prepareTags(tracks) {
     tracks.map((track) => {
-        track.tags = track.genre ? [track.genre.toLowerCase()] : [];
-        _.compact(track.tag_list.split(' ')).map((tag) => {
+        track.tags = [];
+        let tags = track.tag_list.split(' ');
+        tags.push(track.genre);
+        _.compact(tags).map((tag) => {
             tag = tag.toLowerCase();
             if (tag !== 'soundtrack' && track.tags.indexOf(tag) === -1) {
                 track.tags.push(tag);
@@ -52,5 +54,8 @@ function prepareTags(tracks) {
         });
     });
     const tags = _.uniq(_.flatten(_.map(tracks, 'tags')));
-    store.dispatch(actions.setTags(tags));
+    if (tags.length) {
+        store.dispatch(actions.setTags(tags));
+        store.dispatch(actions.selectTag(_.first(tags)));
+    }
 }

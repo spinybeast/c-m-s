@@ -1,9 +1,12 @@
-import {setTags, selectTag, setTracks, playTrack, pauseTrack} from './track';
+import {setTags, setTracks, selectTag, selectTrack} from './track';
+import {setProgress, setVolume, togglePlay} from './playing';
 
 export {
     setTags,
-    selectTag,
     setTracks,
-    playTrack,
-    pauseTrack
+    selectTag,
+    selectTrack,
+    setProgress,
+    setVolume,
+    togglePlay
 };

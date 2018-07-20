@@ -59,7 +59,7 @@ button, button:active, button:focus {
   &.reviews {
     background-image: url('../img/backs/reviews.png');
   }
-  > .container {
+  .container:nth-child(2) {
     padding: 50px 15px 20px;
   }
 }
