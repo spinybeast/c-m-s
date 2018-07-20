@@ -2,7 +2,7 @@ import * as actionTypes from '../constants/actionTypes';
 
 const initialState = {
     playing: false,
-    progress: 0,
+    currentTime: 0,
     volume: 0
 };
 
@@ -12,8 +12,8 @@ export default function (state = initialState, action) {
             return togglePlay(state);
         case actionTypes.SET_VOLUME:
             return setVolume(state, action);
-        case actionTypes.SET_PROGRESS:
-            return setProgress(state, action);
+        case actionTypes.SET_CURRENT_TIME:
+            return setCurrentTime(state, action);
     }
     return state;
 }
@@ -23,9 +23,9 @@ function setVolume(state, action) {
     return {...state, volume: volume};
 }
 
-function setProgress(state, action) {
-    const {progress} = action;
-    return {...state, progress: progress};
+function setCurrentTime(state, action) {
+    const {currentTime} = action;
+    return {...state, currentTime: currentTime};
 }
 
 function togglePlay(state) {

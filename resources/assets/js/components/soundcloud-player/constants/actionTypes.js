@@ -7,4 +7,4 @@ export const TRACK_SELECTED = 'TRACK_SELECTED';
 /** playing **/
 export const TOGGLE_PLAY = 'TOGGLE_PLAY';
 export const SET_VOLUME = 'SET_VOLUME';
-export const SET_PROGRESS = 'SET_PROGRESS';
+export const SET_CURRENT_TIME = 'SET_CURRENT_TIME';

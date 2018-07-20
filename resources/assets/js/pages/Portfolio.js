@@ -21,6 +21,7 @@ export class Portfolio extends Component {
         }).then(function (tracks) {
             prepareTags(tracks);
             store.dispatch(actions.setTracks(tracks));
+            store.dispatch(actions.selectTrack(_.first(tracks)))
         });
     }
 
