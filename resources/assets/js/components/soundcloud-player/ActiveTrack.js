@@ -52,6 +52,9 @@ class ActiveTrack extends Component {
             <div className="player">
                 <div className="container">
                     <div className="row">
+                        <div className="col-11 offset-1">{activeTrack.title}</div>
+                    </div>
+                    <div className="row">
                         <div className="col-1">
                             <button onClick={onTogglePlay}>
                                 {
@@ -70,7 +73,6 @@ class ActiveTrack extends Component {
                         <div className="col-8">
                             <div className="row">
                                 <div className="col-9">
-                                    <div>{activeTrack.title}</div>
                                     <progress
                                         onClick={this.seek.bind(this)}
                                         value={activeTrack.id ? (currentTime / (activeTrack.duration / 1000)) : ''}>
