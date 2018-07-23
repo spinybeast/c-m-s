@@ -1,5 +1,8 @@
 /** страница Главная **/
 .home {
+  .container {
+    padding-top: 0 !important;
+  }
   .main- {
     &cover {
       background: url('../../img/backs/main.png') center no-repeat;

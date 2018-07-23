@@ -35,7 +35,7 @@ class ActiveTrack extends Component {
         return e.nativeEvent.offsetX / e.target.offsetWidth || (e.nativeEvent.layerX - e.target.offsetLeft) / e.target.offsetWidth;
     }
 
-    static formatDuration(time) {
+    static formatTime(time) {
         let minutes = Math.floor(time / 60);
         let seconds = Math.round(time - minutes * 60);
 
@@ -51,11 +51,8 @@ class ActiveTrack extends Component {
         return (
             <div className="player">
                 <div className="container">
-                    <div className="row">
-                        <div className="col-11 offset-1">{activeTrack.title}</div>
-                    </div>
-                    <div className="row">
-                        <div className="col-1">
+                    <div className="row d-flex flex-row justify-content-between align-items-center">
+                        <div className="col-2 col-sm-1">
                             <button onClick={onTogglePlay}>
                                 {
                                     playing ?
@@ -70,21 +67,21 @@ class ActiveTrack extends Component {
                                 }
                             </button>
                         </div>
-                        <div className="col-8">
-                            <div className="row">
-                                <div className="col-9">
-                                    <progress
-                                        onClick={this.seek.bind(this)}
-                                        value={activeTrack.id ? (currentTime / (activeTrack.duration / 1000)) : ''}>
-                                    </progress>
-                                </div>
-                                <div className="col-3">
-                                    {activeTrack.id ? ActiveTrack.formatDuration(currentTime) : ''}&nbsp;/&nbsp;
-                                    {activeTrack.id ? ActiveTrack.formatDuration(activeTrack.duration / 1000) : ''}
-                                </div>
-                            </div>
+                        <div className="col-6 col-sm-7 pl-0">
+                            <div className="title">{activeTrack.title}</div>
+                            <progress
+                                onClick={this.seek.bind(this)}
+                                value={activeTrack.id ? (currentTime / (activeTrack.duration / 1000)) : ''}>
+                            </progress>
                         </div>
-                        <div className="col-3">
+                        <div className="col-1">
+                            <span>{activeTrack.id ? ActiveTrack.formatTime(currentTime) : ''}</span>
+                            <span className="d-none d-sm-inline">
+                                &nbsp;/&nbsp;
+                                {activeTrack.id ? ActiveTrack.formatTime(activeTrack.duration / 1000) : ''}
+                            </span>
+                        </div>
+                        <div className="col-3 d-flex flex-row align-items-center">
                             <i className="fa fa-volume-up"></i>
                             <progress value={volume || 0.5}
                                       onClick={this.seekVolume.bind(this)}>

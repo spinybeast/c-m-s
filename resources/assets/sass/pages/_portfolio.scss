@@ -15,11 +15,11 @@
     }
     &::-webkit-scrollbar-thumb {
       border-radius: 4px;
-      background: #9d9d9d
+      background: $light-grey;
     }
     &:hover {
       &::-webkit-scrollbar-thumb {
-        background: #b4b4b4
+        background: #b4b4b4;
       }
     }
     .tag {
@@ -66,23 +66,39 @@
     }
   }
   .player {
+    padding: 10px 0;
     background: rgba(16, 18, 16, 0.7);
-
+    .title {
+      position: absolute;
+      top: -12px;
+      max-width: 90%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .fa-volume-up {
+      margin-right: 15px;
+    }
     progress {
       width: 100%;
       height: 6px;
-      background-color: $white;
       border: 0;
       border-radius: 6px;
       overflow: hidden;
       -webkit-appearance: none;
       cursor: pointer;
       vertical-align: middle;
-      &[value] {
-        color: $blue;
+      color: $blue;
+      background-color: $light-grey;
+
+      &::-webkit-progress-bar {
+        background-color: $light-grey;
+      }
+      &::-moz-progress-bar {
+        background-color: $blue;
       }
       &::-webkit-progress-value {
-        background: $blue;
+        background-color: $blue;
       }
     }
   }
