@@ -76041,20 +76041,23 @@ function _inherits(subClass, superClass) {
 var App = function (_Component) {
     _inherits(App, _Component);
 
-    function App(props) {
+    function App() {
         _classCallCheck(this, App);
 
-        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
-
-        __WEBPACK_IMPORTED_MODULE_2_react_i18nify__["I18n"].setTranslations({
-            en: __WEBPACK_IMPORTED_MODULE_3__lang_en_json___default.a,
-            ru: __WEBPACK_IMPORTED_MODULE_4__lang_ru_json___default.a
-        });
-        __WEBPACK_IMPORTED_MODULE_2_react_i18nify__["I18n"].setLocale('en');
-        return _this;
+        return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
     }
 
     _createClass(App, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            __WEBPACK_IMPORTED_MODULE_2_react_i18nify__["I18n"].setTranslations({
+                en: __WEBPACK_IMPORTED_MODULE_3__lang_en_json___default.a,
+                ru: __WEBPACK_IMPORTED_MODULE_4__lang_ru_json___default.a
+            });
+            var lang = window.location.pathname.split('/')[1];
+            __WEBPACK_IMPORTED_MODULE_2_react_i18nify__["I18n"].setLocale(lang || 'en');
+        }
+    }, {
         key: 'render',
         value: function render() {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["a" /* HashRouter */], null, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["d" /* Switch */], null, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Route */], { exact: true, path: '/', component: __WEBPACK_IMPORTED_MODULE_6__pages_Home__["a" /* Home */] }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Route */], { path: '/portfolio', component: __WEBPACK_IMPORTED_MODULE_5__pages_Portfolio__["a" /* Portfolio */] }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Route */], { path: '/reviews', component: __WEBPACK_IMPORTED_MODULE_7__pages_Reviews__["a" /* default */] }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Route */], { path: '/contact', component: __WEBPACK_IMPORTED_MODULE_8__pages_Contact__["a" /* default */] })));

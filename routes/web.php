@@ -1,9 +1,9 @@
 <?php
 
 /** Main single-page */
-Route::get('/', function () {
+Route::get('/{lang?}', function () {
     return view('index');
-});
+})->where('lang', '(ru|en)');
 
 /** Admin panel */
 Route::prefix('admin')

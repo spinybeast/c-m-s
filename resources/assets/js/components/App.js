@@ -11,13 +11,13 @@ import Reviews from "../pages/Reviews";
 import Contact from "../pages/Contact";
 
 class App extends Component {
-    constructor(props) {
-        super(props);
+    componentDidMount() {
         I18n.setTranslations({
             en: en,
             ru: ru
         });
-        I18n.setLocale('en');
+        const lang = window.location.pathname.split('/')[1];
+        I18n.setLocale(lang || 'en');
     }
 
     render() {
