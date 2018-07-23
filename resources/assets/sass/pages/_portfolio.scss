@@ -1,7 +1,20 @@
 /** страница Портфолио **/
 .portfolio {
-  font-size: 14px;
+  .empty-portfolio {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 18px;
+    a {
+      font-weight: 700;
+      color: $blue;
+      text-transform: uppercase;
+      position: relative;
+      padding-left: 5px;
+    }
+  }
+
   .scroll {
+    font-size: 14px;
     overflow-y: scroll;
     background: rgba(16, 18, 16, 0.7);
     padding: 30px 50px;
@@ -40,7 +53,7 @@
     border: 0;
     border-top: 1px solid rgba(221, 221, 221, 0.2)
   }
-  button {
+  button.play-button {
     width: 30px;
     height: 30px;
     position: relative;
@@ -66,9 +79,11 @@
     }
   }
   .player {
+    font-size: 14px;
     padding: 10px 0;
     background: rgba(16, 18, 16, 0.7);
     .title {
+      color: $light-grey;
       position: absolute;
       top: -12px;
       max-width: 90%;

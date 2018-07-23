@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Popup from 'reactjs-popup';
 import PropTypes from 'prop-types';
+import {Translate} from 'react-i18nify';
 
 export default class SocialNetworks extends Component {
     constructor(props) {
@@ -12,7 +13,7 @@ export default class SocialNetworks extends Component {
 
         return (
             <div className="socials">
-                <p className="here">Ваш профиль в соц сети</p>
+                <Translate className="here text-muted" tag="p" value="pages.reviews.popup.socials"/>
                 <div>
                     {networks.map((network, index) => {
                         return (

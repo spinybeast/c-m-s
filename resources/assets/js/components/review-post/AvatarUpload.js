@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import {Translate} from 'react-i18nify';
 
 export default class AvatarUpload extends Component {
     constructor (props) {
@@ -17,14 +18,15 @@ export default class AvatarUpload extends Component {
                 <div>
                     <input type="file" name="photo" id="photo" onChange={handleChangeImage} accept="image/*" style={{display: 'none'}}/>
                     <label htmlFor="photo" className="btn btn-link upload-image">
-                        <i className="fa fa-cloud-upload"></i> {previewUrl.length ? "Change" : "Upload"} Image
+                        <i className="fa fa-cloud-upload">&nbsp;</i>
+                        <Translate value={previewUrl.length ? "pages.reviews.popup.changeImage" : "pages.reviews.popup.uploadImage"}/>
                     </label>
                     {
-                        previewUrl.length ?
-                            <button type="button" className="btn btn-link" onClick={cancelImage}>
-                                <i className="fa fa-ban"></i> Cancel image
-                            </button> :
-                            ""
+                        previewUrl.length > 0 &&
+                        <button type="button" className="btn btn-link" onClick={cancelImage}>
+                            <i className="fa fa-ban">&nbsp;</i>
+                            <Translate value="pages.reviews.popup.cancelImage"/>
+                        </button>
                     }
                 </div>
             </div>

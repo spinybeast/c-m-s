@@ -1,4 +1,5 @@
 import React from 'react';
+import {Translate} from 'react-i18nify';
 
 import {Header} from '../components/Header';
 import {Footer} from '../components/Footer';
@@ -15,38 +16,40 @@ export const Home = () => (
                                 <div className="col-md-6 offset-md-6 text-right">
                                     <h1 className="title text-uppercase">Cyclone<br/>music space</h1>
                                     <div className="main-description">
-                                        <b>What we do:</b>
-                                        <ul>
-                                            <li>Composing OST for games</li>
-                                            <li>Make in-game sounds and sound fx’s</li>
-                                            <li>We make sound and music for trailers and advertising visual track</li>
-                                        </ul>
+                                        <Translate value="pages.home.whatWeDo" dangerousHTML={true}/>
                                     </div>
-                                    <a className="btn btn-opacity" href="#/contact">Leave request</a>
+                                    <a className="btn btn-opacity" href="#/contact">
+                                        <Translate value="pages.home.leaveRequest"/>
+                                    </a>
                                 </div>
-                                <div className="clear"></div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="container">
-                    <div className="row" style={{marginBottom: 30}}>
+                    <div className="row">
                         <div className="col-lg-4 main-feature">
                             <div className="trailers">
-                                <h4 className="text-uppercase text-bold" translate="">Trailers main</h4>
-                                <p className="text">Trailers main description</p>
+                                <h4 className="text-uppercase text-bold">
+                                    <Translate value="pages.home.features.trailers.title"/>
+                                </h4>
+                                <p className="text"><Translate value="pages.home.features.trailers.description"/></p>
                             </div>
                         </div>
                         <div className="col-lg-4 main-feature">
                             <div className="soundtrack">
-                                <h4 className="text-uppercase text-bold">Soundtracks main</h4>
-                                <p className="text">Soundtracks main description</p>
+                                <h4 className="text-uppercase text-bold">
+                                    <Translate value="pages.home.features.soundtracks.title"/>
+                                </h4>
+                                <p className="text"><Translate value="pages.home.features.soundtracks.description"/></p>
                             </div>
                         </div>
                         <div className="col-lg-4 main-feature">
                             <div className="advertisement">
-                                <h4 className="text-uppercase text-bold">Advert main</h4>
-                                <p className="text">Advert main description</p>
+                                <h4 className="text-uppercase text-bold">
+                                    <Translate value="pages.home.features.advertisement.title"/>
+                                </h4>
+                                <p className="text"><Translate value="pages.home.features.advertisement.description"/></p>
                             </div>
                         </div>
                     </div>

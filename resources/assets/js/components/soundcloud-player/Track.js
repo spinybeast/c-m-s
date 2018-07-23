@@ -20,15 +20,13 @@ class Track extends Component {
                             <div className="col-2">
                                 {
                                     playing && activeTrack.id === track.id ?
-                                        <button
-                                            title={'Pause' + track.title}
+                                        <button className="play-button"
                                             onClick={onTogglePlay}>
                                             <svg className="pause" viewBox="0 0 30 30">
                                                 <path d="M4 4 H12 V28 H4 z M20 4 H28 V28 H20 z "></path>
                                             </svg>
                                         </button> :
-                                        <button
-                                            title={'Play' + track.title}
+                                        <button className="play-button"
                                             onClick={() => {if (!playing) {onTogglePlay()} onSelectTrack(track)}}>
                                             <svg className="play" viewBox="0 0 30 30">
                                                 <path d="M4 4 L28 16 L4 28 z "></path>

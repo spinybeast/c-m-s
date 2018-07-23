@@ -53,7 +53,7 @@ class ActiveTrack extends Component {
                 <div className="container">
                     <div className="row d-flex flex-row justify-content-between align-items-center">
                         <div className="col-2 col-sm-1">
-                            <button onClick={onTogglePlay}>
+                            <button onClick={onTogglePlay} className="play-button">
                                 {
                                     playing ?
                                         <svg className="pause" viewBox="0 0 30 30">
@@ -74,7 +74,7 @@ class ActiveTrack extends Component {
                                 value={activeTrack.id ? (currentTime / (activeTrack.duration / 1000)) : ''}>
                             </progress>
                         </div>
-                        <div className="col-1">
+                        <div className="col-1 pl-sm-0">
                             <span>{activeTrack.id ? ActiveTrack.formatTime(currentTime) : ''}</span>
                             <span className="d-none d-sm-inline">
                                 &nbsp;/&nbsp;

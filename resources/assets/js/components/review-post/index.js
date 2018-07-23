@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import _ from 'lodash';
+import {Translate} from 'react-i18nify';
 
 import AvatarUpload from "./AvatarUpload";
 import SocialNetworks from "./SocialNetworks";
@@ -99,7 +100,7 @@ export default class ReviewPost extends Component {
     render() {
         return (
             <div className="review-popup">
-                <h4 className="title text-uppercase text-center">Leave a feedback</h4>
+                <h4 className="title text-uppercase text-center"><Translate value="pages.reviews.leaveFeedback"/></h4>
                 <form onSubmit={this.handleSubmit} className="row">
                     <div className="col-md-7">
                         <Form

@@ -1,5 +1,6 @@
 import React from 'react';
 import {NavLink as Link} from 'react-router-dom'
+import { I18n, Translate } from 'react-i18nify';
 
 export const Header = () => (
     <header>
@@ -10,8 +11,8 @@ export const Header = () => (
                     Music Space
                 </a>
                 <div className="lang">
-                    <a className="ru"></a>
-                    <a className="en"></a>
+                    <a className="ru" onClick={() => {I18n.setLocale('ru')}}></a>
+                    <a className="en" onClick={() => {I18n.setLocale('en')}}></a>
                 </div>
                 <button className="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -22,16 +23,24 @@ export const Header = () => (
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
-                            <Link className="nav-link" exact={true} to="/">Home</Link>
+                            <Link className="nav-link" exact={true} to="/">
+                                <Translate value="menu.home"/>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/portfolio">Portfolio</Link>
+                            <Link className="nav-link" to="/portfolio">
+                                <Translate value="menu.portfolio"/>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/reviews">Reviews</Link>
+                            <Link className="nav-link" to="/reviews">
+                                <Translate value="menu.reviews"/>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/contact">Contact</Link>
+                            <Link className="nav-link" to="/contact">
+                                <Translate value="menu.contact"/>
+                            </Link>
                         </li>
                     </ul>
                 </div>

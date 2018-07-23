@@ -1,4 +1,4 @@
-import {setTags, setTracks, selectTag, selectTrack} from './track';
+import {setTags, setTracks, selectTag, selectTrack} from './data';
 import {setCurrentTime, setVolume, togglePlay} from './playing';
 
 export {

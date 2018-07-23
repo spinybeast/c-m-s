@@ -9,6 +9,49 @@
 }
 
 .reviews {
+  .socials {
+    margin-top: 15px;
+    vertical-align: middle;
+
+    a, span {
+      cursor: pointer;
+      display: inline-block;
+      width: 26px;
+      height: 26px;
+      margin: 0 10px 0 0;
+      line-height: 26px;
+      background: url('../../img/social-contact.png') 0 0 no-repeat;
+      vertical-align: middle;
+      &.vkontakte {
+        background-position: -76px 0
+      }
+      &.instagram {
+        background-position: -115px 0
+      }
+      &.twitter {
+        background-position: -154px 0
+      }
+      &.google {
+        background-position: -38px 0
+      }
+      &.inactive {
+        background-position-y: -27px;
+      }
+    }
+
+    .here {
+      font-style: italic;
+      text-transform: lowercase;
+      display: inline-block
+    }
+    .popup-content {
+      padding: 15px !important;
+      font-size: 13px;
+    }
+  }
+  .avatar {
+    width: 100px;
+  }
   .popup-content {
     animation: fade-in .7s;
     max-width: 700px;
@@ -35,53 +78,12 @@
     }
     .socials {
       margin-top: 0;
-      vertical-align: middle;
-
-      span {
-        cursor: pointer;
-        display: inline-block;
-        width: 26px;
-        height: 26px;
-        margin: 0 10px 0 0;
-        line-height: 26px;
-        background: url('../../img/social-contact.png') 0 0 no-repeat;
-        vertical-align: middle;
-        &.vkontakte {
-          background-position: -76px 0
-        }
-        &.instagram {
-          background-position: -115px 0
-        }
-        &.twitter {
-          background-position: -154px 0
-        }
-        &.google {
-          background-position: -38px 0
-        }
-        &.inactive {
-          background-position-y: -27px;
-        }
-      }
-
-      .here {
-        color: $grey;
-        font-style: italic;
-        text-transform: lowercase;
-        height: 26px;
-        line-height: 26px;
-        vertical-align: middle;
-        display: inline-block
-      }
-      .popup-content {
-        padding: 15px !important;
-        font-size: 13px;
-      }
     }
   }
   hr {
-     margin: 30px 0;
-     border-top: 2px dotted gray;
-   }
+    margin: 30px 0;
+    border-top: 2px dotted gray;
+  }
   .leave-feedback {
     p {
       line-height: 1.2;

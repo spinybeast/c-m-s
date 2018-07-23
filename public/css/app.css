@@ -13754,11 +13754,22 @@ button:focus {
 
 /** страница Портфолио **/
 
-.portfolio {
-  font-size: 14px;
+.portfolio .empty-portfolio {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.portfolio .empty-portfolio a {
+  font-weight: 700;
+  color: #80D1FF;
+  text-transform: uppercase;
+  position: relative;
+  padding-left: 5px;
 }
 
 .portfolio .scroll {
+  font-size: 14px;
   overflow-y: scroll;
   background: rgba(16, 18, 16, 0.7);
   padding: 30px 50px;
@@ -13802,7 +13813,7 @@ button:focus {
   border-top: 1px solid rgba(221, 221, 221, 0.2);
 }
 
-.portfolio button {
+.portfolio button.play-button {
   width: 30px;
   height: 30px;
   position: relative;
@@ -13812,8 +13823,8 @@ button:focus {
   cursor: pointer;
 }
 
-.portfolio button .pause,
-.portfolio button .play {
+.portfolio button.play-button .pause,
+.portfolio button.play-button .play {
   fill: rgba(16, 18, 16, 0.7);
   position: absolute;
   top: 4px;
@@ -13822,16 +13833,18 @@ button:focus {
   height: 20px;
 }
 
-.portfolio button .play {
+.portfolio button.play-button .play {
   left: 5px;
 }
 
 .portfolio .player {
+  font-size: 14px;
   padding: 10px 0;
   background: rgba(16, 18, 16, 0.7);
 }
 
 .portfolio .player .title {
+  color: #B6B7B7;
   position: absolute;
   top: -12px;
   max-width: 90%;
@@ -13891,6 +13904,63 @@ button:focus {
   }
 }
 
+.reviews .socials {
+  margin-top: 15px;
+  vertical-align: middle;
+}
+
+.reviews .socials a,
+.reviews .socials span {
+  cursor: pointer;
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  margin: 0 10px 0 0;
+  line-height: 26px;
+  background: url(/images/social-contact.png?c77c1a478675a47f8ae1262e0afbff00) 0 0 no-repeat;
+  vertical-align: middle;
+}
+
+.reviews .socials a.vkontakte,
+.reviews .socials span.vkontakte {
+  background-position: -76px 0;
+}
+
+.reviews .socials a.instagram,
+.reviews .socials span.instagram {
+  background-position: -115px 0;
+}
+
+.reviews .socials a.twitter,
+.reviews .socials span.twitter {
+  background-position: -154px 0;
+}
+
+.reviews .socials a.google,
+.reviews .socials span.google {
+  background-position: -38px 0;
+}
+
+.reviews .socials a.inactive,
+.reviews .socials span.inactive {
+  background-position-y: -27px;
+}
+
+.reviews .socials .here {
+  font-style: italic;
+  text-transform: lowercase;
+  display: inline-block;
+}
+
+.reviews .socials .popup-content {
+  padding: 15px !important;
+  font-size: 13px;
+}
+
+.reviews .avatar {
+  width: 100px;
+}
+
 .reviews .popup-content {
   -webkit-animation: fade-in .7s;
           animation: fade-in .7s;
@@ -13924,53 +13994,6 @@ button:focus {
 
 .reviews .review-popup .socials {
   margin-top: 0;
-  vertical-align: middle;
-}
-
-.reviews .review-popup .socials span {
-  cursor: pointer;
-  display: inline-block;
-  width: 26px;
-  height: 26px;
-  margin: 0 10px 0 0;
-  line-height: 26px;
-  background: url(/images/social-contact.png?c77c1a478675a47f8ae1262e0afbff00) 0 0 no-repeat;
-  vertical-align: middle;
-}
-
-.reviews .review-popup .socials span.vkontakte {
-  background-position: -76px 0;
-}
-
-.reviews .review-popup .socials span.instagram {
-  background-position: -115px 0;
-}
-
-.reviews .review-popup .socials span.twitter {
-  background-position: -154px 0;
-}
-
-.reviews .review-popup .socials span.google {
-  background-position: -38px 0;
-}
-
-.reviews .review-popup .socials span.inactive {
-  background-position-y: -27px;
-}
-
-.reviews .review-popup .socials .here {
-  color: #141719;
-  font-style: italic;
-  text-transform: lowercase;
-  height: 26px;
-  line-height: 26px;
-  vertical-align: middle;
-  display: inline-block;
-}
-
-.reviews .review-popup .socials .popup-content {
-  padding: 15px !important;
-  font-size: 13px;
 }
 
 .reviews hr {
@@ -14090,13 +14113,18 @@ button:focus {
 }
 
 @media (max-width: 768px) {
+  .wrapper {
+    padding-top: 63px;
+  }
+
   .nav li > form {
     padding: 3px;
   }
 
-  .navbar-inverse li a,
+  .navbar li a,
   .navbar-brand {
-    padding: 15px;
+    padding: 10px 0 !important;
+    margin: 0;
   }
 
   .lang {
@@ -14105,7 +14133,11 @@ button:focus {
   }
 
   .lang a {
-    margin: 17px 3px;
+    margin: 15px 5px !important;
+  }
+
+  .reviews .popup-content:first-child {
+    width: 100% !important;
   }
 }
 

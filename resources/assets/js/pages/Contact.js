@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import _ from 'lodash';
+import {I18n, Translate} from 'react-i18nify';
 
 import {Header} from '../components/Header';
 import {Footer} from '../components/Footer';
@@ -63,16 +64,14 @@ export default class Contact extends Component {
                         <div className="row">
                             <div className="col-md-6">
                                 <Messages message={this.state.message} errors={this.state.errors}/>
-                                <p className="title">
-                                    You can leave us a message using the form below
-                                </p>
+                                <Translate className="title" tag="p" value="pages.contact.leaveMessage"/>
 
                                 <form onSubmit={this.handleSubmit}>
                                     <div className="form-group">
                                         <input type="text"
                                                name="name"
                                                className="form-control transparent"
-                                               placeholder="your name"
+                                               placeholder={I18n.t('pages.reviews.contact.name')}
                                                autoComplete="off"
                                                required
                                                onChange={this.handleChange}
@@ -83,7 +82,7 @@ export default class Contact extends Component {
                                         <input type="email"
                                                name="email"
                                                className="form-control transparent"
-                                               placeholder="your email"
+                                               placeholder={I18n.t('pages.reviews.contact.email')}
                                                autoComplete="off"
                                                required
                                                onChange={this.handleChange}
@@ -95,19 +94,21 @@ export default class Contact extends Component {
                                             rows="4"
                                             name="text"
                                             className="form-control transparent"
-                                            placeholder="message"
+                                            placeholder={I18n.t('pages.reviews.contact.message')}
                                             required
                                             onChange={this.handleChange}
                                             value={this.state.data.text}
                                         />
                                     </div>
                                     <div className="form-group">
-                                        <button type="submit" className="form-control btn btn-white">Send</button>
+                                        <button type="submit" className="form-control btn btn-white">
+                                            <Translate value="pages.reviews.popup.send"/>
+                                        </button>
                                     </div>
                                 </form>
                             </div>
                             <div className="col-md-5 offset-md-1 social">
-                                <p className="title">Or use contacts</p>
+                                <Translate className="title" tag="p" value="pages.contact.orUseContacts"/>
                                 <div className="icons">
                                     <p>
                                         <span className="skype"></span>
