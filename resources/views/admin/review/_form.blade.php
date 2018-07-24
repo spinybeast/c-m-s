@@ -19,7 +19,7 @@
     @if ($review->id)
         @method('patch')
     @else
-        @method('put')
+        @method('post')
     @endif
     <div class="form-group row">
         <label class="col-4 col-form-label" for="author">Автор</label>
