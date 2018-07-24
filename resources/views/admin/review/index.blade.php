@@ -10,8 +10,9 @@
                     Добавить
                 </a>
             </p>
+            <div class="clearfix"></div>
         </div>
-
+        {{ $reviews->links() }}
         <div class="table-responsive">
             <table class="table table-bordered">
                 <thead class="thead-light">
@@ -60,7 +61,7 @@
                                onclick="
                                        event.preventDefault();
                                        if (confirm('Точно удалить отзыв {{ $review->author }}?')) {
-                                       document.getElementById('deleteReview-{{$review->id}}').submit();
+                                           document.getElementById('deleteReview-{{$review->id}}').submit();
                                        }"
                                class="btn btn-danger"
                             >

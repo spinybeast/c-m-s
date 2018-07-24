@@ -11,26 +11,26 @@ export default class Review extends Component {
         });
 
         return (
-            <div>
-                <div className="row">
-                    <div className="col-md-2">
-                        <img
-                            className="rounded-circle img-fluid avatar"
-                            src={review.photo}
-                            alt={review.author}
-                        />
-                    </div>
-                    <div className="col-md-10">
-                        <p className="author">
-                            {review.author}
-                            {review.company &&
-                            <span className="company text-muted">&nbsp;({review.company})</span>}
-                        </p>
-                        <div className="review">
-                            <div className="text">
-                                {review.text}
-                            </div>
-                            <div className="socials">
+            <div className="review d-flex flex-column align-items-center justify-content-between">
+                <div className="text">
+                    <i className="fa fa-quote-left">&nbsp;</i>
+                    {review.text}
+                </div>
+                <div className="d-flex flex-row justify-content-center pt-3">
+                    <img
+                        className="rounded-circle img-fluid avatar"
+                        src={review.photo}
+                        alt={review.author}
+                    />
+                    <div className="author d-flex flex-column justify-content-center">
+                        <ul>
+                            <li>
+                                {review.author}
+                                {review.company &&
+                                <span className="company text-muted">&nbsp;({review.company})</span>}
+                            </li>
+
+                            <li className="socials">
                                 {
                                     Object.keys(socials).map((social, index) => (
                                         <a key={index}
@@ -42,15 +42,14 @@ export default class Review extends Component {
                                     ))
                                 }
                                 {_.size(socials) > 0 &&
-                                <Translate tag="p" className="here text-muted" value="pages.reviews.hereYouCanFindTheReviewer"/>
+                                <Translate tag="p" className="here text-muted d-none d-sm-inline-block"
+                                           value="pages.reviews.hereYouCanFindTheReviewer"/>
                                 }
-                            </div>
-                        </div>
+                            </li>
+                        </ul>
                     </div>
 
                 </div>
-                <hr/>
-
             </div>
         );
     }

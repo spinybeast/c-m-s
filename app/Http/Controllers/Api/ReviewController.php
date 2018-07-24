@@ -15,6 +15,7 @@ class ReviewController extends Controller
     {
         $reviews = Review::where('published', 1)
             ->orderBy('priority', 'desc')
+            ->latest()
             ->get();
 
         return response()->json($reviews);

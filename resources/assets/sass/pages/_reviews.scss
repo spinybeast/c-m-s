@@ -10,7 +10,6 @@
 
 .reviews {
   .socials {
-    margin-top: 15px;
     vertical-align: middle;
 
     a, span {
@@ -49,9 +48,72 @@
       font-size: 13px;
     }
   }
-  .avatar {
-    width: 100px;
+  .owl-carousel {
+    background: #141719d6;
+    .owl-nav {
+      div {
+        position: absolute;
+        width: 50px;
+        height: 100%;
+        top: 0;
+        transition: background-color .2s;
+        &.disabled {
+          display: none;
+        }
+        &.owl-prev {
+          left: 0;
+        }
+        &.owl-next {
+          right: 0;
+        }
+        &:hover {
+          background: #b6b7b736;
+        }
+        i {
+          position: absolute;
+          left: 20px;
+          top: 50%;
+          margin-top: -15px;
+        }
+      }
+
+    }
   }
+  .review-carousel {
+    position:relative;
+    .see-all {
+      position: absolute;
+      bottom: 0;
+      z-index: 2;
+      width: 100%;
+      text-align: center;
+      background: $black;
+      padding: 14px;
+      text-transform: uppercase;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+  .review {
+    padding: 50px 60px;
+    .avatar {
+      max-width: 100px !important;
+      max-height: 100px;
+    }
+    .text {
+      font-size: 16px;
+      font-style: italic;
+    }
+    .author {
+      ul {
+        list-style: none;
+        text-align: left;
+        padding-left: 15px;
+        margin: 0;
+      }
+    }
+  }
+
   .popup-content {
     animation: fade-in .7s;
     max-width: 700px;
@@ -75,9 +137,6 @@
     }
     .upload-image {
       margin: 0;
-    }
-    .socials {
-      margin-top: 0;
     }
   }
   hr {

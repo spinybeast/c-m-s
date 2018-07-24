@@ -13690,7 +13690,7 @@ a:focus {
   position: absolute;
   left: 6px;
   width: 13px;
-  background: rgba(16, 18, 16, 0.7);
+  background: #B6B7B7;
   -webkit-animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
           animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
 }
@@ -13970,7 +13970,6 @@ a:focus {
 }
 
 .reviews .socials {
-  margin-top: 15px;
   vertical-align: middle;
 }
 
@@ -14022,8 +14021,78 @@ a:focus {
   font-size: 13px;
 }
 
-.reviews .avatar {
-  width: 100px;
+.reviews .owl-carousel {
+  background: #141719d6;
+}
+
+.reviews .owl-carousel .owl-nav div {
+  position: absolute;
+  width: 50px;
+  height: 100%;
+  top: 0;
+  -webkit-transition: background-color .2s;
+  transition: background-color .2s;
+}
+
+.reviews .owl-carousel .owl-nav div.disabled {
+  display: none;
+}
+
+.reviews .owl-carousel .owl-nav div.owl-prev {
+  left: 0;
+}
+
+.reviews .owl-carousel .owl-nav div.owl-next {
+  right: 0;
+}
+
+.reviews .owl-carousel .owl-nav div:hover {
+  background: #b6b7b736;
+}
+
+.reviews .owl-carousel .owl-nav div i {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  margin-top: -15px;
+}
+
+.reviews .review-carousel {
+  position: relative;
+}
+
+.reviews .review-carousel .see-all {
+  position: absolute;
+  bottom: 0;
+  z-index: 2;
+  width: 100%;
+  text-align: center;
+  background: #0A0C0D;
+  padding: 14px;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.reviews .review {
+  padding: 50px 60px;
+}
+
+.reviews .review .avatar {
+  max-width: 100px !important;
+  max-height: 100px;
+}
+
+.reviews .review .text {
+  font-size: 16px;
+  font-style: italic;
+}
+
+.reviews .review .author ul {
+  list-style: none;
+  text-align: left;
+  padding-left: 15px;
+  margin: 0;
 }
 
 .reviews .popup-content {
@@ -14055,10 +14124,6 @@ a:focus {
 
 .reviews .review-popup .upload-image {
   margin: 0;
-}
-
-.reviews .review-popup .socials {
-  margin-top: 0;
 }
 
 .reviews hr {
