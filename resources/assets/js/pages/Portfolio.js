@@ -15,13 +15,17 @@ const store = configureStore();
 export class Portfolio extends Component {
     componentDidMount() {
         SC.initialize({client_id: CLIENT_ID});
+        store.dispatch(actions.setLoading(true));
         SC.get('/tracks', {
             user_id: USER_ID,
             limit: 200
-        }).then(function (tracks) {
+        }).then(tracks => {
             prepareTags(tracks);
             store.dispatch(actions.setTracks(tracks));
-            store.dispatch(actions.selectTrack(_.first(tracks)))
+            store.dispatch(actions.selectTrack(_.first(tracks)));
+        }).catch(error => {
+            console.log('error', error);
+            store.dispatch(actions.setLoading(false));
         });
     }
 

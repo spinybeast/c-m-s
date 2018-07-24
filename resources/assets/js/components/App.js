@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {HashRouter as Router, Route, Switch} from 'react-router-dom';
+import {HashRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import {I18n} from 'react-i18nify';
 
 import en from '../lang/en.json';
@@ -28,6 +28,7 @@ class App extends Component {
                     <Route path='/portfolio' component={Portfolio}/>
                     <Route path='/reviews' component={Reviews}/>
                     <Route path='/contact' component={Contact}/>
+                    <Redirect from="*" to="/" />
                 </Switch>
             </Router>
         );

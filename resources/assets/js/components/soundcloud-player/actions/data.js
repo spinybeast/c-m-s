@@ -19,3 +19,8 @@ export const selectTrack = (track) => ({
     type: actionTypes.TRACK_SELECTED,
     track
 });
+
+export const setLoading = (loading) => ({
+    type: actionTypes.LOADING_SET,
+    loading
+});

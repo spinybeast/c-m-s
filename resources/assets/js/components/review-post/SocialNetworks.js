@@ -2,12 +2,9 @@ import React, {Component} from 'react';
 import Popup from 'reactjs-popup';
 import PropTypes from 'prop-types';
 import {Translate} from 'react-i18nify';
+import _ from 'lodash';
 
 export default class SocialNetworks extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         let {socials, networks, handleChangeSocial} = this.props;
 
@@ -24,7 +21,7 @@ export default class SocialNetworks extends Component {
                                            value={socials[network] || ''}
                                            onChange={handleChangeSocial}
                                            className="form-control transparent"
-                                           placeholder={`Enter your ${network} link`}
+                                           placeholder={_.startCase(network)}
                                     />
                                 </div>
                             </Popup>

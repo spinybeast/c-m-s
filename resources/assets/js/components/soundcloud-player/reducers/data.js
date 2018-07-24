@@ -4,7 +4,8 @@ const initialState = {
     tags: [],
     tracks: [],
     activeTag: null,
-    activeTrack: {}
+    activeTrack: {},
+    loading: false
 };
 
 export default function (state = initialState, action) {
@@ -17,6 +18,8 @@ export default function (state = initialState, action) {
             return setTags(state, action);
         case actionTypes.TRACKS_SET:
             return setTracks(state, action);
+        case actionTypes.LOADING_SET:
+            return setLoading(state, action);
     }
     return state;
 }
@@ -38,5 +41,10 @@ function setTags(state, action) {
 
 function setTracks(state, action) {
     const {tracks} = action;
-    return {...state, tracks: tracks};
+    return {...state, tracks: tracks, loading: false};
+}
+
+function setLoading(state, action) {
+    const {loading} = action;
+    return {...state, loading: loading};
 }

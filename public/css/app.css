@@ -13557,7 +13557,11 @@ body {
 
 button,
 button:active,
-button:focus {
+button:focus,
+a,
+a:active,
+a:visited,
+a:focus {
   outline: none;
 }
 
@@ -13670,6 +13674,67 @@ button:focus {
   color: #ec7373;
   padding-bottom: 10px;
   font-size: 16px;
+}
+
+/** Лоадер **/
+
+.loader {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+
+.loader div {
+  display: inline-block;
+  position: absolute;
+  left: 6px;
+  width: 13px;
+  background: rgba(16, 18, 16, 0.7);
+  -webkit-animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+          animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+
+.loader div:nth-child(1) {
+  left: 6px;
+  -webkit-animation-delay: -0.24s;
+          animation-delay: -0.24s;
+}
+
+.loader div:nth-child(2) {
+  left: 26px;
+  -webkit-animation-delay: -0.12s;
+          animation-delay: -0.12s;
+}
+
+.loader div:nth-child(3) {
+  left: 45px;
+  -webkit-animation-delay: 0;
+          animation-delay: 0;
+}
+
+@-webkit-keyframes lds-facebook {
+  0% {
+    top: 6px;
+    height: 51px;
+  }
+
+  50%, 100% {
+    top: 19px;
+    height: 26px;
+  }
+}
+
+@keyframes lds-facebook {
+  0% {
+    top: 6px;
+    height: 51px;
+  }
+
+  50%, 100% {
+    top: 19px;
+    height: 26px;
+  }
 }
 
 /** страница Главная **/
