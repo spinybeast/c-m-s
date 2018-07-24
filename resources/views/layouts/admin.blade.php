@@ -45,7 +45,7 @@
                         <a class="nav-link" href="{{ route('reviews.index') }}">Отзывы</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('reviews.index') }}">Видео</a>
+                        <a class="nav-link" href="{{ route('video.index') }}">Видео</a>
                     </li>
                     <!-- Authentication Links -->
                     @guest

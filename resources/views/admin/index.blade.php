@@ -30,7 +30,7 @@
                         </div>
                         <div>Видео</div>
                     </div>
-                    <a href="{{ route('reviews.index') }}" class="text-info">
+                    <a href="{{ route('video.index') }}" class="text-info">
                         <div class="card-footer">
                             <span class="pull-left">Перейти</span>
                             <span class="pull-right"><i class="fa fa-arrow-right"></i></span>

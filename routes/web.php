@@ -14,4 +14,7 @@ Route::prefix('admin')
         })->middleware('auth');
         Route::resource('reviews', 'Admin\ReviewController')
             ->middleware('auth');
+        Route::get('video', function(){
+            return view('admin.video.index');
+        })->name('video.index');
     });
