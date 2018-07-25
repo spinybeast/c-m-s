@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
 
-import {CLIENT_ID} from './constants/auth';
-import * as actions from "./actions";
+import {CLIENT_ID} from '../../constants/auth';
+import * as actions from '../../actions';
 
 
 class ActiveTrack extends Component {
@@ -104,8 +104,8 @@ class ActiveTrack extends Component {
 }
 
 function mapStateToProps(state) {
-    const {activeTrack} = state.data;
-    const {playing, currentTime, volume} = state.playing;
+    const {activeTrack} = state.portfolio;
+    const {playing, currentTime, volume} = state.activeTrack;
     return {
         activeTrack,
         playing,

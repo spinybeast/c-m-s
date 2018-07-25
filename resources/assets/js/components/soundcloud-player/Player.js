@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {bindActionCreators} from "redux";
+import {bindActionCreators} from 'redux';
 import {Translate} from 'react-i18nify';
 
-import Track from "./Track";
-import ActiveTrack from "./ActiveTrack";
+import Track from './Track';
+import ActiveTrack from './ActiveTrack';
 import {Loader} from '../Loader'
-import * as actions from "./actions";
+import * as actions from '../../actions';
 
 
 class Player extends Component {
@@ -54,7 +54,7 @@ class Player extends Component {
 }
 
 function mapStateToProps(state) {
-    const {tags, tracks, activeTag, activeTrack, loading} = state.data;
+    const {tags, tracks, activeTag, activeTrack, loading} = state.portfolio;
     return {
         tags,
         activeTag,

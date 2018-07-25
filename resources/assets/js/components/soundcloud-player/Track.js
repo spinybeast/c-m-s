@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import * as actions from "./actions";
+import * as actions from '../../actions';
 
 class Track extends Component {
 
@@ -45,8 +45,8 @@ class Track extends Component {
 }
 
 function mapStateToProps(state) {
-    const {activeTrack} = state.data;
-    const {playing} = state.playing;
+    const {activeTrack} = state.portfolio;
+    const {playing} = state.activeTrack;
     return {
         activeTrack,
         playing

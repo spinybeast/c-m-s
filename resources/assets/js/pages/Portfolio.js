@@ -1,32 +1,61 @@
 import React, {Component} from 'react';
-import {Provider} from 'react-redux';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import SC from 'soundcloud';
 import _ from 'lodash';
 
 import {Header} from '../components/Header';
 import {Footer} from '../components/Footer';
 import Player from '../components/soundcloud-player/Player'
-import configureStore from '../components/soundcloud-player/stores/configureStore';
-import * as actions from '../components/soundcloud-player/actions';
-import {CLIENT_ID, USER_ID} from '../components/soundcloud-player/constants/auth';
+import * as actions from '../actions';
+import {CLIENT_ID, USER_ID} from '../constants/auth';
 
-const store = configureStore();
+class Portfolio extends Component {
+    constructor(props) {
+        super(props);
+        this.prepareTags = this.prepareTags.bind(this)
+    }
 
-export class Portfolio extends Component {
     componentDidMount() {
-        SC.initialize({client_id: CLIENT_ID});
-        store.dispatch(actions.setLoading(true));
-        SC.get('/tracks', {
-            user_id: USER_ID,
-            limit: 200
-        }).then(tracks => {
-            prepareTags(tracks);
-            store.dispatch(actions.setTracks(tracks));
-            store.dispatch(actions.selectTrack(_.first(tracks)));
-        }).catch(error => {
-            console.log('error', error);
-            store.dispatch(actions.setLoading(false));
+        const {tracks, setTracks, selectTrack, setLoading} = this.props;
+
+        if (tracks.length === 0) {
+            SC.initialize({client_id: CLIENT_ID});
+            setLoading(true);
+            SC.get('/tracks', {
+                user_id: USER_ID,
+                limit: 200
+            }).then(tracks => {
+                this.prepareTags(tracks);
+                setTracks(tracks);
+                selectTrack(_.first(tracks));
+            }).catch(error => {
+                console.log('error', error);
+                setLoading(false);
+            });
+        }
+
+    }
+
+    prepareTags(tracks) {
+        const {setTags, selectTag} = this.props;
+
+        tracks.map((track) => {
+            track.tags = [];
+            let tags = track.tag_list.split(' ');
+            tags.push(track.genre);
+            _.compact(tags).map((tag) => {
+                tag = tag.toLowerCase();
+                if (tag !== 'soundtrack' && track.tags.indexOf(tag) === -1) {
+                    track.tags.push(tag);
+                }
+            });
         });
+        const tags = _.uniq(_.flatten(_.map(tracks, 'tags')));
+        if (tags.length) {
+            setTags(tags);
+            selectTag(_.first(tags));
+        }
     }
 
     render() {
@@ -34,11 +63,9 @@ export class Portfolio extends Component {
             <div>
                 <div className="wrapper portfolio">
                     <Header/>
-                    <Provider store={store}>
-                        <main>
-                            <Player/>
-                        </main>
-                    </Provider>
+                    <main>
+                        <Player/>
+                    </main>
                 </div>
                 <Footer/>
             </div>
@@ -46,21 +73,19 @@ export class Portfolio extends Component {
     }
 }
 
-function prepareTags(tracks) {
-    tracks.map((track) => {
-        track.tags = [];
-        let tags = track.tag_list.split(' ');
-        tags.push(track.genre);
-        _.compact(tags).map((tag) => {
-            tag = tag.toLowerCase();
-            if (tag !== 'soundtrack' && track.tags.indexOf(tag) === -1) {
-                track.tags.push(tag);
-            }
-        });
-    });
-    const tags = _.uniq(_.flatten(_.map(tracks, 'tags')));
-    if (tags.length) {
-        store.dispatch(actions.setTags(tags));
-        store.dispatch(actions.selectTag(_.first(tags)));
+function mapStateToProps(state) {
+    const {tracks} = state.portfolio;
+    return {tracks};
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        setLoading: bindActionCreators(actions.setLoading, dispatch),
+        setTracks: bindActionCreators(actions.setTracks, dispatch),
+        setTags: bindActionCreators(actions.setTags, dispatch),
+        selectTag: bindActionCreators(actions.selectTag, dispatch),
+        selectTrack: bindActionCreators(actions.selectTrack, dispatch),
     }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Portfolio);
