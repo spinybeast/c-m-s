@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="keywords" content="{{ __('meta.keywords') }}">
+    <meta name="description" content="{{ __('meta.description') }}">
     <title>{{ config('app.name') }}</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" type="image/png" href="{{ asset('favicon.ico') }}"/>

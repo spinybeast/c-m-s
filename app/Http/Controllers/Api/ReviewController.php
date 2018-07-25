@@ -24,17 +24,17 @@ class ReviewController extends Controller
     public function store(Request $request): JsonResponse
     {
         $validator = Validator::make($request->all(), [
-            'author' => 'required',
-            'text' => 'required',
+            'author' => 'required|string',
+            'text' => 'required|string',
             'socials' => 'array',
             'socials.*' => 'nullable|url',
         ], [
-            'required' => 'Заполните все поля',
-            'socials.facebook.url' => 'Некорректный формат ссылки Facebook',
-            'socials.google.url' => 'Некорректный формат ссылки Google',
-            'socials.vkontakte.url' => 'Некорректный формат ссылки VK',
-            'socials.instagram.url' => 'Некорректный формат ссылки Instagram',
-            'socials.twitter.url' => 'Некорректный формат ссылки Twitter',
+            'required' => __('messages.reviews.required'),
+            'socials.facebook.url' => __('messages.reviews.formatUrl', ['url' => 'Facebook']),
+            'socials.google.url' => __('messages.reviews.formatUrl', ['url' => 'Google']),
+            'socials.vkontakte.url' => __('messages.reviews.formatUrl', ['url' => 'VK']),
+            'socials.instagram.url' => __('messages.reviews.formatUrl', ['url' => 'Instagram']),
+            'socials.twitter.url' => __('messages.reviews.formatUrl', ['url' => 'Twitter'])
         ]);
 
         if ($validator->fails()) {
@@ -54,12 +54,12 @@ class ReviewController extends Controller
         if ($review->save()) {
             return response()->json([
                 'success' => true,
-                'message' => 'Спасибо за ваш отзыв! Он появится на сайте после проверки модератором.'
+                'message' => __('messages.reviews.success')
             ]);
         }
         return response()->json([
             'success' => false,
-            'errors' => ['Что-то пошло не так. Попробуйте позднее.']
+            'errors' => [__('messages.somethingWrong')]
         ]);
     }
 

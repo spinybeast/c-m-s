@@ -27,7 +27,7 @@ class ContactController extends Controller
 
         return response()->json([
             'success' => true,
-            'message' => 'Спасибо за ваше обращение! Мы скоро ответим.'
+            'message' => __('messages.contact.success')
         ]);
     }
 }

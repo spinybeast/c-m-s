@@ -1,7 +1,8 @@
 <?php
 
 /** Main single-page */
-Route::get('/{lang?}', function () {
+Route::get('/{lang?}', function ($lang = 'en') {
+    App::setLocale($lang);
     return view('index');
 })->where('lang', '(ru|en)');
 
