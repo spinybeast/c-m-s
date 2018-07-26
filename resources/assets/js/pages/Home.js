@@ -45,7 +45,7 @@ export const Home = () => (
                             </div>
                         </div>
                         <div className="col-lg-4 main-feature">
-                            <div className="advertisement">
+                            <div className="a-d">
                                 <h4 className="text-uppercase text-bold">
                                     <Translate value="pages.home.features.advertisement.title"/>
                                 </h4>
