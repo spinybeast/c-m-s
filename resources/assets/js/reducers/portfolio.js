@@ -16,10 +16,12 @@ export default function (state = initialState, action) {
             return selectTrack(state, action);
         case actionTypes.TAGS_SET:
             return setTags(state, action);
-        case actionTypes.TRACKS_SET:
-            return setTracks(state, action);
-        case actionTypes.LOADING_SET:
-            return setLoading(state, action);
+        case actionTypes.FETCH_TRACKS_START:
+            return fetchTracksStart(state);
+        case actionTypes.FETCH_TRACKS_SUCCESS:
+            return fetchTracksSuccess(state, action);
+        case actionTypes.FETCH_TRACKS_ERROR:
+            return fetchTracksError(state);
     }
     return state;
 }
@@ -39,12 +41,17 @@ function setTags(state, action) {
     return {...state, tags: tags};
 }
 
-function setTracks(state, action) {
+function fetchTracksStart(state) {
+    return {...state, loading: true};
+}
+
+function fetchTracksSuccess(state, action) {
     const {tracks} = action;
     return {...state, tracks: tracks, loading: false};
 }
 
-function setLoading(state, action) {
-    const {loading} = action;
-    return {...state, loading: loading};
+function fetchTracksError(state) {
+    return {...state, loading: false};
 }
+
+

@@ -13,11 +13,15 @@ class Player extends Component {
     render() {
         const {tags = [], tracks = [], activeTag, loading, onSelectTag} = this.props;
 
+        if (loading) {
+            return <Loader/>;
+        }
+
         return (
             <div>
                 <ActiveTrack/>
                 {
-                    tracks.length > 0 && !loading ?
+                    tracks.length > 0 ?
                     <div className="container">
                         <div className="row">
                             <div className="col-md-6">
@@ -37,16 +41,14 @@ class Player extends Component {
                                 </div>
                             </div>
                         </div>
-                    </div> : (
-                    loading ? <Loader/> :
-                        <div className="empty-portfolio">
-                            <Translate value="pages.portfolio.cantLoad"/>&nbsp;
-                            <a href="http://soundcloud.com/tony-cyclonez" target="_blank">
-                                <i className="fa fa-soundcloud">&nbsp;</i>
-                                Soundcloud
-                            </a>!
-                        </div>
-                    )
+                    </div> :
+                    <div className="empty-portfolio">
+                        <Translate value="pages.portfolio.cantLoad"/>&nbsp;
+                        <a href="http://soundcloud.com/tony-cyclonez" target="_blank">
+                            <i className="fa fa-soundcloud">&nbsp;</i>
+                            Soundcloud
+                        </a>!
+                    </div>
                 }
             </div>
         );

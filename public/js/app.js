@@ -36648,20 +36648,23 @@ var locationsAreEqual = function locationsAreEqual(a, b) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return TAGS_SET; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return TRACKS_SET; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return TAG_SELECTED; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return TRACK_SELECTED; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LOADING_SET; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return TOGGLE_PLAY; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return SET_VOLUME; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return SET_CURRENT_TIME; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return TAGS_SET; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return TAG_SELECTED; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return TRACK_SELECTED; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return FETCH_TRACKS_START; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return FETCH_TRACKS_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FETCH_TRACKS_ERROR; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return TOGGLE_PLAY; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return SET_VOLUME; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return SET_CURRENT_TIME; });
 /** portfolio **/
 var TAGS_SET = 'TAGS_SET';
-var TRACKS_SET = 'TRACKS_SET';
 var TAG_SELECTED = 'TAG_SELECTED';
 var TRACK_SELECTED = 'TRACK_SELECTED';
-var LOADING_SET = 'LOADING_SET';
+
+var FETCH_TRACKS_START = 'FETCH_TRACKS_START';
+var FETCH_TRACKS_SUCCESS = 'FETCH_TRACKS_SUCCESS';
+var FETCH_TRACKS_ERROR = 'FETCH_TRACKS_ERROR';
 
 /** activeTrack **/
 var TOGGLE_PLAY = 'TOGGLE_PLAY';
@@ -36717,14 +36720,13 @@ var Footer = function Footer() {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__portfolio__ = __webpack_require__(295);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__activeTrack__ = __webpack_require__(296);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_0__portfolio__["d"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_0__portfolio__["e"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__portfolio__["a"]; });
+/* unused harmony reexport setTags */
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__portfolio__["b"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_0__portfolio__["c"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_1__activeTrack__["a"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return __WEBPACK_IMPORTED_MODULE_1__activeTrack__["b"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return __WEBPACK_IMPORTED_MODULE_1__activeTrack__["c"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_0__portfolio__["c"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__portfolio__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_1__activeTrack__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_1__activeTrack__["b"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_1__activeTrack__["c"]; });
 
 
 
@@ -94805,17 +94807,19 @@ exports.default = Localize;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_redux_logger__ = __webpack_require__(283);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_redux_logger___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_redux_logger__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reducers_index__ = __webpack_require__(284);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_redux_thunk__ = __webpack_require__(338);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__reducers_index__ = __webpack_require__(284);
+
 
 
 
 
 var logger = Object(__WEBPACK_IMPORTED_MODULE_1_redux_logger__["createLogger"])();
 
-var createStoreWithMiddleware = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["a" /* applyMiddleware */])(logger)(__WEBPACK_IMPORTED_MODULE_0_redux__["d" /* createStore */]);
+var createStoreWithMiddleware = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["a" /* applyMiddleware */])(logger, __WEBPACK_IMPORTED_MODULE_2_redux_thunk__["a" /* default */])(__WEBPACK_IMPORTED_MODULE_0_redux__["d" /* createStore */]);
 
 function configureStore(initialState) {
-    return createStoreWithMiddleware(__WEBPACK_IMPORTED_MODULE_2__reducers_index__["a" /* default */], initialState);
+    return createStoreWithMiddleware(__WEBPACK_IMPORTED_MODULE_3__reducers_index__["a" /* default */], initialState);
 }
 
 /***/ }),
@@ -94875,16 +94879,18 @@ var initialState = {
     var action = arguments[1];
 
     switch (action.type) {
-        case __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__["e" /* TAG_SELECTED */]:
+        case __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__["g" /* TAG_SELECTED */]:
             return selectTag(state, action);
-        case __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__["h" /* TRACK_SELECTED */]:
+        case __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__["i" /* TRACK_SELECTED */]:
             return selectTrack(state, action);
-        case __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__["d" /* TAGS_SET */]:
+        case __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__["f" /* TAGS_SET */]:
             return setTags(state, action);
-        case __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__["g" /* TRACKS_SET */]:
-            return setTracks(state, action);
-        case __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__["a" /* LOADING_SET */]:
-            return setLoading(state, action);
+        case __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__["b" /* FETCH_TRACKS_START */]:
+            return fetchTracksStart(state);
+        case __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__["c" /* FETCH_TRACKS_SUCCESS */]:
+            return fetchTracksSuccess(state, action);
+        case __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__["a" /* FETCH_TRACKS_ERROR */]:
+            return fetchTracksError(state);
     }
     return state;
 });
@@ -94907,16 +94913,18 @@ function setTags(state, action) {
     return _extends({}, state, { tags: tags });
 }
 
-function setTracks(state, action) {
+function fetchTracksStart(state) {
+    return _extends({}, state, { loading: true });
+}
+
+function fetchTracksSuccess(state, action) {
     var tracks = action.tracks;
 
     return _extends({}, state, { tracks: tracks, loading: false });
 }
 
-function setLoading(state, action) {
-    var loading = action.loading;
-
-    return _extends({}, state, { loading: loading });
+function fetchTracksError(state) {
+    return _extends({}, state, { loading: false });
 }
 
 /***/ }),
@@ -94948,11 +94956,11 @@ var initialState = {
     var action = arguments[1];
 
     switch (action.type) {
-        case __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__["f" /* TOGGLE_PLAY */]:
+        case __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__["h" /* TOGGLE_PLAY */]:
             return togglePlay(state);
-        case __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__["c" /* SET_VOLUME */]:
+        case __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__["e" /* SET_VOLUME */]:
             return setVolume(state, action);
-        case __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__["b" /* SET_CURRENT_TIME */]:
+        case __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__["d" /* SET_CURRENT_TIME */]:
             return setCurrentTime(state, action);
     }
     return state;
@@ -95016,16 +95024,10 @@ var Home = function Home() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_redux__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_soundcloud__ = __webpack_require__(291);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_soundcloud___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_soundcloud__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_Header__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_Footer__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_soundcloud_player_Player__ = __webpack_require__(293);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__actions__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__constants_auth__ = __webpack_require__(203);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Header__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Footer__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_soundcloud_player_Player__ = __webpack_require__(293);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__actions__ = __webpack_require__(30);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _createClass = function () {
@@ -95064,77 +95066,30 @@ function _inherits(subClass, superClass) {
 
 
 
-
-
-
-
 var Portfolio = function (_Component) {
     _inherits(Portfolio, _Component);
 
-    function Portfolio(props) {
+    function Portfolio() {
         _classCallCheck(this, Portfolio);
 
-        var _this = _possibleConstructorReturn(this, (Portfolio.__proto__ || Object.getPrototypeOf(Portfolio)).call(this, props));
-
-        _this.prepareTags = _this.prepareTags.bind(_this);
-        return _this;
+        return _possibleConstructorReturn(this, (Portfolio.__proto__ || Object.getPrototypeOf(Portfolio)).apply(this, arguments));
     }
 
     _createClass(Portfolio, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
-            var _this2 = this;
-
             var _props = this.props,
                 tracks = _props.tracks,
-                setTracks = _props.setTracks,
-                selectTrack = _props.selectTrack,
-                setLoading = _props.setLoading;
+                fetchTracks = _props.fetchTracks;
 
             if (tracks.length === 0) {
-                __WEBPACK_IMPORTED_MODULE_3_soundcloud___default.a.initialize({ client_id: __WEBPACK_IMPORTED_MODULE_9__constants_auth__["a" /* CLIENT_ID */] });
-                setLoading(true);
-                __WEBPACK_IMPORTED_MODULE_3_soundcloud___default.a.get('/tracks', {
-                    user_id: __WEBPACK_IMPORTED_MODULE_9__constants_auth__["b" /* USER_ID */],
-                    limit: 200
-                }).then(function (tracks) {
-                    _this2.prepareTags(tracks);
-                    setTracks(tracks);
-                    selectTrack(__WEBPACK_IMPORTED_MODULE_4_lodash___default.a.first(tracks));
-                }).catch(function (error) {
-                    console.log('error', error);
-                    setLoading(false);
-                });
-            }
-        }
-    }, {
-        key: 'prepareTags',
-        value: function prepareTags(tracks) {
-            var _props2 = this.props,
-                setTags = _props2.setTags,
-                selectTag = _props2.selectTag;
-
-            tracks.map(function (track) {
-                track.tags = [];
-                var tags = track.tag_list.split(' ');
-                tags.push(track.genre);
-                __WEBPACK_IMPORTED_MODULE_4_lodash___default.a.compact(tags).map(function (tag) {
-                    tag = tag.toLowerCase();
-                    if (tag !== 'soundtrack' && track.tags.indexOf(tag) === -1) {
-                        track.tags.push(tag);
-                    }
-                });
-            });
-            var tags = __WEBPACK_IMPORTED_MODULE_4_lodash___default.a.uniq(__WEBPACK_IMPORTED_MODULE_4_lodash___default.a.flatten(__WEBPACK_IMPORTED_MODULE_4_lodash___default.a.map(tracks, 'tags')));
-            if (tags.length) {
-                setTags(tags);
-                selectTag(__WEBPACK_IMPORTED_MODULE_4_lodash___default.a.first(tags));
+                fetchTracks();
             }
         }
     }, {
         key: 'render',
         value: function render() {
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', null, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'wrapper portfolio' }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__components_Header__["a" /* Header */], null), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('main', null, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__components_soundcloud_player_Player__["a" /* default */], null))), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__components_Footer__["a" /* Footer */], null));
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', null, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'wrapper portfolio' }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_Header__["a" /* Header */], null), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('main', null, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__components_soundcloud_player_Player__["a" /* default */], null))), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_Footer__["a" /* Footer */], null));
         }
     }]);
 
@@ -95149,11 +95104,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        setLoading: Object(__WEBPACK_IMPORTED_MODULE_2_redux__["b" /* bindActionCreators */])(__WEBPACK_IMPORTED_MODULE_8__actions__["d" /* setLoading */], dispatch),
-        setTracks: Object(__WEBPACK_IMPORTED_MODULE_2_redux__["b" /* bindActionCreators */])(__WEBPACK_IMPORTED_MODULE_8__actions__["f" /* setTracks */], dispatch),
-        setTags: Object(__WEBPACK_IMPORTED_MODULE_2_redux__["b" /* bindActionCreators */])(__WEBPACK_IMPORTED_MODULE_8__actions__["e" /* setTags */], dispatch),
-        selectTag: Object(__WEBPACK_IMPORTED_MODULE_2_redux__["b" /* bindActionCreators */])(__WEBPACK_IMPORTED_MODULE_8__actions__["a" /* selectTag */], dispatch),
-        selectTrack: Object(__WEBPACK_IMPORTED_MODULE_2_redux__["b" /* bindActionCreators */])(__WEBPACK_IMPORTED_MODULE_8__actions__["b" /* selectTrack */], dispatch)
+        fetchTracks: function fetchTracks() {
+            dispatch(__WEBPACK_IMPORTED_MODULE_5__actions__["a" /* fetchTracks */]());
+        }
     };
 }
 
@@ -95458,7 +95411,11 @@ var Player = function (_Component) {
                 loading = _props.loading,
                 onSelectTag = _props.onSelectTag;
 
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', null, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__ActiveTrack__["a" /* default */], null), tracks.length > 0 && !loading ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'container' }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'row' }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'col-md-6' }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'scroll' }, tags.map(function (tag, index) {
+            if (loading) {
+                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__Loader__["a" /* Loader */], null);
+            }
+
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', null, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__ActiveTrack__["a" /* default */], null), tracks.length > 0 ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'container' }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'row' }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'col-md-6' }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'scroll' }, tags.map(function (tag, index) {
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { key: index,
                     className: 'tag' + (activeTag === tag ? ' active' : ''),
                     onClick: function onClick() {
@@ -95466,7 +95423,7 @@ var Player = function (_Component) {
                     } }, tag);
             }))), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'col-md-6' }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'scroll' }, tracks.map(function (track, index) {
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__Track__["a" /* default */], { key: index, track: track });
-            }))))) : loading ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__Loader__["a" /* Loader */], null) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'empty-portfolio' }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_i18nify__["Translate"], { value: 'pages.portfolio.cantLoad' }), '\xA0', __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('a', { href: 'http://soundcloud.com/tony-cyclonez', target: '_blank' }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-soundcloud' }, '\xA0'), 'Soundcloud'), '!'));
+            }))))) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'empty-portfolio' }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_i18nify__["Translate"], { value: 'pages.portfolio.cantLoad' }), '\xA0', __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('a', { href: 'http://soundcloud.com/tony-cyclonez', target: '_blank' }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-soundcloud' }, '\xA0'), 'Soundcloud'), '!'));
         }
     }]);
 
@@ -95494,7 +95451,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        onSelectTag: Object(__WEBPACK_IMPORTED_MODULE_2_redux__["b" /* bindActionCreators */])(__WEBPACK_IMPORTED_MODULE_7__actions__["a" /* selectTag */], dispatch)
+        onSelectTag: Object(__WEBPACK_IMPORTED_MODULE_2_redux__["b" /* bindActionCreators */])(__WEBPACK_IMPORTED_MODULE_7__actions__["b" /* selectTag */], dispatch)
     };
 }
 
@@ -95589,8 +95546,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        onSelectTrack: Object(__WEBPACK_IMPORTED_MODULE_1_redux__["b" /* bindActionCreators */])(__WEBPACK_IMPORTED_MODULE_3__actions__["b" /* selectTrack */], dispatch),
-        onTogglePlay: Object(__WEBPACK_IMPORTED_MODULE_1_redux__["b" /* bindActionCreators */])(__WEBPACK_IMPORTED_MODULE_3__actions__["h" /* togglePlay */], dispatch)
+        onSelectTrack: Object(__WEBPACK_IMPORTED_MODULE_1_redux__["b" /* bindActionCreators */])(__WEBPACK_IMPORTED_MODULE_3__actions__["c" /* selectTrack */], dispatch),
+        onTogglePlay: Object(__WEBPACK_IMPORTED_MODULE_1_redux__["b" /* bindActionCreators */])(__WEBPACK_IMPORTED_MODULE_3__actions__["f" /* togglePlay */], dispatch)
     };
 }
 
@@ -95601,47 +95558,99 @@ function mapDispatchToProps(dispatch) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return setTags; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return setTracks; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return selectTag; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return selectTrack; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return setLoading; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__ = __webpack_require__(27);
+/* unused harmony export setTags */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return selectTag; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return selectTrack; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return fetchTracks; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_soundcloud__ = __webpack_require__(291);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_soundcloud___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_soundcloud__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants_actionTypes__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants_auth__ = __webpack_require__(203);
+
+
+
+
 
 
 var setTags = function setTags(tags) {
     return {
-        type: __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__["d" /* TAGS_SET */],
+        type: __WEBPACK_IMPORTED_MODULE_2__constants_actionTypes__["f" /* TAGS_SET */],
         tags: tags
-    };
-};
-
-var setTracks = function setTracks(tracks) {
-    return {
-        type: __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__["g" /* TRACKS_SET */],
-        tracks: tracks
     };
 };
 
 var selectTag = function selectTag(tag) {
     return {
-        type: __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__["e" /* TAG_SELECTED */],
+        type: __WEBPACK_IMPORTED_MODULE_2__constants_actionTypes__["g" /* TAG_SELECTED */],
         tag: tag
     };
 };
 
 var selectTrack = function selectTrack(track) {
     return {
-        type: __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__["h" /* TRACK_SELECTED */],
+        type: __WEBPACK_IMPORTED_MODULE_2__constants_actionTypes__["i" /* TRACK_SELECTED */],
         track: track
     };
 };
 
-var setLoading = function setLoading(loading) {
-    return {
-        type: __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__["a" /* LOADING_SET */],
-        loading: loading
+var fetchTracks = function fetchTracks() {
+    return function (dispatch) {
+        dispatch(fetchTracksStart());
+
+        __WEBPACK_IMPORTED_MODULE_0_soundcloud___default.a.initialize({ client_id: __WEBPACK_IMPORTED_MODULE_3__constants_auth__["a" /* CLIENT_ID */] });
+        __WEBPACK_IMPORTED_MODULE_0_soundcloud___default.a.get('/tracks', {
+            user_id: __WEBPACK_IMPORTED_MODULE_3__constants_auth__["b" /* USER_ID */],
+            limit: 200
+        }).then(function (tracks) {
+            dispatch(fetchTracksSuccess(tracks));
+            dispatch(selectTrack(__WEBPACK_IMPORTED_MODULE_1_lodash___default.a.first(tracks)));
+
+            var tags = prepareTags(tracks);
+            if (tags.length) {
+                dispatch(setTags(tags));
+                dispatch(selectTag(__WEBPACK_IMPORTED_MODULE_1_lodash___default.a.first(tags)));
+            }
+        }).catch(function (error) {
+            console.log('error', error);
+            dispatch(fetchTracksError());
+        });
     };
+};
+
+var fetchTracksStart = function fetchTracksStart() {
+    return {
+        type: __WEBPACK_IMPORTED_MODULE_2__constants_actionTypes__["b" /* FETCH_TRACKS_START */]
+    };
+};
+
+var fetchTracksSuccess = function fetchTracksSuccess(tracks) {
+    return {
+        type: __WEBPACK_IMPORTED_MODULE_2__constants_actionTypes__["c" /* FETCH_TRACKS_SUCCESS */],
+        tracks: tracks
+    };
+};
+
+var fetchTracksError = function fetchTracksError() {
+    return {
+        type: __WEBPACK_IMPORTED_MODULE_2__constants_actionTypes__["a" /* FETCH_TRACKS_ERROR */]
+    };
+};
+
+var prepareTags = function prepareTags(tracks) {
+    tracks.map(function (track) {
+        track.tags = [];
+        var tags = track.tag_list.split(' ');
+        tags.push(track.genre);
+        __WEBPACK_IMPORTED_MODULE_1_lodash___default.a.compact(tags).map(function (tag) {
+            tag = tag.toLowerCase();
+            if (tag !== 'soundtrack' && track.tags.indexOf(tag) === -1) {
+                track.tags.push(tag);
+            }
+        });
+    });
+    return __WEBPACK_IMPORTED_MODULE_1_lodash___default.a.uniq(__WEBPACK_IMPORTED_MODULE_1_lodash___default.a.flatten(__WEBPACK_IMPORTED_MODULE_1_lodash___default.a.map(tracks, 'tags')));
 };
 
 /***/ }),
@@ -95657,21 +95666,21 @@ var setLoading = function setLoading(loading) {
 
 var setCurrentTime = function setCurrentTime(currentTime) {
     return {
-        type: __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__["b" /* SET_CURRENT_TIME */],
+        type: __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__["d" /* SET_CURRENT_TIME */],
         currentTime: currentTime
     };
 };
 
 var setVolume = function setVolume(volume) {
     return {
-        type: __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__["c" /* SET_VOLUME */],
+        type: __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__["e" /* SET_VOLUME */],
         volume: volume
     };
 };
 
 var togglePlay = function togglePlay() {
     return {
-        type: __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__["f" /* TOGGLE_PLAY */]
+        type: __WEBPACK_IMPORTED_MODULE_0__constants_actionTypes__["h" /* TOGGLE_PLAY */]
     };
 };
 
@@ -95826,9 +95835,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        onTimeUpdate: Object(__WEBPACK_IMPORTED_MODULE_3_redux__["b" /* bindActionCreators */])(__WEBPACK_IMPORTED_MODULE_5__actions__["c" /* setCurrentTime */], dispatch),
-        onVolumeChange: Object(__WEBPACK_IMPORTED_MODULE_3_redux__["b" /* bindActionCreators */])(__WEBPACK_IMPORTED_MODULE_5__actions__["g" /* setVolume */], dispatch),
-        onTogglePlay: Object(__WEBPACK_IMPORTED_MODULE_3_redux__["b" /* bindActionCreators */])(__WEBPACK_IMPORTED_MODULE_5__actions__["h" /* togglePlay */], dispatch)
+        onTimeUpdate: Object(__WEBPACK_IMPORTED_MODULE_3_redux__["b" /* bindActionCreators */])(__WEBPACK_IMPORTED_MODULE_5__actions__["d" /* setCurrentTime */], dispatch),
+        onVolumeChange: Object(__WEBPACK_IMPORTED_MODULE_3_redux__["b" /* bindActionCreators */])(__WEBPACK_IMPORTED_MODULE_5__actions__["e" /* setVolume */], dispatch),
+        onTogglePlay: Object(__WEBPACK_IMPORTED_MODULE_3_redux__["b" /* bindActionCreators */])(__WEBPACK_IMPORTED_MODULE_5__actions__["f" /* togglePlay */], dispatch)
     };
 }
 
@@ -97641,6 +97650,60 @@ var Contact = function (_Component) {
 }(__WEBPACK_IMPORTED_MODULE_1_react__["Component"]);
 
 /* harmony default export */ __webpack_exports__["a"] = (Contact);
+
+/***/ }),
+/* 310 */,
+/* 311 */,
+/* 312 */,
+/* 313 */,
+/* 314 */,
+/* 315 */,
+/* 316 */,
+/* 317 */,
+/* 318 */,
+/* 319 */,
+/* 320 */,
+/* 321 */,
+/* 322 */,
+/* 323 */,
+/* 324 */,
+/* 325 */,
+/* 326 */,
+/* 327 */,
+/* 328 */,
+/* 329 */,
+/* 330 */,
+/* 331 */,
+/* 332 */,
+/* 333 */,
+/* 334 */,
+/* 335 */,
+/* 336 */,
+/* 337 */,
+/* 338 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+function createThunkMiddleware(extraArgument) {
+  return function (_ref) {
+    var dispatch = _ref.dispatch,
+        getState = _ref.getState;
+    return function (next) {
+      return function (action) {
+        if (typeof action === 'function') {
+          return action(dispatch, getState, extraArgument);
+        }
+
+        return next(action);
+      };
+    };
+  };
+}
+
+var thunk = createThunkMiddleware();
+thunk.withExtraArgument = createThunkMiddleware;
+
+/* harmony default export */ __webpack_exports__["a"] = (thunk);
 
 /***/ })
 /******/ ]);
