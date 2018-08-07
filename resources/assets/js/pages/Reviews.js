@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import axios from 'axios';
+import {connect} from 'react-redux';
 import Popup from 'reactjs-popup';
 import {Translate} from 'react-i18nify';
 import OwlCarousel from 'react-owl-carousel2';
@@ -10,29 +10,12 @@ import {Footer} from '../components/Footer';
 import {Loader} from '../components/Loader';
 import ReviewPost from '../components/review-post';
 import Review from '../components/Review';
-import ReviewList from '../components/ReviewList';
+import * as actions from '../actions';
 
-export default class Reviews extends Component {
-    constructor() {
-        super();
-        this.state = {
-            reviews: [],
-            loading: true
-        };
-    }
-
-    async componentWillMount() {
-        await axios.get('api/review').then(response => {
-            this.setState({
-                reviews: response.data,
-                loading: false
-            });
-        }).catch(error => {
-            this.setState({
-                loading: false
-            });
-            console.log('error', error);
-        });
+class Reviews extends Component {
+    componentWillMount() {
+        const {fetchReviews} = this.props;
+        fetchReviews();
     }
 
     render() {
@@ -44,7 +27,8 @@ export default class Reviews extends Component {
             autoplay: false,
             autoHeight: true
         };
-        const {reviews, loading} = this.state;
+        const {reviews, loading} = this.props;
+
         return (
             <div>
                 <div className="wrapper reviews">
@@ -79,3 +63,21 @@ export default class Reviews extends Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    const {reviews, loading} = state.reviews;
+    return {
+        reviews,
+        loading
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        fetchReviews: () => {
+            dispatch(actions.fetchReviews());
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Reviews);
