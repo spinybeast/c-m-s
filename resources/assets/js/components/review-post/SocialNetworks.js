@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import Popup from 'reactjs-popup';
 import PropTypes from 'prop-types';
+import {Field} from 'redux-form';
 import {Translate} from 'react-i18nify';
 import _ from 'lodash';
 
 export default class SocialNetworks extends Component {
     render() {
-        let {socials, networks, handleChangeSocial} = this.props;
+        const {networks} = this.props;
 
         return (
             <div className="socials">
@@ -14,12 +15,11 @@ export default class SocialNetworks extends Component {
                 <div>
                     {networks.map((network, index) => {
                         return (
-                            <Popup key={index} trigger={<span className={network + (socials[network] && socials[network].length > 0 ? "" : " inactive")}>&nbsp;</span>}>
+                            <Popup key={index} trigger={<span className={network + " inactive"}>&nbsp;</span>}>
                                 <div>
-                                    <input type="text"
-                                           name={network}
-                                           value={socials[network] || ''}
-                                           onChange={handleChangeSocial}
+                                    <Field component="input"
+                                           type="text"
+                                           name={"socials[" + network + "]"}
                                            className="form-control transparent"
                                            placeholder={_.startCase(network)}
                                     />
@@ -34,7 +34,5 @@ export default class SocialNetworks extends Component {
 }
 
 SocialNetworks.propTypes = {
-  socials: PropTypes.object,
   networks: PropTypes.arrayOf(PropTypes.string),
-  handleChangeSocial: PropTypes.func
 };

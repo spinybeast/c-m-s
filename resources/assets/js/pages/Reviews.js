@@ -8,7 +8,7 @@ import 'react-owl-carousel2/src/owl.carousel.css';
 import {Header} from '../components/Header';
 import {Footer} from '../components/Footer';
 import {Loader} from '../components/Loader';
-import ReviewPost from '../components/review-post';
+import ReviewForm from '../components/review-post/ReviewForm';
 import Review from '../components/Review';
 import * as actions from '../actions';
 
@@ -35,7 +35,8 @@ class Reviews extends Component {
                     <Header/>
                     <main className="container">
 
-                        {!loading && reviews.length > 0 ?
+                        {
+                            !loading && reviews.length > 0 ?
                             <div className="review-carousel">
                                 <OwlCarousel options={options}>
                                     {reviews.map(review => (
@@ -43,7 +44,7 @@ class Reviews extends Component {
                                     ))}
                                 </OwlCarousel>
                             </div> :
-                            (loading ? <Loader/> : '')
+                            (loading ? <Loader/> : null)
                         }
 
 
@@ -52,7 +53,12 @@ class Reviews extends Component {
                             <Translate value="pages.reviews.ifYouWorked" tag="div" dangerousHTML={true}/>
                             <br/><br/>
                             <Popup trigger={<button><Translate value="pages.reviews.leaveFeedback"/></button>} modal>
-                                <ReviewPost/>
+                                <div className="review-popup">
+                                    <h4 className="title text-uppercase text-center">
+                                        <Translate value="pages.reviews.leaveFeedback"/>
+                                    </h4>
+                                    <ReviewForm/>
+                                </div>
                             </Popup>
                         </div>
                     </main>
