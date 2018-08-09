@@ -37,7 +37,11 @@
                             <span class="text-secondary">{{ $review->company }}</span>
                         </td>
                         <td>
-                            {{ $review->published ? 'Да' : 'Нет'}}
+                            @if ($review->published)
+                                <i class="fa fa-check text-success" aria-hidden="true"></i>
+                            @else
+                                <i class="fa fa-times text-danger" aria-hidden="true"></i>
+                            @endif
                         </td>
                         <td>
                             {{ $review->priority ?? 0 }}
