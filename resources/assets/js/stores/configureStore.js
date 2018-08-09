@@ -3,9 +3,14 @@ import {createLogger} from 'redux-logger';
 import thunk from 'redux-thunk';
 import rootReducer from '../reducers/index';
 
-const logger = createLogger();
+let createStoreWithMiddleware;
 
-const createStoreWithMiddleware = applyMiddleware(logger, thunk)(createStore);
+if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+    const logger = createLogger();
+    createStoreWithMiddleware = applyMiddleware(logger, thunk)(createStore);
+} else {
+    createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+}
 
 export default function configureStore(initialState) {
     return createStoreWithMiddleware(rootReducer, initialState);

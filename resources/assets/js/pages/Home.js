@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import {Translate} from 'react-i18nify';
 
 import {Header} from '../components/Header';
 import {Footer} from '../components/Footer';
 
 export const Home = () => (
-    <div>
+    <Fragment>
         <div className="wrapper home">
             <Header/>
             <main>
@@ -58,5 +58,5 @@ export const Home = () => (
             </main>
         </div>
         <Footer/>
-    </div>
+    </Fragment>
 );

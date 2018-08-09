@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import axios from 'axios';
 import _ from 'lodash';
 import {I18n, Translate} from 'react-i18nify';
@@ -57,7 +57,7 @@ export default class Contact extends Component {
 
     render() {
         return (
-            <div>
+            <Fragment>
                 <div className="wrapper contact">
                     <Header/>
                     <main className="container">
@@ -137,7 +137,7 @@ export default class Contact extends Component {
                     </main>
                 </div>
                 <Footer/>
-            </div>
+            </Fragment>
         );
     }
 }

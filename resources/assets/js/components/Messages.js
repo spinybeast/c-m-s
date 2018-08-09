@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 
 export default class Messages extends Component {
 
@@ -16,10 +16,10 @@ export default class Messages extends Component {
         }
 
         return (
-            <div>
+            <Fragment>
                 {message}
                 {errors}
-            </div>
+            </Fragment>
         )
     }
 }

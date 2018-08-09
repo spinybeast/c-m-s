@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import Popup from 'reactjs-popup';
 import {Translate} from 'react-i18nify';
@@ -30,7 +30,7 @@ class Reviews extends Component {
         const {reviews, loading} = this.props;
 
         return (
-            <div>
+            <Fragment>
                 <div className="wrapper reviews">
                     <Header/>
                     <main className="container">
@@ -65,7 +65,7 @@ class Reviews extends Component {
                 </div>
 
                 <Footer/>
-            </div>
+            </Fragment>
         )
     }
 }

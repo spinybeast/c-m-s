@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {Field} from 'redux-form';
 import {Translate} from 'react-i18nify';
@@ -41,7 +41,7 @@ export default class AvatarUpload extends Component {
             />;
         const {previewUrl} = this.props;
         return (
-            <div>
+            <Fragment>
                 <div className="form-group text-center">
                     <img className="rounded-circle img-fluid avatar-preview" src={previewUrl || '/img/noavatar.png'}/>
                 </div>
@@ -59,7 +59,7 @@ export default class AvatarUpload extends Component {
                         </button>
                     }
                 </div>
-            </div>
+            </Fragment>
         )
     }
 }

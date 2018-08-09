@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 
 import {Header} from '../components/Header';
@@ -17,7 +17,7 @@ class Portfolio extends Component {
 
     render() {
         return (
-            <div>
+            <Fragment>
                 <div className="wrapper portfolio">
                     <Header/>
                     <main>
@@ -25,7 +25,7 @@ class Portfolio extends Component {
                     </main>
                 </div>
                 <Footer/>
-            </div>
+            </Fragment>
         );
     }
 }

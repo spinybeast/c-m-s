@@ -23,9 +23,6 @@ body {
 
   #app {
     @extend %full-height;
-    & > div {
-      @extend %full-height;
-    }
   }
 }
 
@@ -37,8 +34,7 @@ button, button:active, button:focus, a, a:active, a:visited, a:focus {
   box-shadow:none;
 }
 .wrapper {
-  height: auto;
-  min-height: 100%;
+  @extend %full-height;
   padding-top: 89px;
   padding-bottom: 60px;
   margin-bottom: -60px;

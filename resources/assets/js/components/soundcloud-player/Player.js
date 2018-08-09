@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {Translate} from 'react-i18nify';
@@ -18,7 +18,7 @@ class Player extends Component {
         }
 
         return (
-            <div>
+            <Fragment>
                 <ActiveTrack/>
                 {
                     tracks.length > 0 ?
@@ -50,7 +50,7 @@ class Player extends Component {
                         </a>!
                     </div>
                 }
-            </div>
+            </Fragment>
         );
     }
 }
