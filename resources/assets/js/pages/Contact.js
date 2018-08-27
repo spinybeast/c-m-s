@@ -116,7 +116,7 @@ export default class Contact extends Component {
                                     </p>
                                     <p>
                                         <span className="mail"></span>
-                                        <a href="mailto:cyberton@mail.ru">cyberton@mail.ru</a>
+                                        <a href="mailto:composer.cyclonez@gmail.com">composer.cyclonez@gmail.com</a>
                                     </p>
                                     <p>
                                         <span className="vk"></span>
