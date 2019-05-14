@@ -32,11 +32,11 @@ export const Header = () => (
                                 <Translate value="menu.portfolio"/>
                             </Link>
                         </li>
-                        <li className="nav-item">
+                        {/*<li className="nav-item">
                             <Link className="nav-link" to="/reviews">
                                 <Translate value="menu.reviews"/>
                             </Link>
-                        </li>
+                        </li>*/}
                         <li className="nav-item">
                             <Link className="nav-link" to="/contact">
                                 <Translate value="menu.contact"/>
