@@ -6,7 +6,7 @@
             <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
                 <div class="container">
                     <a class="navbar-brand" href="/">
-                        <span class="blue">Cyclone&nbsp;</span>Music Space
+                        <img src="/img/logo.png" alt="Cyclone Music Space" height="35"/>
                     </a>
                 </div>
             </nav>
