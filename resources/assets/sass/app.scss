@@ -35,7 +35,7 @@ button, button:active, button:focus, a, a:active, a:visited, a:focus {
 }
 .wrapper {
   @extend %full-height;
-  padding-top: 89px;
+  padding-top: 84px;
   padding-bottom: 60px;
   margin-bottom: -60px;
   background: {
@@ -77,7 +77,7 @@ button, button:active, button:focus, a, a:active, a:visited, a:focus {
     @extend %navbar-element;
     font-family: $font-family-andale;
     font-size: 18px;
-    padding-left: 0;
+    padding: 10px;
     .blue {
       color: $blue;
     }

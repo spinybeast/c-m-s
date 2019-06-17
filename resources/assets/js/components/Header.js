@@ -7,8 +7,7 @@ export const Header = () => (
         <nav className="navbar navbar-expand-lg fixed-top navbar-dark">
             <div className="container">
                 <a className="navbar-brand" href="#">
-                    <span className="blue">Cyclone&nbsp;</span>
-                    Music Space
+                    <img src="/img/logo.png" alt="Cyclone Music Space" height={35}/>
                 </a>
                 <div className="lang">
                     <a className="ru" onClick={() => {I18n.setLocale('ru')}}></a>

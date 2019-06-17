@@ -7,6 +7,17 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="keywords" content="{{ __('meta.keywords') }}">
     <meta name="description" content="{{ __('meta.description') }}">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="{{ config('app.name') }}">
+    <meta property="og:title" content="{{ config('app.name') }}">
+    <meta property="og:description" content="{{ __('meta.description') }}.">
+    <meta property="og:url" content="http://cyclone-music-space.ru/#/">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:image"  content="{{ asset('img/logo.png') }}" />
+    <meta property="og:image:width" content="185">
+    <meta property="og:image:height" content="48">
+
     <title>{{ config('app.name') }}</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" type="image/png" href="{{ asset('favicon.ico') }}"/>
