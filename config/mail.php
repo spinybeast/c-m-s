@@ -120,6 +120,6 @@ return [
         ],
     ],
 
-    'admin' => 'spiny.beast@gmail.com'
+    'admin' => 'composer.cyclonez@gmail.com'
 
 ];
