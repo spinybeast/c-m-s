@@ -2,6 +2,14 @@
   .container {
     width: 970px
   }
+  .portfolio {
+    .tracks {
+      .track {
+        flex-basis: 20%;
+        max-width: 20%;
+      }
+    }
+  }
 }
 
 @media (max-width: 768px) {
@@ -27,5 +35,13 @@
   }
   .copyright {
     line-height: 2;
+  }
+  .portfolio {
+    .tracks {
+      .track {
+        flex-basis: 50%;
+        max-width: 50%;
+      }
+    }
   }
 }

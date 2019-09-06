@@ -25,7 +25,8 @@
       }
     },
     "portfolio": {
-      "cantLoad": "Sorry, we can't load portfolio. Check our"
+      "cantLoad": "Sorry, we can't load portfolio. Check our",
+      "chooseGenre": "Please, choose genre"
     },
     "reviews": {
       "hereYouCanFindTheReviewer": "Here you can find the reviewer",

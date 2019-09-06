@@ -1,12 +1,12 @@
-import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { Translate } from 'react-i18nify';
+import React, {Component, Fragment} from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {Translate} from 'react-i18nify';
 import Select from 'react-select';
 
 import Track from './Track';
 import ActiveTrack from './ActiveTrack';
-import { Loader } from '../Loader'
+import {Loader} from '../Loader'
 import * as actions from '../../actions';
 
 class Player extends Component {
@@ -34,15 +34,20 @@ class Player extends Component {
                     tracks.length > 0 ?
                         <div className="container">
                             <div className="row">
-                                <Select className="col-12"
-                                        classNamePrefix="select-genre"
-                                        onChange={this.handleChange}
-                                        options={tags.map((tag) => {
-                                            return {value: tag, label: tag}
-                                        })}
-                                />
-
-                                <div>
+                                <div className="col-12 d-flex align-items-center pb-3 hr">
+                                    <p className="col-md-3 mb-0 p-0">
+                                        <Translate value="pages.portfolio.chooseGenre"/>
+                                    </p>
+                                    <Select className="col-md-9 p-0"
+                                            classNamePrefix="select-genre"
+                                            onChange={this.handleChange}
+                                            value={{value: activeTag, label: activeTag}}
+                                            options={tags.map((tag) => {
+                                                return {value: tag, label: tag}
+                                            })}
+                                    />
+                                </div>
+                                <div className="tracks d-flex pt-3 w-100">
                                     {tracks.map((track, index) => <Track key={index} track={track}/>)}
                                 </div>
                             </div>

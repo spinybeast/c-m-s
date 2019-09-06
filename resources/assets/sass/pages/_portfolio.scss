@@ -16,7 +16,7 @@
   .scroll {
     font-size: 14px;
     overflow-y: scroll;
-    background: rgba(16, 18, 16, 0.7);
+    background: $transparent-grey;
     padding: 30px 50px;
     height: 600px;
     margin-bottom: 10px;
@@ -47,13 +47,10 @@
     }
   }
 
-  hr {
-    margin-top: 15px;
-    margin-bottom: 15px;
-    border: 0;
-    border-top: 1px solid rgba(221, 221, 221, 0.2)
+  .hr {
+    border-bottom: 1px solid $transparent-light;
   }
-  button.play-button {
+  %play-button {
     width: 30px;
     height: 30px;
     position: relative;
@@ -61,8 +58,11 @@
     border-radius: 100%;
     border: 1px solid transparent;
     cursor: pointer;
+  }
+  button.play-button {
+    @extend %play-button;
     %icon {
-      fill: rgba(16, 18, 16, 0.7);
+      fill: $transparent-grey;
       position: absolute;
       top: 4px;
       left: 3px;
@@ -81,7 +81,7 @@
   .player {
     font-size: 14px;
     padding: 10px 0;
-    background: rgba(16, 18, 16, 0.7);
+    background: $transparent-grey;
     .title {
       color: $light-grey;
       position: absolute;
@@ -118,8 +118,81 @@
     }
   }
   .select-genre {
+    &__single-value {
+      color: $white;
+    }
+    &__option:hover, &__option--is-selected, &__option--is-focused {
+      background-color: $blue;
+      color: $black;
+    }
     &__menu {
-      color: $grey;
+      background-color: $black;
+      color: $white;
+    }
+    &__control {
+      background-color: $transparent-grey;
+      color: $white;
+      box-shadow: 0 0 0 1px $blue;
+      border: none;
+    }
+    &__indicator {
+      color: $blue;
+      &-separator {
+        background-color: $blue;
+      }
+    }
+
+  }
+  .tracks {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    .track {
+      flex: 1;
+      flex-basis: 25%;
+      max-width: 25%;
+      .track-content {
+        margin: 15px;
+        background: $transparent-grey;
+        border: 1px solid $transparent-light;
+        border-radius: 6px;
+        &:hover {
+          border-color: $blue;
+        }
+      }
+      .artwork {
+        position: relative;
+        cursor: pointer;
+        img {
+          border-radius: 6px 6px 0 0;
+        }
+        &-button {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          margin-top: -25px;
+          margin-left: -25px;
+          .play-button {
+            @extend %play-button;
+            width: 50px;
+            height: 50px;
+            .pause {
+              @extend %icon;
+              width: 30px !important;
+              height: 30px !important;
+              left: 8px !important;
+              top: 8px !important;
+            }
+            .play {
+              @extend %icon;
+              left: 11px !important;
+              top: 8px !important;
+              width: 30px !important;
+              height: 30px !important;
+            }
+
+          }
+        }
+      }
     }
   }
 }
