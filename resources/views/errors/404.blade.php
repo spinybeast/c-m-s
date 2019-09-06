@@ -36,7 +36,7 @@
                 <a class="btn btn-social-icon btn-vk" target="_blank" title="Мы ВКонтакте" href="https://vk.com/cyclone_music_space">
                     <i class="fa fa-vk"></i>
                 </a>
-                <a class="btn btn-social-icon btn-facebook" target="_blank" title="Мы на Facebook" href="https://www.facebook.com/anton.brezhnev.58">
+                <a class="btn btn-social-icon btn-facebook" target="_blank" title="Мы на Facebook" href="https://www.facebook.com/cyclone_music_space-720106248448490">
                     <i class="fa fa-facebook"></i>
                 </a>
                 <a class="btn btn-social-icon btn-soundcloud" target="_blank" title="Мы на Soundcloud" href="https://soundcloud.com/tony-cyclonez">

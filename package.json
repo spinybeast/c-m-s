@@ -27,6 +27,7 @@
     "react-owl-carousel2": "^0.3.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
+    "react-select": "^3.0.4",
     "reactjs-popup": "^1.1.1",
     "redux": "^4.0.0",
     "redux-form": "^7.4.2",

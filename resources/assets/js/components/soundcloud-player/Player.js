@@ -1,17 +1,27 @@
-import React, {Component, Fragment} from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {Translate} from 'react-i18nify';
+import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Translate } from 'react-i18nify';
+import Select from 'react-select';
 
 import Track from './Track';
 import ActiveTrack from './ActiveTrack';
-import {Loader} from '../Loader'
+import { Loader } from '../Loader'
 import * as actions from '../../actions';
 
-
 class Player extends Component {
+    constructor() {
+        super();
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(selectedOption) {
+        const {onSelectTag} = this.props;
+        onSelectTag(selectedOption.value);
+    };
+
     render() {
-        const {tags = [], tracks = [], activeTag, loading, onSelectTag} = this.props;
+        const {tags = [], tracks = [], activeTag, loading} = this.props;
 
         if (loading) {
             return <Loader/>;
@@ -22,33 +32,28 @@ class Player extends Component {
                 <ActiveTrack/>
                 {
                     tracks.length > 0 ?
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-6">
-                                <div className="scroll">
-                                    {tags.map((tag, index) =>
-                                        <div key={index}
-                                             className={'tag' + (activeTag === tag ? ' active' : '')}
-                                             onClick={() => onSelectTag(tag)}>
-                                            {tag}
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-                            <div className="col-md-6">
-                                <div className="scroll">
+                        <div className="container">
+                            <div className="row">
+                                <Select className="col-12"
+                                        classNamePrefix="select-genre"
+                                        onChange={this.handleChange}
+                                        options={tags.map((tag) => {
+                                            return {value: tag, label: tag}
+                                        })}
+                                />
+
+                                <div>
                                     {tracks.map((track, index) => <Track key={index} track={track}/>)}
                                 </div>
                             </div>
+                        </div> :
+                        <div className="empty-portfolio">
+                            <Translate value="pages.portfolio.cantLoad"/>&nbsp;
+                            <a href="http://soundcloud.com/tony-cyclonez" target="_blank">
+                                <i className="fa fa-soundcloud">&nbsp;</i>
+                                Soundcloud
+                            </a>!
                         </div>
-                    </div> :
-                    <div className="empty-portfolio">
-                        <Translate value="pages.portfolio.cantLoad"/>&nbsp;
-                        <a href="http://soundcloud.com/tony-cyclonez" target="_blank">
-                            <i className="fa fa-soundcloud">&nbsp;</i>
-                            Soundcloud
-                        </a>!
-                    </div>
                 }
             </Fragment>
         );

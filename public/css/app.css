@@ -13944,6 +13944,10 @@ a:focus {
   background-color: #80D1FF;
 }
 
+.portfolio .select-genre__menu {
+  color: #141719;
+}
+
 /** страница Отзывов **/
 
 @-webkit-keyframes fade-in {

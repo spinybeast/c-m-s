@@ -117,4 +117,9 @@
       }
     }
   }
+  .select-genre {
+    &__menu {
+      color: $grey;
+    }
+  }
 }
