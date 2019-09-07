@@ -13958,7 +13958,14 @@ a:focus {
 }
 
 .portfolio .select-genre__single-value {
+  font-family: "andale_monoregular", sans-serif;
+  text-transform: uppercase;
   color: #fff;
+}
+
+.portfolio .select-genre__option {
+  font-family: "andale_monoregular", sans-serif;
+  text-transform: uppercase;
 }
 
 .portfolio .select-genre__option:hover,

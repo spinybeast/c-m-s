@@ -125,11 +125,17 @@
   }
   .select-genre {
     &__single-value {
+      font-family: $font-family-andale;
+      text-transform: uppercase;
       color: $white;
     }
-    &__option:hover, &__option--is-selected, &__option--is-focused {
-      background-color: $blue;
-      color: $black;
+    &__option {
+      font-family: $font-family-andale;
+      text-transform: uppercase;
+      &:hover, &--is-selected, &--is-focused {
+        background-color: $blue;
+        color: $black;
+      }
     }
     &__menu {
       background-color: $black;
