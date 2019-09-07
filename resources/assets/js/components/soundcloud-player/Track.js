@@ -10,25 +10,23 @@ class Track extends Component {
         return (
             <div className="track text-center d-flex">
                 <div className="track-content d-flex flex-column">
-                    <div className="artwork">
+                    <div className="artwork" onClick={() => {
+                        if (playing && activeTrack.id === track.id || !playing) {
+                            onTogglePlay();
+                        }
+                        onSelectTrack(track);
+                    }}>
                         <img src={track.artwork_url.replace('large', 't300x300')} alt={track.title}
                              className="img-fluid"/>
                         <div className="artwork-button">
                             {
                                 playing && activeTrack.id === track.id ?
-                                    <button className="play-button"
-                                            onClick={onTogglePlay}>
+                                    <button className="play-button">
                                         <svg className="pause" viewBox="0 0 30 30">
                                             <path d="M4 4 H12 V28 H4 z M20 4 H28 V28 H20 z "></path>
                                         </svg>
                                     </button> :
-                                    <button className="play-button"
-                                            onClick={() => {
-                                                if (!playing) {
-                                                    onTogglePlay()
-                                                }
-                                                onSelectTrack(track)
-                                            }}>
+                                    <button className="play-button">
                                         <svg className="play" viewBox="0 0 30 30">
                                             <path d="M4 4 L28 16 L4 28 z "></path>
                                         </svg>
@@ -38,8 +36,8 @@ class Track extends Component {
 
                         </div>
                     </div>
-                    <div className="info mt-3">
-                        <p className="text-uppercase font-weight-bold">{track.title}</p>
+                    <div className="info mt-3 d-flex flex-column align-items-center">
+                        <p className="text-uppercase font-weight-bold mb-3">{track.title}</p>
                     </div>
                 </div>
             </div>

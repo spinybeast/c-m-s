@@ -1,4 +1,7 @@
 /** страница Портфолио **/
+.wrapper.portfolio .container:nth-child(2) {
+  padding: 30px 15px 20px;
+}
 .portfolio {
   .empty-portfolio {
     margin-top: 50px;
@@ -12,7 +15,9 @@
       padding-left: 5px;
     }
   }
-
+  .choose-genre {
+    font-family: $font-family-andale;
+  }
   .scroll {
     font-size: 14px;
     overflow-y: scroll;
@@ -61,6 +66,7 @@
   }
   button.play-button {
     @extend %play-button;
+    transition: background 0.3s ease-in-out;
     %icon {
       fill: $transparent-grey;
       position: absolute;
@@ -143,6 +149,7 @@
     }
 
   }
+
   .tracks {
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -153,10 +160,15 @@
       .track-content {
         margin: 15px;
         background: $transparent-grey;
-        border: 1px solid $transparent-light;
+        box-shadow: 0 0 0 1px $transparent-light;
         border-radius: 6px;
+        transition: box-shadow 0.3s ease-in-out;
         &:hover {
-          border-color: $blue;
+          box-shadow: 0 0 2px 1px $blue;
+          .play-button {
+            background: $blue;
+            box-shadow: 0 0 2px 1px $transparent-grey;
+          }
         }
       }
       .artwork {

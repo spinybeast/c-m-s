@@ -39,6 +39,20 @@
   .portfolio {
     .tracks {
       .track {
+        flex-basis: 33.3333%;
+        max-width: 33.3333%;
+      }
+    }
+    .choose-genre {
+      font-size: 13px;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .portfolio {
+    .tracks {
+      .track {
         flex-basis: 50%;
         max-width: 50%;
       }

@@ -35,7 +35,7 @@ class Player extends Component {
                         <div className="container">
                             <div className="row">
                                 <div className="col-12 d-flex align-items-center pb-3 hr">
-                                    <p className="col-md-3 mb-0 p-0">
+                                    <p className="col-md-3 mb-0 p-0 text-uppercase font-weight-bold choose-genre">
                                         <Translate value="pages.portfolio.chooseGenre"/>
                                     </p>
                                     <Select className="col-md-9 p-0"
