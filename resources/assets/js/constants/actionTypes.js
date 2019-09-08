@@ -2,6 +2,7 @@
 export const TAGS_SET = 'TAGS_SET';
 export const TAG_SELECTED = 'TAG_SELECTED';
 export const TRACK_SELECTED = 'TRACK_SELECTED';
+export const PAGE_CHANGED = 'PAGE_CHANGED';
 
 export const FETCH_TRACKS_START = 'FETCH_TRACKS_START';
 export const FETCH_TRACKS_SUCCESS = 'FETCH_TRACKS_SUCCESS';

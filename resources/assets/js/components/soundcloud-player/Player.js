@@ -3,25 +3,34 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {Translate} from 'react-i18nify';
 import Select from 'react-select';
+import ReactPaginate from 'react-paginate';
 
 import Track from './Track';
 import ActiveTrack from './ActiveTrack';
 import {Loader} from '../Loader'
 import * as actions from '../../actions';
+import {PER_PAGE} from '../../constants/pagination';
 
 class Player extends Component {
     constructor() {
         super();
-        this.handleChange = this.handleChange.bind(this);
+        this.handleChangeGenre = this.handleChangeGenre.bind(this);
+        this.handleChangePage = this.handleChangePage.bind(this);
     }
 
-    handleChange(selectedOption) {
-        const {onSelectTag} = this.props;
+    handleChangeGenre(selectedOption) {
+        const {onSelectTag, onChangePage} = this.props;
         onSelectTag(selectedOption.value);
+        onChangePage(0);
+    };
+
+    handleChangePage(data) {
+        const {onChangePage} = this.props;
+        onChangePage(data.selected);
     };
 
     render() {
-        const {tags = [], tracks = [], activeTag, loading} = this.props;
+        const {tags = [], tracks = [], activeTag, loading, pageCount} = this.props;
 
         if (loading) {
             return <Loader/>;
@@ -40,7 +49,7 @@ class Player extends Component {
                                     </p>
                                     <Select className="col-md-9 p-0"
                                             classNamePrefix="select-genre"
-                                            onChange={this.handleChange}
+                                            onChange={this.handleChangeGenre}
                                             value={{value: activeTag, label: activeTag}}
                                             options={tags.map((tag) => {
                                                 return {value: tag, label: tag}
@@ -50,6 +59,17 @@ class Player extends Component {
                                 <div className="tracks d-flex pt-3 w-100">
                                     {tracks.map((track, index) => <Track key={index} track={track}/>)}
                                 </div>
+                                {pageCount > 1 &&
+                                <div className="col-12 d-flex align-items-end">
+                                    <ReactPaginate
+                                        pageCount={pageCount}
+                                        pageRangeDisplayed={pageCount}
+                                        onPageChange={this.handleChangePage}
+                                        containerClassName={'pagination'}
+                                        nextLabel={'>'}
+                                        previousLabel={'<'}
+                                    />
+                                </div>}
                             </div>
                         </div> :
                         <div className="empty-portfolio">
@@ -66,21 +86,26 @@ class Player extends Component {
 }
 
 function mapStateToProps(state) {
-    const {tags, tracks, activeTag, activeTrack, loading} = state.portfolio;
+    const {tags, tracks, activeTag, activeTrack, loading, currentPage} = state.portfolio;
+    const filteredTracks = _.filter(tracks, (track) => {
+        return !activeTag || ~track.tags.indexOf(activeTag);
+    });
+    const paginatedTracks = _.take(_.drop(filteredTracks, PER_PAGE * currentPage), PER_PAGE);
     return {
         tags,
         activeTag,
         activeTrack,
         loading,
-        tracks: _.filter(tracks, (track) => {
-            return !activeTag || ~track.tags.indexOf(activeTag);
-        })
+        currentPage,
+        tracks: paginatedTracks,
+        pageCount: Math.round(filteredTracks.length/PER_PAGE)
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         onSelectTag: bindActionCreators(actions.selectTag, dispatch),
+        onChangePage: bindActionCreators(actions.changePage, dispatch),
     };
 }
 

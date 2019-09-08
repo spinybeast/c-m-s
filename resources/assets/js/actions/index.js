@@ -1,4 +1,4 @@
-import {setTags, selectTag, selectTrack, fetchTracks} from './portfolio';
+import {setTags, selectTag, selectTrack, fetchTracks, changePage} from './portfolio';
 import {setCurrentTime, setVolume, togglePlay} from './activeTrack';
 import {fetchReviews} from './reviews';
 
@@ -7,6 +7,7 @@ export {
     selectTag,
     selectTrack,
     fetchTracks,
+    changePage,
     setCurrentTime,
     setVolume,
     togglePlay,

@@ -5,7 +5,8 @@ const initialState = {
     tracks: [],
     activeTag: null,
     activeTrack: {},
-    loading: false
+    loading: false,
+    currentPage: 0
 };
 
 export default function (state = initialState, action) {
@@ -22,6 +23,8 @@ export default function (state = initialState, action) {
             return fetchTracksSuccess(state, action);
         case actionTypes.FETCH_TRACKS_ERROR:
             return fetchTracksError(state);
+        case actionTypes.PAGE_CHANGED:
+            return changePage(state, action);
     }
     return state;
 }
@@ -54,4 +57,7 @@ function fetchTracksError(state) {
     return {...state, loading: false};
 }
 
-
+function changePage(state, action) {
+    const {page} = action;
+    return {...state, currentPage: page};
+}

@@ -19,6 +19,11 @@ export const selectTrack = (track) => ({
     track
 });
 
+export const changePage = (page) => ({
+    type: actionTypes.PAGE_CHANGED,
+    page
+});
+
 export const fetchTracks = () => dispatch => {
     dispatch(fetchTracksStart());
 
@@ -57,7 +62,7 @@ const fetchTracksError = () => ({
 
 const prepareTags = (tracks) => {
     tracks.map((track) => {
-        track.tags = [];
+        track.tags = ['all'];
         let tags = track.tag_list.split(' ');
         tags.push(track.genre);
         _.compact(tags).map((tag) => {
