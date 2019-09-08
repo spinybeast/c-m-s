@@ -67,7 +67,7 @@ class ActiveTrack extends Component {
                                 }
                             </button>
                         </div>
-                        <div className="col-6 col-sm-7 pl-0">
+                        <div className="col-6 col-sm-7">
                             <div className="title">{activeTrack.title}</div>
                             <progress
                                 onClick={this.seek.bind(this)}
@@ -81,7 +81,7 @@ class ActiveTrack extends Component {
                                 {activeTrack.id ? ActiveTrack.formatTime(activeTrack.duration / 1000) : ''}
                             </span>
                         </div>
-                        <div className="col-3 d-flex flex-row align-items-center">
+                        <div className="col-3 d-flex flex-row align-items-center pl-sm-4">
                             <i className="fa fa-volume-up"></i>
                             <progress value={volume || 0.5}
                                       onClick={this.seekVolume.bind(this)}>

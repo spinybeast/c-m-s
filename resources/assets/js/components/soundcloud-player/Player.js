@@ -30,7 +30,7 @@ class Player extends Component {
     };
 
     render() {
-        const {tags = [], tracks = [], activeTag, loading, pageCount} = this.props;
+        const {tags = [], tracks = [], activeTag, loading, pageCount, currentPage} = this.props;
 
         if (loading) {
             return <Loader/>;
@@ -50,6 +50,7 @@ class Player extends Component {
                                     <Select className="col-md-9 p-0"
                                             classNamePrefix="select-genre"
                                             onChange={this.handleChangeGenre}
+                                            isSearchable={false}
                                             value={{value: activeTag, label: activeTag}}
                                             options={tags.map((tag) => {
                                                 return {value: tag, label: tag}
@@ -64,6 +65,7 @@ class Player extends Component {
                                     <ReactPaginate
                                         pageCount={pageCount}
                                         pageRangeDisplayed={pageCount}
+                                        forcePage={currentPage}
                                         onPageChange={this.handleChangePage}
                                         containerClassName={'pagination'}
                                         nextLabel={'>'}
@@ -98,7 +100,7 @@ function mapStateToProps(state) {
         loading,
         currentPage,
         tracks: paginatedTracks,
-        pageCount: Math.round(filteredTracks.length/PER_PAGE)
+        pageCount: Math.round(filteredTracks.length / PER_PAGE)
     }
 }
 

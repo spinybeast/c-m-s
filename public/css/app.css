@@ -13975,6 +13975,13 @@ a:focus {
   color: #0A0C0D;
 }
 
+.portfolio .select-genre__option:hover:first-child,
+.portfolio .select-genre__option--is-selected:first-child,
+.portfolio .select-genre__option--is-focused:first-child {
+  background-color: #0A0C0D;
+  color: #fff;
+}
+
 .portfolio .select-genre__menu {
   background-color: #0A0C0D;
   color: #fff;
@@ -14076,8 +14083,9 @@ a:focus {
   margin: 20px auto;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .portfolio .pagination li {
@@ -14105,6 +14113,20 @@ a:focus {
 .portfolio .pagination li.selected a {
   text-decoration: none;
   color: rgba(16, 18, 16, 0.7);
+}
+
+.portfolio .pagination li.disabled,
+.portfolio .pagination li.disabled:hover {
+  cursor: default;
+  background: transparent;
+  -webkit-box-shadow: 0 0 2px 1px #0A0C0D;
+          box-shadow: 0 0 2px 1px #0A0C0D;
+  border: none;
+}
+
+.portfolio .pagination li.disabled a,
+.portfolio .pagination li.disabled:hover a {
+  color: #0A0C0D;
 }
 
 .portfolio .pagination li a {

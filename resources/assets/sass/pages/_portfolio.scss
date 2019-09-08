@@ -136,6 +136,10 @@
       &:hover, &--is-selected, &--is-focused {
         background-color: $blue;
         color: $black;
+        &:first-child {
+          background-color: $black;
+          color: $white;
+        }
       }
     }
     &__menu {
@@ -217,7 +221,7 @@
   .pagination {
     margin: 20px auto;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
     li {
       box-shadow: 0 0 2px 1px $blue;
       border-radius: 50%;
@@ -235,6 +239,15 @@
         a {
           text-decoration: none;
           color: $transparent-grey;
+        }
+      }
+      &.disabled, &.disabled:hover {
+        cursor: default;
+        background: transparent;
+        box-shadow: 0 0 2px 1px $black;
+        border: none;
+        a {
+          color: $black;
         }
       }
       a {
