@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as actions from '../../actions';
+import ImageWithPlaceholder from '../ImageWithPlaceholder';
 
 class Track extends Component {
 
@@ -16,8 +17,7 @@ class Track extends Component {
                         }
                         onSelectTrack(track);
                     }}>
-                        <img src={track.artwork_url.replace('large', 't300x300')} alt={track.title}
-                             className="img-fluid"/>
+                        <ImageWithPlaceholder src={track.artwork_url.replace('large', 't300x300')} alt={track.title}/>
                         <div className="artwork-button">
                             {
                                 playing && activeTrack.id === track.id ?
