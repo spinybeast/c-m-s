@@ -32,7 +32,7 @@ class App extends Component {
                     <Switch>
                         <Route exact path='/' component={Home}/>
                         <Route path='/portfolio' component={Portfolio}/>
-                        {/*<Route path='/reviews' component={Reviews}/>*/}
+                        <Route path='/reviews' component={Reviews}/>
                         <Route path='/contact' component={Contact}/>
                         <Redirect from="/reviews" to="/portfolio" />
                         <Redirect from="*" to="/" />
