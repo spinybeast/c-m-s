@@ -37,10 +37,18 @@ class ReviewController extends Controller
             'socials.twitter.url' => __('messages.reviews.formatUrl', ['url' => 'Twitter'])
         ]);
 
-        if ($validator->fails()) {
+        try {
+            if ($validator->fails()) {
+                return response()->json([
+                    'success' => false,
+                    'errors' => array_flatten($validator->errors()->all())
+                ]);
+            }
+        } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
-                'errors' => array_flatten($validator->errors()->all())
+                'errors' => [__('messages.somethingWrong')],
+                'exception' => $e->getMessage()
             ]);
         }
 

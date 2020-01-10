@@ -53,12 +53,17 @@ class Reviews extends Component {
                             <Translate value="pages.reviews.ifYouWorked" tag="div" dangerousHTML={true}/>
                             <br/><br/>
                             <Popup trigger={<button><Translate value="pages.reviews.leaveFeedback"/></button>} modal>
-                                <div className="review-popup">
-                                    <h4 className="title text-uppercase text-center">
-                                        <Translate value="pages.reviews.leaveFeedback"/>
-                                    </h4>
-                                    <ReviewForm/>
-                                </div>
+                                {close =>
+                                    <div className="review-popup">
+                                        <a className="close" onClick={close}>
+                                            &times;
+                                        </a>
+                                        <h4 className="title text-uppercase text-center">
+                                            <Translate value="pages.reviews.leaveFeedback"/>
+                                        </h4>
+                                        <ReviewForm/>
+                                    </div>
+                                }
                             </Popup>
                         </div>
                     </main>

@@ -7,12 +7,14 @@ import SocialNetworks from "./SocialNetworks";
 import Messages from "../Messages";
 import {I18n, Translate} from "react-i18nify";
 import axios from "axios";
+import { Loader } from '../Loader';
 
 class ReviewForm extends Component {
 
     constructor() {
         super();
         this.state = {
+            loading: false,
             message: '',
             errors: [],
         };
@@ -20,32 +22,39 @@ class ReviewForm extends Component {
     }
 
     async submit(values) {
+        this.setState({loading: true});
         await axios.post('api/review', values).then(result => {
             if (result.data.success) {
                 this.props.reset();
                 this.setState({
                     message: result.data.message,
                     errors: [],
+                    loading: false
                 });
             } else {
                 this.setState({
                     message: '',
-                    errors: result.data.errors
+                    errors: result.data.errors,
+                    loading: false
                 });
             }
         }).catch(error => {
-            console.log('error', error);
+            this.setState({
+                errors: [error.response.status === 413 ? 'Your avatar is too large' : 'Something went wrong'],
+                loading: false
+            });
+            console.log('error', error.response);
         })
     }
 
     render() {
-        const {handleSubmit, previewUrl, clearFields} = this.props;
-        const {message, errors} = this.state;
+        const {handleSubmit, previewUrl, socials, clearFields} = this.props;
+        const {message, errors, loading} = this.state;
 
         return (
-            <form onSubmit={handleSubmit(this.submit)} className="row">
-                <div className="col-md-7">
-                    <div>
+            <form onSubmit={handleSubmit(this.submit)}>
+                <div className="d-flex row flex-wrap">
+                    <div className="col-12 col-md-7">
                         <Messages message={message} errors={errors}/>
                         <div className="form-group">
                             <Field component="input"
@@ -64,7 +73,7 @@ class ReviewForm extends Component {
                                    placeholder={I18n.t('pages.reviews.popup.company')}
                             />
                         </div>
-                        <div className="form-group">
+                        <div>
                             <Field component="textarea"
                                    rows="4"
                                    name="text"
@@ -73,22 +82,29 @@ class ReviewForm extends Component {
                                    required
                             />
                         </div>
-                        <div className="form-group">
-                            <button type="submit" className="form-control btn btn-black">
+                    </div>
+                    <div className="col-12 col-md-5 mt-3 mt-md-0">
+                        <AvatarUpload
+                            previewUrl={previewUrl}
+                            clearFields={clearFields}
+                        />
+                    </div>
+                </div>
+                <div className="d-flex row flex-column-reverse flex-sm-row flex-wrap text-center">
+                    <div className="col-12 col-md-7 d-flex align-items-center justify-content-center">
+                        {
+                            loading ? <Loader/> :
+                            <button type="submit" className="form-control btn btn-black mt-4 mt-sm-3">
                                 <Translate value="pages.reviews.popup.send"/>
                             </button>
-                        </div>
+                        }
                     </div>
-
-                </div>
-                <div className="col-md-5 text-center">
-                    <AvatarUpload
-                        previewUrl={previewUrl}
-                        clearFields={clearFields}
-                    />
-                    <SocialNetworks
-                        networks={['facebook', 'google', 'vkontakte', 'instagram', 'twitter']}
-                    />
+                    <div className="col-12 col-md-5">
+                        <SocialNetworks
+                            values={socials}
+                            networks={['facebook', 'google', 'vkontakte', 'instagram', 'twitter']}
+                        />
+                    </div>
                 </div>
             </form>
         );
@@ -103,7 +119,8 @@ const selector = formValueSelector('review');
 ReviewForm = connect(state => {
     const previewUrl = selector(state, 'photo') || '';
     return {
-        previewUrl
+        previewUrl,
+        socials: selector(state, 'socials') || {}
     }
 })(ReviewForm);
 

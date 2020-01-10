@@ -1,8 +1,5 @@
-// Fonts
 @import "fonts";
-// Variables
 @import "variables";
-// Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
 %full-height {
@@ -37,21 +34,31 @@ button, button:active, button:focus, a, a:active, a:visited, a:focus {
   padding-top: 84px;
   padding-bottom: 60px;
   margin-bottom: -60px;
-  background: {
+
+  &:before {
+    background: {
     attachment: fixed;
     position: center;
     repeat: no-repeat;
   }
 
-  background-size: cover;
-  background-clip: content-box;
-  &.contact {
+    background-size: cover;
+    background-clip: content-box;
+    content: '';
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    z-index: -1;
+  }
+  &.contact:before {
     background-image: url('../img/backs/contacts.png');
   }
-  &.portfolio {
+  &.portfolio:before {
     background-image: url('../img/backs/portfolio.png');
   }
-  &.reviews {
+  &.reviews:before {
     background-image: url('../img/backs/reviews.png');
   }
   .container:nth-child(2) {
@@ -63,7 +70,7 @@ button, button:active, button:focus, a, a:active, a:visited, a:focus {
 .navbar-dark {
   border: none;
   background-color: $black;
-
+  z-index: 998 !important;
   %navbar-element {
     text-transform: uppercase;
     font-weight: 700;

@@ -113,7 +113,9 @@
       }
     }
   }
-
+  .popup-overlay {
+    overflow: auto;
+  }
   .popup-content {
     animation: fade-in .7s;
     max-width: 700px;
@@ -123,7 +125,17 @@
     background: #f0f0f0;
     color: $black;
     padding: 15px;
-
+    position: relative;
+    .close {
+      font-size: 21px;
+      position: absolute;
+      right: 10px;
+      top: 7px;
+    }
+    .title {
+      font-size: 15px;
+      margin-bottom: 15px;
+    }
     .form-control.transparent {
       color: $black;
     }
@@ -132,8 +144,8 @@
       font-size: 15px
     }
     .avatar-preview {
-      max-height: 100%;
-      max-width: 150px;
+      height: 150px;
+      width: 150px;
       margin: 0 auto
     }
     .upload-image {
@@ -163,6 +175,5 @@
         color: $black;
       }
     }
-
   }
 }

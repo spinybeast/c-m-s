@@ -28,10 +28,10 @@ export default class AvatarUpload extends Component {
                                    value: omitValue,
                                    onChange,
                                    onBlur,
-                                   ...inputProps,
+                                   ...inputProps
                                },
                                meta: omitMeta,
-                               ...props,
+                               ...props
                            }) =>
             <input
                 onChange={adaptFileEventToValue(onChange)}
@@ -42,7 +42,7 @@ export default class AvatarUpload extends Component {
         const {previewUrl} = this.props;
         return (
             <Fragment>
-                <div className="form-group text-center">
+                <div className="text-center">
                     <img className="rounded-circle img-fluid avatar-preview" src={previewUrl || '/img/noavatar.png'}/>
                 </div>
                 <div>

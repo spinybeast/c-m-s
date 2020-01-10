@@ -41,13 +41,14 @@
   }
 }
 %button {
-  margin-top: 4px;
   border-radius: 0;
   padding: 9px 17px;
   text-transform: uppercase;
   font-weight: 700;
   color: #000;
   font-family: $font-family-andale;
+  height: 45px;
+  font-size: 15px;
 }
 .form-control {
 
@@ -69,11 +70,12 @@
   }
   &.btn-white {
     @extend %button;
+    color: $black;
+    background: $white;
   }
   &.btn-black {
     @extend %button;
     color: $white;
     background: $black;
   }
-
 }

@@ -7,15 +7,15 @@ import _ from 'lodash';
 
 export default class SocialNetworks extends Component {
     render() {
-        const {networks} = this.props;
+        const {networks, values} = this.props;
 
         return (
             <div className="socials">
-                <Translate className="here text-muted" tag="p" value="pages.reviews.popup.socials"/>
+                <Translate className="here text-muted mb-2" tag="p" value="pages.reviews.popup.socials"/>
                 <div>
                     {networks.map((network, index) => {
                         return (
-                            <Popup key={index} trigger={<span className={network + " inactive"}>&nbsp;</span>}>
+                            <Popup key={index} trigger={<span className={network + (values[network] ? ' active' : ' inactive')}>&nbsp;</span>}>
                                 <div>
                                     <Field component="input"
                                            type="text"

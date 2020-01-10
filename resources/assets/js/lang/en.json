@@ -39,9 +39,9 @@
         "comment": "your feedback",
         "socials": "add social links",
         "send": "Send",
-        "uploadImage": "Upload image",
-        "changeImage": "Change image",
-        "cancelImage": "Cancel image"
+        "uploadImage": "Upload avatar",
+        "changeImage": "Change",
+        "cancelImage": "Cancel"
       }
     },
     "contact": {
