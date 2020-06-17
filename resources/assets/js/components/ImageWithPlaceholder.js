@@ -11,16 +11,16 @@ export default class ImageWithPlaceholder extends Component {
         const {loaded} = this.state;
         return (
             <Fragment>
-                {!loaded ? (
+                {!loaded || !src ? (
                     <img className="img-fluid" src='/img/track-placeholder.png' alt={alt}/>
                 ) : null}
-                <img
+                { src && <img
                     className="img-fluid"
                     src={src}
                     alt={alt}
                     style={!loaded ? { display: 'none' } : {}}
                     onLoad={() => this.setState({loaded: true})}
-                />
+                /> }
             </Fragment>
         );
     }

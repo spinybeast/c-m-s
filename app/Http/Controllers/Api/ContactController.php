@@ -18,12 +18,20 @@ class ContactController extends Controller
             'text' => 'required|string'
         ]);
 
-        Mail::send('mail', ['request' => $request], function(Message $message) use ($request) {
-           $message
-               ->from($request->get('email'), $request->get('name'))
-               ->to(config('mail.admin'))
-               ->subject('Обращение с сайта cyclone-music-space.ru');
-        });
+        try {
+            Mail::send('mail', ['request' => $request], function(Message $message) use ($request) {
+                $message
+                    ->from(config('mail.from.address'), config('mail.from.name'))
+                    ->to(config('mail.admin'))
+                    ->subject('Обращение с сайта cyclone-music-space.ru');
+            });
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'exception' => $e->getMessage(),
+                'errors' => [__('messages.contact.fail')]
+            ]);
+        }
 
         return response()->json([
             'success' => true,

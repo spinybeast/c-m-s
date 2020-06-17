@@ -17,7 +17,7 @@ class Track extends Component {
                         }
                         onSelectTrack(track);
                     }}>
-                        <ImageWithPlaceholder src={track.artwork_url.replace('large', 't300x300')} alt={track.title}/>
+                        <ImageWithPlaceholder src={track.artwork_url ? track.artwork_url.replace('large', 't300x300') : null} alt={track.title}/>
                         <div className="artwork-button">
                             {
                                 playing && activeTrack.id === track.id ?

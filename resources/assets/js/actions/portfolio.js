@@ -28,8 +28,7 @@ export const fetchTracks = () => dispatch => {
     dispatch(fetchTracksStart());
 
     SC.initialize({client_id: CLIENT_ID});
-    SC.get('/tracks', {
-        user_id: USER_ID,
+    SC.get('/users/' + USER_ID + '/tracks', {
         limit: 200
     }).then(tracks => {
         dispatch(fetchTracksSuccess(tracks));
