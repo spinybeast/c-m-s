@@ -15,6 +15,4 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ server.php
-
-    Redirect 301 /public /index.php
 </IfModule>
