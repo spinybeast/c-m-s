@@ -19,3 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::resource('review', 'Api\ReviewController');
 Route::post('contact', 'Api\ContactController@index');
+Route::get('soundcloud', 'Api\SoundCloudController@index');
+Route::get('soundcloud/track', 'Api\SoundCloudController@getTrackUrl');

@@ -11,7 +11,7 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.react('resources/assets/js/app.js', 'public/js')
+mix.js('resources/assets/js/app.js', 'public/js').react()
     .copy('resources/assets/fonts/*', 'public/fonts')
     .copy('resources/assets/img/*', 'public/img', true)
     .js('resources/assets/js/admin.js', 'public/js')

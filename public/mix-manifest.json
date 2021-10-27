@@ -1,8 +1,8 @@
 {
     "/js/app.js": "/js/app.js",
     "/js/admin.js": "/js/admin.js",
-    "/css/app.css": "/css/app.css",
     "/css/admin.css": "/css/admin.css",
+    "/css/app.css": "/css/app.css",
     "/fonts/andale_mono-webfont.eot": "/fonts/andale_mono-webfont.eot",
     "/fonts/andale_mono-webfont.svg": "/fonts/andale_mono-webfont.svg",
     "/fonts/andale_mono-webfont.ttf": "/fonts/andale_mono-webfont.ttf",
