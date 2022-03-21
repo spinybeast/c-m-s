@@ -9,10 +9,10 @@ export const Footer = () => (
                    href="https://vk.com/cyclone_music_space">
                     <i className="fa fa-vk"></i>
                 </a>
-                <a className="btn btn-social-icon btn-facebook" target="_blank" title="Facebook"
+                {/*<a className="btn btn-social-icon btn-facebook" target="_blank" title="Facebook"
                    href="https://www.facebook.com/cyclone_music_space-720106248448490/">
                     <i className="fa fa-facebook"></i>
-                </a>
+                </a>*/}
                 <a className="btn btn-social-icon btn-soundcloud" target="_blank" title="Soundcloud"
                    href="https://soundcloud.com/tony-cyclonez">
                     <i className="fa fa-soundcloud"></i>
