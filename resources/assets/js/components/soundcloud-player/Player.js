@@ -22,22 +22,15 @@ function Player () {
   useEffect(() => {
     setLoading(true)
 
-    axios.get('api/soundcloud')
+    axios.get('api/portfolio')
       .then(response => {
-        const tracks = response.data?.collection?.flat() || [];
-        setTracks(tracks.map((track) => {
-          const tags = track.tag_list?.split(' ') || []
-          tags.push('all');
-          tags.push(track.genre);
-
-          track.tags = tags.map((tag) => tag.toLowerCase()).filter(tag => tag.length && tag !== 'soundtrack');
-          return track;
-        }))
+        const tracks = response?.data || [];
+        setTracks(tracks)
 
         setActiveTrack(tracks[0])
 
-        const tags = _.uniq(tracks.map((track) => track.tags).flat());
-
+        const tags = _.uniq(tracks.map((track) => track.tags).flat()).filter((tag) => tag !== 'all');
+        tags.unshift('all')
         if (tags.length) {
           setTags(tags)
           setActiveTag(tags[0])
@@ -95,7 +88,7 @@ function Player () {
                     key={index}
                     track={track}
                     onSelectTrack={(track) => {
-                      setPlaying(activeTrack.id !== track.id)
+                      setPlaying(activeTrack.id !== track.id || (activeTrack.id === track.id && !playing))
                       setActiveTrack(track)
                     }}
                     isPlaying={playing && activeTrack.id === track.id}

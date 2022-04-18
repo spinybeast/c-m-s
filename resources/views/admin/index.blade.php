@@ -24,13 +24,13 @@
             </div>
             <div class="col-lg-6">
                 <div class="card">
-                    <div class="card-body bg-danger text-white text-capitalize text-center">
+                    <div class="card-body bg-success text-white text-capitalize text-center">
                         <div>
-                            <i class="fa fa-youtube-square fa-5x"></i>
+                            <i class="fa fa-music fa-5x"></i>
                         </div>
-                        <div>Видео</div>
+                        <div>Портфолио</div>
                     </div>
-                    <a href="{{ route('video.index') }}" class="text-info">
+                    <a href="{{ route('portfolio.index') }}" class="text-info">
                         <div class="card-footer">
                             <span class="pull-left">Перейти</span>
                             <span class="pull-right"><i class="fa fa-arrow-right"></i></span>

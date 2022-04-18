@@ -62,26 +62,31 @@ class SoundCloudController
 
     protected function getAccessToken(): array
     {
-        $accessToken = Cookie::get('at');
-        $refreshTime = Cookie::get('rt');
+        try {
+            $accessToken = Cookie::get('at');
+            $refreshTime = Cookie::get('rt');
 
-        if (!$accessToken || $refreshTime <= time()) {
-            $curl = curl_init();
+            if (!$accessToken || $refreshTime <= time()) {
+                $curl = curl_init();
 
-            curl_setopt($curl, CURLOPT_URL, self::TOKEN_URL);
-            curl_setopt($curl, CURLOPT_POST, 1);
-            curl_setopt($curl, CURLOPT_POSTFIELDS,
-                "grant_type=client_credentials&client_id=" . self::CLIENT_ID . "&client_secret=" . self::CLIENT_SECRET);
-            curl_setopt($curl, CURLOPT_HTTPHEADER, array('accept: application/json; charset=utf-8', 'Content-Type: application/x-www-form-urlencoded'));
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($curl, CURLOPT_URL, self::TOKEN_URL);
+                curl_setopt($curl, CURLOPT_POST, 1);
+                curl_setopt($curl, CURLOPT_POSTFIELDS,
+                    "grant_type=client_credentials&client_id=" . self::CLIENT_ID . "&client_secret=" . self::CLIENT_SECRET);
+                curl_setopt($curl, CURLOPT_HTTPHEADER, array('accept: application/json; charset=utf-8', 'Content-Type: application/x-www-form-urlencoded'));
+                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
-            $response = curl_exec($curl);
-            curl_close($curl);
-            $res = json_decode($response);
-            $accessToken = $res->access_token;
-            $refreshTime = time() + $res->expires_in;
+                $response = curl_exec($curl);
+                curl_close($curl);
+                $res = json_decode($response);
+                if (property_exists($res, 'access_token')) {
+                    $accessToken = $res->access_token;
+                    $refreshTime = time() + $res->expires_in;
+                }
+            }
+            return [$accessToken, $refreshTime];
+        } catch (\Exception $e) {
+            return [];
         }
-
-        return [$accessToken, $refreshTime];
     }
 }

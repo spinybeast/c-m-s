@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Review;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -35,7 +36,7 @@ class ReviewController extends Controller
         return view('admin.review.edit', compact('review'));
     }
 
-    public function update(Request $request, Review $review)
+    public function update(Request $request, Review $review): RedirectResponse
     {
         $this->validateRequest($request);
         $this->fillAndSaveReview($request, $review);
@@ -43,7 +44,7 @@ class ReviewController extends Controller
         return redirect()->back()->with('success', 'Отзыв успешно отредактирован');
     }
 
-    public function destroy(Review $review)
+    public function destroy(Review $review): RedirectResponse
     {
         try {
             $review->delete();

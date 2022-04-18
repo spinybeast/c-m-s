@@ -1,24 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 function ActiveTrack ({ activeTrack, onTogglePlay, playing }) {
-  const [src, setSrc] = useState(null)
+  const [duration, setDuration] = useState(0)
   const [volume, setVolume] = useState(0.5)
   const [currentTime, setCurrentTime] = useState(0)
   const audio = useRef(null)
 
   useEffect(() => {
-    if (activeTrack?.id) {
-      axios.get('api/soundcloud/track?trackId=' + activeTrack.id).then(res => {
-        setSrc(res.data?.location)
-      })
-    }
-  }, [activeTrack])
-
-  useEffect(() => {
-    if (audio.current && src) {
+    if (audio.current && activeTrack?.audio) {
       playing ? audio.current.play() : audio.current.pause()
     }
-  }, [playing, src])
+  }, [playing, activeTrack?.audio])
 
   const seekCoordinates = (e) => e.nativeEvent.offsetX / e.target.offsetWidth || (e.nativeEvent.layerX - e.target.offsetLeft) / e.target.offsetWidth
 
@@ -63,14 +55,14 @@ function ActiveTrack ({ activeTrack, onTogglePlay, playing }) {
             <div className="title">{activeTrack.title}</div>
             <progress
               onClick={seek}
-              value={activeTrack.id ? (currentTime / (activeTrack.duration / 1000)) : ''}>
+              value={activeTrack.id ? (currentTime / duration) : ''}>
             </progress>
           </div>
           <div className="col-1 pl-sm-0">
             <span>{activeTrack.id ? formatTime(currentTime) : ''}</span>
             <span className="d-none d-sm-inline">
                                 &nbsp;/&nbsp;
-              {activeTrack.id ? formatTime(activeTrack.duration / 1000) : ''}
+              {activeTrack.id ? formatTime(duration) : ''}
                             </span>
           </div>
           <div className="col-3 d-flex flex-row align-items-center pl-sm-4">
@@ -83,9 +75,10 @@ function ActiveTrack ({ activeTrack, onTogglePlay, playing }) {
         {activeTrack.id &&
         <audio id="audio"
                ref={audio}
-               src={src}
+               src={activeTrack.audio}
                onTimeUpdate={(e) => setCurrentTime(e.target.currentTime)}
                onVolumeChange={(e) => setVolume(e.target.volume)}
+               onLoadedMetadata={(e) => setDuration(e.target.duration)}
         >
         </audio>
         }

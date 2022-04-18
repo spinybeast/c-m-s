@@ -9,7 +9,7 @@ function Track ({ track, isPlaying, onSelectTrack }) {
     <div className="track text-center d-flex">
       <div className="track-content d-flex flex-column">
         <div className="artwork" onClick={() => onSelectTrack(track)}>
-          <ImageWithPlaceholder src={track.artwork_url ? track.artwork_url.replace('large', 't300x300') : null}
+          <ImageWithPlaceholder src={track.cover}
                                 alt={track.title}/>
           <div className="artwork-button">
             {

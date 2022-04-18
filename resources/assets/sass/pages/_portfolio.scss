@@ -181,12 +181,18 @@
             box-shadow: 0 0 2px 1px $transparent-grey;
           }
         }
+        .info {
+          word-break: break-word;
+        }
       }
       .artwork {
         position: relative;
         cursor: pointer;
+        flex: 1;
+        min-height: 150px;
         img {
           border-radius: 6px 6px 0 0;
+          height: 100%;
         }
         &-button {
           position: absolute;
