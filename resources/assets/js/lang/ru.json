@@ -25,6 +25,7 @@
       }
     },
     "portfolio": {
+      "underConstruction": "Извините, раздел портфолио находится в разработке. Скоро все вернется.<br /> А пока слушайте нас на <a href=\"https://soundcloud.com/tony-cyclonez\" target=\"_blank\"><i class=\"fa fa-soundcloud\">&nbsp;</i>Soundcloud</a>!",
       "cantLoad": "К сожалению, мы не смогли загрузить портфолио. Слушайте нас на",
       "chooseGenre": "Выберите жанр"
     },

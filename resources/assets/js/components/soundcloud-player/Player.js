@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Translate } from 'react-i18nify';
 import Select from 'react-select';
 import ReactPaginate from 'react-paginate';
+import { useSearchParams } from 'react-router-dom';
 
 import Track from './Track';
 import ActiveTrack from './ActiveTrack';
@@ -18,6 +19,7 @@ function Player () {
   const [activeTag, setActiveTag] = useState(false)
   const [currentPage, setCurrentPage] = useState(0)
   const [playing, setPlaying] = useState(false)
+  const [urlSearchParams] = useSearchParams();
 
   useEffect(() => {
     setLoading(true)
@@ -59,6 +61,12 @@ function Player () {
 
   if (loading) {
     return <Loader/>;
+  }
+
+  if (!urlSearchParams.get('show') || urlSearchParams.get('show') !== 'true') {
+    return <div className="empty-portfolio">
+      <Translate value="pages.portfolio.underConstruction" tag="div" dangerousHTML={true}/>
+    </div>
   }
 
   return (

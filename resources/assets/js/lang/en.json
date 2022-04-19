@@ -25,6 +25,7 @@
       }
     },
     "portfolio": {
+      "underConstruction": "Sorry, portfolio is under construction. Will be back soon.<br /> Check our <a href=\"https://soundcloud.com/tony-cyclonez\" target=\"_blank\"><i class=\"fa fa-soundcloud\">&nbsp;</i>Soundcloud</a>!",
       "cantLoad": "Sorry, we can't load portfolio. Check our",
       "chooseGenre": "Please, choose genre"
     },

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Provider} from 'react-redux';
-import {HashRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
+import {HashRouter as Router, Route, Routes, Navigate} from 'react-router-dom';
 import {I18n} from 'react-i18nify';
 
 import configureStore from '../stores/configureStore';
@@ -29,14 +29,13 @@ class App extends Component {
         return (
             <Provider store={store}>
                 <Router>
-                    <Switch>
-                        <Route exact path='/' component={Home}/>
-                        <Route path='/portfolio' component={Portfolio}/>
-                        {/*<Route path='/reviews' component={Reviews}/>*/}
-                        <Route path='/contact' component={Contact}/>
-                        <Redirect from="/reviews" to="/portfolio" />
-                        <Redirect from="*" to="/" />
-                    </Switch>
+                    <Routes>
+                        <Route exact="true" path='/' element={<Home />}/>
+                        <Route path='/portfolio' element={<Portfolio />}/>
+                        <Route path='/reviews' element={<Navigate  to="/portfolio" />}/>
+                        <Route path='/contact' element={<Contact />}/>
+                        <Route path="*" element={<Navigate to ="/" />}/>
+                    </Routes>
                 </Router>
             </Provider>
         );

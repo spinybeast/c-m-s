@@ -16,7 +16,7 @@ class Track extends Model
     {
         $path = self::COVER_PATH . $value;
         if ($value && file_exists(public_path($path))) {
-            return asset($path);
+            return route('portfolio_cover', ['filename' => $value]);;
         }
         return '';
     }

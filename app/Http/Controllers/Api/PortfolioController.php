@@ -19,6 +19,21 @@ class PortfolioController extends Controller
     public function getTrack(string $filename)
     {
         $path = Track::AUDIO_PATH . $filename;
+        return $this->getFile($path);
+    }
+
+    public function getCover(string $filename)
+    {
+        $path = Track::COVER_PATH . $filename;
+        return $this->getFile($path);
+    }
+
+    /**
+     * @param string $path
+     * @return BinaryFileResponse|void
+     */
+    protected function getFile(string $path)
+    {
         if (Storage::disk('public')->exists($path)) {
             $response = new BinaryFileResponse(public_path($path));
             BinaryFileResponse::trustXSendfileTypeHeader();
