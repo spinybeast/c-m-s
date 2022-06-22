@@ -1,25 +1,12 @@
-import React, {Component, Fragment} from 'react';
+import React from 'react';
 
-export default class Messages extends Component {
-
-    render() {
-        let message, errors;
-        if (this.props.message.length) {
-            message = <div className="message">{this.props.message}</div>
-        }
-        if (this.props.errors.length) {
-            errors = <div className="errors">
-                {this.props.errors.map((error, index) => {
-                    return <div key={index}>{error}</div>
-                })}
-            </div>
-        }
-
-        return (
-            <Fragment>
-                {message}
-                {errors}
-            </Fragment>
-        )
-    }
+function Messages ({message, errors}) {
+  return (
+    <>
+      {message.length > 0 && <div className="message">{message}</div>}
+      {errors.length > 0 && errors.map((error, index) => <div key={index}>{error}</div>)}
+    </>
+  )
 }
+
+export default Messages

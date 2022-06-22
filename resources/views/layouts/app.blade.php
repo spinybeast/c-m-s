@@ -12,7 +12,7 @@
     <meta property="og:site_name" content="{{ config('app.name') }}">
     <meta property="og:title" content="{{ config('app.name') }}">
     <meta property="og:description" content="{{ __('meta.description') }}.">
-    <meta property="og:url" content="http://cyclone-music-space.ru/">
+    <meta property="og:url" content="https://cyclone-music-space.ru/">
     <meta property="og:locale" content="ru_RU">
     <meta property="og:image"  content="{{ asset('img/og_image.png') }}" />
     <meta property="og:image:width" content="200">

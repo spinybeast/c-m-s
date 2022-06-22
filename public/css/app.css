@@ -13044,8 +13044,12 @@ h3 {
     border-color: #dee2e6;
   }
 }
+:root {
+  --app-height: 100%;
+}
+
 .wrapper, body #app, body, html {
-  min-height: 100vh;
+  min-height: var(--app-height);
 }
 
 body {
@@ -13461,7 +13465,6 @@ button, button:active, button:focus, a, a:active, a:visited, a:focus {
 }
 .portfolio .tracks .track .artwork img {
   border-radius: 6px 6px 0 0;
-  height: 100%;
 }
 .portfolio .tracks .track .artwork-button {
   position: absolute;

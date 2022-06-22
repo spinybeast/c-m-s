@@ -32,7 +32,10 @@ class Track extends Model
 
     public function getTagsAttribute($value): array
     {
-        $tags = explode(',', preg_replace('/\s+/', '', Str::lower($value)));
+        $tags = array_map(function ($tag) {
+            return trim($tag);
+        }, explode(',', Str::lower($value)));
+
         $tags[] = 'all';
 
         return $tags;

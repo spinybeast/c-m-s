@@ -63,12 +63,6 @@ function Player () {
     return <Loader/>;
   }
 
-  if (!urlSearchParams.get('show') || urlSearchParams.get('show') !== 'true') {
-    return <div className="empty-portfolio">
-      <Translate value="pages.portfolio.underConstruction" tag="div" dangerousHTML={true}/>
-    </div>
-  }
-
   return (
     <>
       <ActiveTrack activeTrack={activeTrack} playing={playing} onTogglePlay={() => setPlaying(!playing)} />

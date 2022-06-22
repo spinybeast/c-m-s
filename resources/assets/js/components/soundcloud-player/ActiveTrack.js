@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 function ActiveTrack ({ activeTrack, onTogglePlay, playing }) {
+  const [firstPlay, setFirstPlay] = useState(true)
   const [duration, setDuration] = useState(0)
   const [volume, setVolume] = useState(0.5)
   const [currentTime, setCurrentTime] = useState(0)
@@ -8,7 +9,15 @@ function ActiveTrack ({ activeTrack, onTogglePlay, playing }) {
 
   useEffect(() => {
     if (audio.current && activeTrack?.audio) {
-      playing ? audio.current.play() : audio.current.pause()
+      if (!playing && firstPlay) {
+        audio.current.load()
+        audio.current.addEventListener('canplaythrough', () => {
+          console.log('loaded audio');
+        });
+        setFirstPlay(false)
+      } else {
+        playing ? audio.current.play() : audio.current.pause()
+      }
     }
   }, [playing, activeTrack?.audio])
 

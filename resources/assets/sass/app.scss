@@ -2,8 +2,12 @@
 @import "variables";
 @import '~bootstrap/scss/bootstrap';
 
+:root {
+  --app-height: 100%;
+}
+
 %full-height {
-  min-height: 100vh;
+  min-height: var(--app-height);
 }
 
 html {

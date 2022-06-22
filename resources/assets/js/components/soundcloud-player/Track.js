@@ -1,5 +1,5 @@
 import React from 'react';
-import ImageWithPlaceholder from '../ImageWithPlaceholder';
+import {ImageWithPlaceholder} from '../ImageWithPlaceholder';
 
 function Track ({ track, isPlaying, onSelectTrack }) {
   if (!track) {
