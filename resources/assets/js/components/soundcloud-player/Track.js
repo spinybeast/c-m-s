@@ -1,13 +1,13 @@
 import React from 'react';
 import {ImageWithPlaceholder} from '../ImageWithPlaceholder';
 
-function Track ({ track, isPlaying, onSelectTrack }) {
+function Track ({ track, isPlaying, isActive, onSelectTrack }) {
   if (!track) {
     return null
   }
   return (
     <div className="track text-center d-flex">
-      <div className="track-content d-flex flex-column">
+      <div className={`track-content d-flex flex-column ${isActive ? 'active' : ''}`}>
         <div className="artwork" onClick={() => onSelectTrack(track)}>
           <ImageWithPlaceholder src={track.cover}
                                 alt={track.title}/>

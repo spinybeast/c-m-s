@@ -13285,7 +13285,7 @@ button, button:active, button:focus, a, a:active, a:visited, a:focus {
 
 /** страница Портфолио **/
 .wrapper.portfolio .container:nth-child(2) {
-  padding: 25px 15px 20px;
+  padding: 25px 15px 5px;
 }
 
 .portfolio .empty-portfolio {
@@ -13447,10 +13447,10 @@ button, button:active, button:focus, a, a:active, a:visited, a:focus {
   border-radius: 6px;
   transition: box-shadow 0.3s ease-in-out;
 }
-.portfolio .tracks .track .track-content:hover {
+.portfolio .tracks .track .track-content:hover, .portfolio .tracks .track .track-content.active {
   box-shadow: 0 0 2px 1px #80D1FF;
 }
-.portfolio .tracks .track .track-content:hover .play-button {
+.portfolio .tracks .track .track-content:hover .play-button, .portfolio .tracks .track .track-content.active .play-button {
   background: #80D1FF;
   box-shadow: 0 0 2px 1px rgba(16, 18, 16, 0.7);
 }

@@ -29,13 +29,30 @@ function Player () {
         const tracks = response?.data || [];
         setTracks(tracks)
 
-        setActiveTrack(tracks[0])
+        let currentTrack = tracks[0]
+        if (urlSearchParams.has('track')) {
+          const trackId = parseInt(urlSearchParams.get('track'))
+          let trackIndex = tracks.findIndex(track => track.id === trackId)
+          if (trackIndex !== -1) {
+            currentTrack = tracks[trackIndex]
+            setCurrentPage(Math.ceil(++trackIndex / PER_PAGE) - 1)
+          }
+        }
+        setActiveTrack(currentTrack)
 
         const tags = _.uniq(tracks.map((track) => track.tags).flat()).filter((tag) => tag !== 'all');
         tags.unshift('all')
         if (tags.length) {
           setTags(tags)
-          setActiveTag(tags[0])
+          let currentTag = tags[0]
+          if (urlSearchParams.has('genre')) {
+            const tagId = urlSearchParams.get('genre')
+            const tagIndex = tags.findIndex(tag => tagId === tag)
+            if (tagIndex !== -1) {
+              currentTag = tags[tagIndex]
+            }
+          }
+          setActiveTag(currentTag)
         }
         setLoading(false)
       })
@@ -94,6 +111,7 @@ function Player () {
                       setActiveTrack(track)
                     }}
                     isPlaying={playing && activeTrack.id === track.id}
+                    isActive={activeTrack.id === track.id}
                   />
                 )}
               </div>

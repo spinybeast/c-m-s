@@ -1,6 +1,6 @@
 /** страница Портфолио **/
 .wrapper.portfolio .container:nth-child(2) {
-  padding: 25px 15px 20px;
+  padding: 25px 15px 5px;
 }
 
 .portfolio {
@@ -174,7 +174,7 @@
         box-shadow: 0 0 0 1px $transparent-light;
         border-radius: 6px;
         transition: box-shadow 0.3s ease-in-out;
-        &:hover {
+        &:hover, &.active {
           box-shadow: 0 0 2px 1px $blue;
           .play-button {
             background: $blue;

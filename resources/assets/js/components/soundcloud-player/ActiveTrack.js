@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 function ActiveTrack ({ activeTrack, onTogglePlay, playing }) {
   const [firstPlay, setFirstPlay] = useState(true)
-  const [duration, setDuration] = useState(0)
+  const [duration, setDuration] = useState(1)
   const [volume, setVolume] = useState(0.5)
   const [currentTime, setCurrentTime] = useState(0)
   const audio = useRef(null)
