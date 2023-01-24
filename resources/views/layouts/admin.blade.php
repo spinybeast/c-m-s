@@ -47,6 +47,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('portfolio.index') }}">Портфолио</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('video.index') }}">Видео</a>
+                    </li>
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">

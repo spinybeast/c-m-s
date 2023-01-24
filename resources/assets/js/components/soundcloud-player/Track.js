@@ -6,7 +6,7 @@ function Track ({ track, isPlaying, isActive, onSelectTrack }) {
     return null
   }
   return (
-    <div className="track text-center d-flex">
+    <div className="track text-center d-flex" id={track.id}>
       <div className={`track-content d-flex flex-column ${isActive ? 'active' : ''}`}>
         <div className="artwork" onClick={() => onSelectTrack(track)}>
           <ImageWithPlaceholder src={track.cover}

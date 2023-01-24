@@ -25,4 +25,6 @@ Route::prefix('admin')
             ->middleware('auth');
         Route::resource('portfolio', 'Admin\PortfolioController')
             ->middleware('auth');
+        Route::resource('video', 'Admin\VideoController')
+            ->middleware('auth');
     });
