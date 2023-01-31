@@ -31,6 +31,11 @@ export const Header = () => (
                                 <Translate value="menu.portfolio"/>
                             </Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/video">
+                                <Translate value="menu.video"/>
+                            </Link>
+                        </li>
                         {/*<li className="nav-item">
                             <Link className="nav-link" to="/reviews">
                                 <Translate value="menu.reviews"/>

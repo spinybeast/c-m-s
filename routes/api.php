@@ -18,6 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('review', 'Api\ReviewController');
+Route::get('video', 'Api\VideoController@index');
 Route::get('portfolio', 'Api\PortfolioController@index');
 Route::get('portfolio/{filename}', 'Api\PortfolioController@getTrack')->name('portfolio_file');
 Route::get('portfolio/cover/{filename}', 'Api\PortfolioController@getCover')->name('portfolio_cover');

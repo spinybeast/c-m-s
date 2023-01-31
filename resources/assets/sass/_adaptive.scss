@@ -58,4 +58,13 @@
       }
     }
   }
+
+  .video-page {
+    .videos {
+      .video {
+        flex-basis: 100%;
+        max-width: 100%;
+      }
+    }
+  }
 }

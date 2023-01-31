@@ -1,0 +1,29 @@
+.video-page {
+  .videos {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    .video {
+      flex-basis: 50%;
+      max-width: 50%;
+
+      .video-content {
+        width: 100%;
+        margin: 10px;
+        background: rgba(255, 255, 255, 0.5);
+        color: black;
+        border-radius: 6px;
+
+        .video-container {
+          width: 100%;
+
+          iframe {
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 16/9;
+          }
+        }
+      }
+    }
+  }
+}
