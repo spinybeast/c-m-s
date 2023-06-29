@@ -23,11 +23,11 @@ function App () {
 
   useEffect(() => {
     I18n.setTranslations({
-      en: en,
+      // en: en,
       ru: ru
     });
-    const lang = window.location.pathname.split('/')[1];
-    I18n.setLocale(lang || 'en');
+    // const lang = window.location.pathname.split('/')[1];
+    I18n.setLocale('ru'/*lang || 'en'*/);
   }, [])
 
   useEffect(() => {

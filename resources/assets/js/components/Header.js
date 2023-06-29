@@ -9,10 +9,10 @@ export const Header = () => (
                 <a className="navbar-brand" href="#">
                     <img src="/img/logo.png" alt="Cyclone Music Space" height={35}/>
                 </a>
-                <div className="lang">
+                {/*<div className="lang">
                     <a className="ru" onClick={() => {I18n.setLocale('ru')}}></a>
                     <a className="en" onClick={() => {I18n.setLocale('en')}}></a>
-                </div>
+                </div>*/}
                 <button className="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
