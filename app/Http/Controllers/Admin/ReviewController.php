@@ -6,9 +6,17 @@ use App\Review;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Validation\ValidationException;
 
 class ReviewController extends Controller
 {
+    private const IMAGE_MIME_EXTENSION_MAP = [
+        'image/jpeg' => 'jpg',
+        'image/png' => 'png',
+        'image/gif' => 'gif',
+        'image/webp' => 'webp',
+    ];
 
     public function index()
     {
@@ -61,7 +69,7 @@ class ReviewController extends Controller
             'author' => 'required',
             'text' => 'required',
             'priority' => 'nullable|numeric',
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'photo' => 'nullable|file|mimetypes:image/jpeg,image/png,image/gif,image/webp|max:5120',
             'socials' => 'array',
             'socials.*' => 'nullable|url'
         ]);
@@ -73,12 +81,24 @@ class ReviewController extends Controller
 
         if ($request->hasFile('photo')) {
             $photo = $request->file('photo');
-            $name = str_slug(uniqid($request->author)) . '.' . $photo->getClientOriginalExtension();
+            $name = str_slug(uniqid($request->author, true)) . '.' . $this->resolveImageExtension($photo);
             $photo->move(public_path(Review::AVATAR_PATH), $name);
             $review->photo = $name;
         }
         $review->published = $request->has('published');
 
         $review->save();
+    }
+
+    private function resolveImageExtension(UploadedFile $file): string
+    {
+        $mimeType = (string) $file->getMimeType();
+        if (!isset(self::IMAGE_MIME_EXTENSION_MAP[$mimeType])) {
+            throw ValidationException::withMessages([
+                'photo' => ['Недопустимый тип изображения.'],
+            ]);
+        }
+
+        return self::IMAGE_MIME_EXTENSION_MAP[$mimeType];
     }
 }

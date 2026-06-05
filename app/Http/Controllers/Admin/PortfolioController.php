@@ -7,15 +7,34 @@ use App\Track;
 use Exception;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Application;
-use Illuminate\Http\File;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
 class PortfolioController extends Controller
 {
+    private const COVER_MIME_EXTENSION_MAP = [
+        'image/jpeg' => 'jpg',
+        'image/png' => 'png',
+        'image/gif' => 'gif',
+        'image/webp' => 'webp',
+    ];
+
+    private const AUDIO_MIME_EXTENSION_MAP = [
+        'audio/mpeg' => 'mp3',
+        'audio/mp3' => 'mp3',
+        'audio/mp4' => 'm4a',
+        'audio/x-m4a' => 'm4a',
+        'audio/wav' => 'wav',
+        'audio/x-wav' => 'wav',
+        'audio/ogg' => 'ogg',
+        'audio/vorbis' => 'ogg',
+    ];
+
     /**
      * @return Factory|Application|View
      */
@@ -110,8 +129,8 @@ class PortfolioController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'tags' => 'required',
-//            'audio' => 'required',
-//            'cover' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'cover' => 'nullable|file|mimetypes:image/jpeg,image/png,image/gif,image/webp|max:5120',
+            'audio' => 'nullable|file|mimetypes:audio/mpeg,audio/mp3,audio/mp4,audio/x-m4a,audio/wav,audio/x-wav,audio/ogg,audio/vorbis|max:20480',
         ]);
     }
 
@@ -121,17 +140,41 @@ class PortfolioController extends Controller
 
         if ($request->hasFile('cover')) {
             $cover = $request->file('cover');
-            $name = str_slug(uniqid($request->title)) . '.' . $cover->getClientOriginalExtension();
+            $name = str_slug(uniqid($request->title, true)) . '.' . $this->resolveCoverExtension($cover);
             $cover->move(public_path(Track::COVER_PATH), $name);
             $portfolio->cover = $name;
         }
         if ($request->hasFile('audio')) {
             $audio = $request->file('audio');
-            $name = str_slug(uniqid($request->title)) . '.' . $audio->getClientOriginalExtension();
+            $name = str_slug(uniqid($request->title, true)) . '.' . $this->resolveAudioExtension($audio);
             $audio->move(public_path(Track::AUDIO_PATH), $name);
             $portfolio->audio = $name;
         }
 
         $portfolio->save();
+    }
+
+    private function resolveCoverExtension(UploadedFile $file): string
+    {
+        $mimeType = (string) $file->getMimeType();
+        if (!isset(self::COVER_MIME_EXTENSION_MAP[$mimeType])) {
+            throw ValidationException::withMessages([
+                'cover' => ['Недопустимый тип изображения.'],
+            ]);
+        }
+
+        return self::COVER_MIME_EXTENSION_MAP[$mimeType];
+    }
+
+    private function resolveAudioExtension(UploadedFile $file): string
+    {
+        $mimeType = (string) $file->getMimeType();
+        if (!isset(self::AUDIO_MIME_EXTENSION_MAP[$mimeType])) {
+            throw ValidationException::withMessages([
+                'audio' => ['Недопустимый тип аудиофайла.'],
+            ]);
+        }
+
+        return self::AUDIO_MIME_EXTENSION_MAP[$mimeType];
     }
 }

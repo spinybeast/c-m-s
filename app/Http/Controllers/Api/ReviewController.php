@@ -6,10 +6,17 @@ use App\Review;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 use Validator;
 
 class ReviewController extends Controller
 {
+    private const IMAGE_MIME_EXTENSION_MAP = [
+        'image/jpeg' => 'jpg',
+        'image/png' => 'png',
+        'image/gif' => 'gif',
+        'image/webp' => 'webp',
+    ];
 
     public function index(): JsonResponse
     {
@@ -26,10 +33,12 @@ class ReviewController extends Controller
         $validator = Validator::make($request->all(), [
             'author' => 'required|string',
             'text' => 'required|string',
+            'photo' => ['nullable', 'string', 'regex:/^data:image\/(jpeg|jpg|png|gif|webp);base64,/i'],
             'socials' => 'array',
             'socials.*' => 'nullable|url',
         ], [
             'required' => __('messages.reviews.required'),
+            'photo.regex' => __('validation.image'),
             'socials.facebook.url' => __('messages.reviews.formatUrl', ['url' => 'Facebook']),
             'socials.google.url' => __('messages.reviews.formatUrl', ['url' => 'Google']),
             'socials.vkontakte.url' => __('messages.reviews.formatUrl', ['url' => 'VK']),
@@ -56,7 +65,19 @@ class ReviewController extends Controller
         $review->fill($request->only(['author', 'company', 'text', 'socials']));
 
         if ($request->get('photo')) {
-            $this->uploadPhoto($request, $review);
+            try {
+                $this->uploadPhoto($request, $review);
+            } catch (ValidationException $e) {
+                return response()->json([
+                    'success' => false,
+                    'errors' => array_flatten($e->errors()),
+                ]);
+            } catch (\Exception $e) {
+                return response()->json([
+                    'success' => false,
+                    'errors' => [__('messages.somethingWrong')],
+                ]);
+            }
         }
 
         if ($review->save()) {
@@ -74,9 +95,16 @@ class ReviewController extends Controller
     private function uploadPhoto(Request $request, Review $review): void
     {
         $image = $request->get('photo');
-        $extension = explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
-        $name = str_slug(uniqid($review->author)) . '.' . $extension;
-        \Image::make($image)->save(public_path(Review::AVATAR_PATH) . $name);
+        $image = \Image::make($image);
+        $mimeType = (string)$image->mime();
+        if (!isset(self::IMAGE_MIME_EXTENSION_MAP[$mimeType])) {
+            throw ValidationException::withMessages([
+                'photo' => [__('validation.image')],
+            ]);
+        }
+
+        $name = str_slug(uniqid($review->author, true)) . '.' . self::IMAGE_MIME_EXTENSION_MAP[$mimeType];
+        $image->save(public_path(Review::AVATAR_PATH) . $name);
 
         $review->photo = $name;
     }

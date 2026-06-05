@@ -20,8 +20,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::resource('review', 'Api\ReviewController');
 Route::get('video', 'Api\VideoController@index');
 Route::get('portfolio', 'Api\PortfolioController@index');
-Route::get('portfolio/{filename}', 'Api\PortfolioController@getTrack')->name('portfolio_file');
-Route::get('portfolio/cover/{filename}', 'Api\PortfolioController@getCover')->name('portfolio_cover');
+Route::get('portfolio/{filename}', 'Api\PortfolioController@getTrack')
+    ->where('filename', '[A-Za-z0-9._-]+')
+    ->name('portfolio_file');
+Route::get('portfolio/cover/{filename}', 'Api\PortfolioController@getCover')
+    ->where('filename', '[A-Za-z0-9._-]+')
+    ->name('portfolio_cover');
 Route::post('contact', 'Api\ContactController@index');
 Route::get('soundcloud', 'Api\SoundCloudController@index');
 Route::get('soundcloud/track', 'Api\SoundCloudController@getTrackUrl');
