@@ -7,7 +7,7 @@
                 <h2 class="text-center">Добавить видео</h2>
             </div>
             <div class="card-body">
-                @include('admin.video._form', ['video' => new \App\Video(), 'action' => route('video.store')])
+                @include('admin.video._form', ['video' => new \App\Models\Video(), 'action' => route('video.store')])
             </div>
         </div>
     </div>

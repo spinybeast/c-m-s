@@ -26,7 +26,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php /** @var \App\Review[] $reviews */ ?>
+                <?php /** @var \App\Models\Review[] $reviews */ ?>
                 @foreach ($reviews as $review)
                     <tr>
                         <td width="10%">

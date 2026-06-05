@@ -2,27 +2,26 @@
 
 namespace App\Providers;
 
+use App\Models\Track;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot()
+    public function register(): void
     {
         //
     }
 
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
+    public function boot(): void
     {
-        //
+        Paginator::useBootstrap();
+
+        $this->app->useLangPath(base_path('lang'));
+
+        Route::bind('portfolio', function (string $value) {
+            return Track::findOrFail($value);
+        });
     }
 }

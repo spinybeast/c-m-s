@@ -24,7 +24,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php /** @var \App\Track[] $tracks */ ?>
+                <?php /** @var \App\Models\Track[] $tracks */ ?>
                 @foreach ($tracks as $track)
                     <tr>
                         <td>
@@ -34,7 +34,7 @@
                             {{ $track->title }}
                         </td>
                         <td>
-                            {{ $track->getOriginal('tags') }}
+                            {{ $track->getRawOriginal('tags') }}
                         </td>
                         <td>
                             <a href="{{ route('portfolio.edit', $track->id) }}" class="btn btn-info">

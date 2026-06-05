@@ -1,0 +1,179 @@
+/** страница Отзывов **/
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.reviews {
+  .socials {
+    vertical-align: middle;
+
+    a, span {
+      cursor: pointer;
+      display: inline-block;
+      width: 26px;
+      height: 26px;
+      margin: 0 10px 0 0;
+      line-height: 26px;
+      background: url('/img/social-contact.png') 0 0 no-repeat;
+      vertical-align: middle;
+      &.vkontakte {
+        background-position: -76px 0
+      }
+      &.instagram {
+        background-position: -115px 0
+      }
+      &.twitter {
+        background-position: -154px 0
+      }
+      &.google {
+        background-position: -38px 0
+      }
+      &.inactive {
+        background-position-y: -27px;
+      }
+    }
+
+    .here {
+      font-style: italic;
+      text-transform: lowercase;
+      display: inline-block
+    }
+    .popup-content {
+      padding: 15px !important;
+      font-size: 13px;
+    }
+  }
+  .owl-carousel {
+    background: #141719d6;
+    .owl-nav {
+      div {
+        position: absolute;
+        width: 50px;
+        height: 100%;
+        top: 0;
+        transition: background-color .2s;
+        &.disabled {
+          display: none;
+        }
+        &.owl-prev {
+          left: 0;
+        }
+        &.owl-next {
+          right: 0;
+        }
+        &:hover {
+          background: #b6b7b736;
+        }
+        i {
+          position: absolute;
+          left: 20px;
+          top: 50%;
+          margin-top: -15px;
+        }
+      }
+
+    }
+  }
+  .review-carousel {
+    position:relative;
+    .see-all {
+      position: absolute;
+      bottom: 0;
+      z-index: 2;
+      width: 100%;
+      text-align: center;
+      background: $black;
+      padding: 14px;
+      text-transform: uppercase;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+  .review {
+    padding: 50px 60px;
+    .avatar {
+      max-width: 100px !important;
+      max-height: 100px;
+    }
+    .text {
+      font-size: 16px;
+      font-style: italic;
+    }
+    .author {
+      ul {
+        list-style: none;
+        text-align: left;
+        padding-left: 15px;
+        margin: 0;
+      }
+    }
+  }
+  .popup-overlay {
+    overflow: auto;
+  }
+  .popup-content {
+    animation: fade-in .7s;
+    max-width: 700px;
+    padding: 0 !important;
+  }
+  .review-popup {
+    background: #f0f0f0;
+    color: $black;
+    padding: 15px;
+    position: relative;
+    .close {
+      font-size: 21px;
+      position: absolute;
+      right: 10px;
+      top: 7px;
+    }
+    .title {
+      font-size: 15px;
+      margin-bottom: 15px;
+    }
+    .form-control.transparent {
+      color: $black;
+    }
+    .leave-feedback p {
+      line-height: 1.2;
+      font-size: 15px
+    }
+    .avatar-preview {
+      height: 150px;
+      width: 150px;
+      margin: 0 auto
+    }
+    .upload-image {
+      margin: 0;
+    }
+  }
+  hr {
+    margin: 30px 0;
+    border-top: 2px dotted gray;
+  }
+  .leave-feedback {
+    p {
+      line-height: 1.2;
+      font-size: 15px
+    }
+
+    > button {
+      background: transparent;
+      border-radius: 0;
+      color: $white;
+      padding: 9px 45px;
+      border: 1px solid $white;
+      text-transform: uppercase;
+      font-weight: 700;
+      &:hover {
+        background: $white;
+        color: $black;
+      }
+    }
+  }
+}

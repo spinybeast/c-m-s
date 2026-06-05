@@ -46,7 +46,7 @@
         <label class="col-4 col-form-label" for="tags">Тэги</label>
         <div class="col-8">
             <input id="tags" name="tags" type="text" class="form-control here" required
-                   value="{{ $video->getOriginal('tags') ?? old('tags') }}">
+                   value="{{ $video->getRawOriginal('tags') ?? old('tags') }}">
             <div class="text-muted"><small>Вводите тэги через запятую</small></div>
         </div>
     </div>

@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Review;
+use App\Http\Controllers\Controller;
+use App\Models\Review;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
-use Validator;
+use Intervention\Image\Facades\Image;
 
 class ReviewController extends Controller
 {
@@ -43,21 +46,13 @@ class ReviewController extends Controller
             'socials.google.url' => __('messages.reviews.formatUrl', ['url' => 'Google']),
             'socials.vkontakte.url' => __('messages.reviews.formatUrl', ['url' => 'VK']),
             'socials.instagram.url' => __('messages.reviews.formatUrl', ['url' => 'Instagram']),
-            'socials.twitter.url' => __('messages.reviews.formatUrl', ['url' => 'Twitter'])
+            'socials.twitter.url' => __('messages.reviews.formatUrl', ['url' => 'Twitter']),
         ]);
 
-        try {
-            if ($validator->fails()) {
-                return response()->json([
-                    'success' => false,
-                    'errors' => array_flatten($validator->errors()->all())
-                ]);
-            }
-        } catch (\Exception $e) {
+        if ($validator->fails()) {
             return response()->json([
                 'success' => false,
-                'errors' => [__('messages.somethingWrong')],
-                'exception' => $e->getMessage()
+                'errors' => Arr::flatten($validator->errors()->all()),
             ]);
         }
 
@@ -70,7 +65,7 @@ class ReviewController extends Controller
             } catch (ValidationException $e) {
                 return response()->json([
                     'success' => false,
-                    'errors' => array_flatten($e->errors()),
+                    'errors' => Arr::flatten($e->errors()),
                 ]);
             } catch (\Exception $e) {
                 return response()->json([
@@ -83,30 +78,31 @@ class ReviewController extends Controller
         if ($review->save()) {
             return response()->json([
                 'success' => true,
-                'message' => __('messages.reviews.success')
+                'message' => __('messages.reviews.success'),
             ]);
         }
+
         return response()->json([
             'success' => false,
-            'errors' => [__('messages.somethingWrong')]
+            'errors' => [__('messages.somethingWrong')],
         ]);
     }
 
     private function uploadPhoto(Request $request, Review $review): void
     {
-        $image = $request->get('photo');
-        $image = \Image::make($image);
-        $mimeType = (string)$image->mime();
+        $imageData = $request->get('photo');
+        $image = Image::make($imageData);
+        $mimeType = (string) $image->mime();
+
         if (!isset(self::IMAGE_MIME_EXTENSION_MAP[$mimeType])) {
             throw ValidationException::withMessages([
                 'photo' => [__('validation.image')],
             ]);
         }
 
-        $name = str_slug(uniqid($review->author, true)) . '.' . self::IMAGE_MIME_EXTENSION_MAP[$mimeType];
+        $name = Str::slug(uniqid($review->author, true)) . '.' . self::IMAGE_MIME_EXTENSION_MAP[$mimeType];
         $image->save(public_path(Review::AVATAR_PATH) . $name);
 
         $review->photo = $name;
     }
-
 }

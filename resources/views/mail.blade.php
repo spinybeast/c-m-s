@@ -7,10 +7,10 @@
 </head>
 <body>
 <div>
-    <p><strong>Имя: </strong>{{$request->get('name')}}</p>
-    <p><strong>E-mail: </strong>{{$request->get('email')}}</p>
+    <p><strong>Имя: </strong>{{ $name }}</p>
+    <p><strong>E-mail: </strong>{{ $email }}</p>
     <hr>
-    <p><strong>Сообщение: </strong>{{$request->get('text')}}</p>
+    <p><strong>Сообщение: </strong>{{ $text }}</p>
 </div>
 </body>
 </html>

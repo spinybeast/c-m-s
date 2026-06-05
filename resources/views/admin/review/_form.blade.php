@@ -52,31 +52,31 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-vk"></i></span>
                 </div>
-                <input type="text" name="socials[vkontakte]" class="form-control" placeholder="Вконтакте" value="{{ array_get($review->socials, 'vkontakte') ?? old('socials.vkontakte') }}">
+                <input type="text" name="socials[vkontakte]" class="form-control" placeholder="Вконтакте" value="{{ data_get($review->socials, 'vkontakte') ?? old('socials.vkontakte') }}">
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-facebook-official"></i></span>
                 </div>
-                <input type="text" name="socials[facebook]" class="form-control" placeholder="Facebook" value="{{ array_get($review->socials, 'facebook') ?? old('socials.facebook') }}">
+                <input type="text" name="socials[facebook]" class="form-control" placeholder="Facebook" value="{{ data_get($review->socials, 'facebook') ?? old('socials.facebook') }}">
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-google"></i></span>
                 </div>
-                <input type="text" name="socials[google]" class="form-control" placeholder="Google" value="{{ array_get($review->socials, 'google') ?? old('socials.google') }}">
+                <input type="text" name="socials[google]" class="form-control" placeholder="Google" value="{{ data_get($review->socials, 'google') ?? old('socials.google') }}">
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-twitter"></i></span>
                 </div>
-                <input type="text" name="socials[twitter]" class="form-control" placeholder="Twitter" value="{{ array_get($review->socials, 'twitter') ?? old('socials.twitter') }}">
+                <input type="text" name="socials[twitter]" class="form-control" placeholder="Twitter" value="{{ data_get($review->socials, 'twitter') ?? old('socials.twitter') }}">
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-instagram"></i></span>
                 </div>
-                <input type="text" name="socials[instagram]" class="form-control" placeholder="Instagram" value="{{ array_get($review->socials, 'instagram') ?? old('socials.instagram') }}">
+                <input type="text" name="socials[instagram]" class="form-control" placeholder="Instagram" value="{{ data_get($review->socials, 'instagram') ?? old('socials.instagram') }}">
             </div>
         </div>
     </div>

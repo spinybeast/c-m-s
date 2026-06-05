@@ -25,7 +25,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php /** @var \App\Video[] $videos */ ?>
+                <?php /** @var \App\Models\Video[] $videos */ ?>
                 @foreach ($videos as $video)
                     <tr>
                         <td>
@@ -38,7 +38,7 @@
                             <div class="video-container">{!! $video->url !!}</div>
                         </td>
                         <td>
-                            {{ $video->getOriginal('tags') }}
+                            {{ $video->getRawOriginal('tags') }}
                         </td>
                         <td>
                             <a href="{{ route('video.edit', $video->id) }}" class="btn btn-info">

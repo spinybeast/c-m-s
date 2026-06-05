@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Review;
+use App\Http\Controllers\Controller;
+use App\Models\Review;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use Illuminate\View\View;
 
 class ReviewController extends Controller
 {
@@ -18,28 +20,28 @@ class ReviewController extends Controller
         'image/webp' => 'webp',
     ];
 
-    public function index()
+    public function index(): View
     {
         $reviews = Review::paginate(10);
+
         return view('admin.review.index', compact('reviews'));
     }
 
-    public function create()
+    public function create(): View
     {
         return view('admin.review.create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $review = new Review();
-
         $this->validateRequest($request);
         $this->fillAndSaveReview($request, $review);
 
         return redirect(route('reviews.index'));
     }
 
-    public function edit(Review $review)
+    public function edit(Review $review): View
     {
         return view('admin.review.edit', compact('review'));
     }
@@ -54,24 +56,20 @@ class ReviewController extends Controller
 
     public function destroy(Review $review): RedirectResponse
     {
-        try {
-            $review->delete();
-        } catch (\Exception $exception) {
-        }
+        $review->delete();
 
         return redirect()->back();
     }
 
-
     private function validateRequest(Request $request): void
     {
-        $this->validate($request, [
+        $request->validate([
             'author' => 'required',
             'text' => 'required',
             'priority' => 'nullable|numeric',
             'photo' => 'nullable|file|mimetypes:image/jpeg,image/png,image/gif,image/webp|max:5120',
             'socials' => 'array',
-            'socials.*' => 'nullable|url'
+            'socials.*' => 'nullable|url',
         ]);
     }
 
@@ -81,12 +79,12 @@ class ReviewController extends Controller
 
         if ($request->hasFile('photo')) {
             $photo = $request->file('photo');
-            $name = str_slug(uniqid($request->author, true)) . '.' . $this->resolveImageExtension($photo);
+            $name = Str::slug(uniqid($request->author, true)) . '.' . $this->resolveImageExtension($photo);
             $photo->move(public_path(Review::AVATAR_PATH), $name);
             $review->photo = $name;
         }
-        $review->published = $request->has('published');
 
+        $review->published = $request->has('published');
         $review->save();
     }
 

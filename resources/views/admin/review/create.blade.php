@@ -7,7 +7,7 @@
                 <h2 class="text-center">Добавить отзыв</h2>
             </div>
             <div class="card-body">
-                @include('admin.review._form', ['review' => new \App\Review(), 'action' => route('reviews.store')])
+                @include('admin.review._form', ['review' => new \App\Models\Review(), 'action' => route('reviews.store')])
             </div>
         </div>
     </div>
